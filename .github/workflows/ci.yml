@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: hustcer/setup-moonbit@v1.22
+        with:
+          version: '0.10.14+7d59c7ec9'
+          core-version: '0.10.14+7d59c7ec9'
+      - run: node scripts/moon.mjs update
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: node scripts/source-audit.mjs
+      - run: node scripts/moon.mjs package
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: moonshacl-${{ matrix.os }}
+          path: |
+            audit/2026-10-10/*.json
+            audit/2026-10-10/*.log
+            artifacts/
+            _build/publish/*.zip
