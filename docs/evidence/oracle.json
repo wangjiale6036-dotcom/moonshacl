@@ -1,0 +1,108 @@
+{
+  "engine": "rdf-validate-shacl",
+  "version": "0.6.5",
+  "comparedFields": [
+    "conforms",
+    "focusNode",
+    "sourceShape (IRI exact, blank-node kind only)",
+    "sourceConstraintComponent",
+    "resultSeverity",
+    "value",
+    "resultPath (structural)"
+  ],
+  "cases": [
+    {
+      "name": "people-valid",
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "shared-name-missing",
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "inverse-count",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "node-datatype",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "language-unique",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "closed",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "qualified",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "logic",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "alternative-path",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "class-closure",
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "qualified-sibling-without-count",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "signed-integer",
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "dcat-valid",
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "dcat-access-url-missing",
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    }
+  ],
+  "secondaryObservations": [
+    {
+      "engine": "shacl-engine",
+      "version": "1.1.0",
+      "case": "explicit literal target, empty data graph",
+      "conforms": true,
+      "note": "ShapeValidator.js skips all validation when dataset.size === 0. MoonSHACL follows the explicit target and reports a datatype violation; primary oracle agrees."
+    }
+  ]
+}

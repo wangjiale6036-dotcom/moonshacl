@@ -1,0 +1,539 @@
+{
+  "passed": 76,
+  "rejected": 22,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "complex/personexample.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#pattern",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "complex/shacl-shacl.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "misc/deactivated-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "misc/deactivated-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "misc/message-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "misc/severity-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "misc/severity-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/and-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/and-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/class-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/class-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/class-003.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/closed-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/closed-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/datatype-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/datatype-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/disjoint-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/equals-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/hasValue-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/in-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/languageIn-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/maxExclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#maxExclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/maxInclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#maxInclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/maxLength-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/minExclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#minExclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/minInclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#minInclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/minInclusive-002.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#minInclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/minInclusive-003.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#minInclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/minLength-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/node-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/nodeKind-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/not-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/not-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/or-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/pattern-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#pattern",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/pattern-002.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#flags",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        },
+        {
+          "predicate": "http://www.w3.org/ns/shacl#pattern",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "node/qualified-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/xone-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "node/xone-duplicate.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-alternative-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-complex-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-complex-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-inverse-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-oneOrMore-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-sequence-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-sequence-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-sequence-duplicate-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-strange-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#path",
+          "message": "Sequence path list has extra properties"
+        }
+      ]
+    },
+    {
+      "name": "path/path-strange-002.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#path",
+          "message": "Sequence path list has extra properties"
+        }
+      ]
+    },
+    {
+      "name": "path/path-unused-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-zeroOrMore-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "path/path-zeroOrOne-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/and-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/class-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/datatype-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#datatype",
+          "message": "Unsupported datatype lexical validator: http://www.w3.org/2001/XMLSchema#date"
+        }
+      ]
+    },
+    {
+      "name": "property/datatype-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/datatype-003.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/datatype-ill-formed.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/disjoint-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/equals-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/hasValue-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/in-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/languageIn-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/lessThan-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#lessThan",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/lessThan-002.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#lessThan",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/lessThanOrEquals-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#lessThanOrEquals",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/maxCount-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/maxCount-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/maxExclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#maxExclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/maxInclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#maxInclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/maxLength-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/minCount-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/minCount-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/minExclusive-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#minExclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/minExclusive-002.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#minExclusive",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/minLength-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/node-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/node-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/nodeKind-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/not-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/or-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/or-datatypes-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#datatype",
+          "message": "Unsupported datatype lexical validator: http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
+        }
+      ]
+    },
+    {
+      "name": "property/pattern-001.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#pattern",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/pattern-002.ttl",
+      "status": "profile-rejected",
+      "reasons": [
+        {
+          "predicate": "http://www.w3.org/ns/shacl#flags",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        },
+        {
+          "predicate": "http://www.w3.org/ns/shacl#pattern",
+          "message": "Unsupported SHACL parameter: the profile is rejected, never silently weakened"
+        }
+      ]
+    },
+    {
+      "name": "property/property-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/qualifiedMinCountDisjoint-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/qualifiedValueShape-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/qualifiedValueShapesDisjoint-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/uniqueLang-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "property/uniqueLang-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/multipleTargets-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/targetClass-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/targetClassImplicit-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/targetNode-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/targetObjectsOf-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/targetSubjectsOf-001.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "targets/targetSubjectsOf-002.ttl",
+      "status": "passed"
+    },
+    {
+      "name": "validation-reports/shared.ttl",
+      "status": "passed"
+    }
+  ]
+}

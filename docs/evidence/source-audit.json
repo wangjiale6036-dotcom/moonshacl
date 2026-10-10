@@ -1,0 +1,66 @@
+{
+  "method": "Whole-line // comments and blanks removed; strict count also excludes delimiter-only lines. Not an official contest determination.",
+  "excluded": [
+    "tests",
+    "generated conformance fixtures",
+    "demo",
+    "bridge",
+    "JavaScript host",
+    "dependencies"
+  ],
+  "files": [
+    {
+      "file": "src/compile.mbt",
+      "physical": 670,
+      "excludingBlankAndComment": 633,
+      "excludingDelimiterOnly": 478
+    },
+    {
+      "file": "src/datatype.mbt",
+      "physical": 162,
+      "excludingBlankAndComment": 151,
+      "excludingDelimiterOnly": 117
+    },
+    {
+      "file": "src/model.mbt",
+      "physical": 262,
+      "excludingBlankAndComment": 181,
+      "excludingDelimiterOnly": 149
+    },
+    {
+      "file": "src/path.mbt",
+      "physical": 141,
+      "excludingBlankAndComment": 130,
+      "excludingDelimiterOnly": 98
+    },
+    {
+      "file": "src/report.mbt",
+      "physical": 234,
+      "excludingBlankAndComment": 215,
+      "excludingDelimiterOnly": 165
+    },
+    {
+      "file": "src/session.mbt",
+      "physical": 152,
+      "excludingBlankAndComment": 123,
+      "excludingDelimiterOnly": 95
+    },
+    {
+      "file": "src/turtle/parse.mbt",
+      "physical": 316,
+      "excludingBlankAndComment": 287,
+      "excludingDelimiterOnly": 221
+    },
+    {
+      "file": "src/validate.mbt",
+      "physical": 314,
+      "excludingBlankAndComment": 300,
+      "excludingDelimiterOnly": 216
+    }
+  ],
+  "totals": {
+    "physical": 2251,
+    "excludingBlankAndComment": 2020,
+    "excludingDelimiterOnly": 1539
+  }
+}
