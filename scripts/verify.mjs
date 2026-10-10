@@ -36,7 +36,7 @@ for(const target of ['js','wasm-gc','native']) {
   console.log(`${target}: ${summary[2]}/${summary[1]} MoonBit tests; W3C 76 passed, 22 explicitly rejected; consumer demo passed.`);
 }
 run(process.execPath,['scripts/build.mjs'],'build-js');
-for(const name of ['bridge-test','cli-test','oracle','scenarios']) {
+for(const name of ['bridge-test','cli-test','oracle','scenarios','consumer-test']) {
   console.log(run(process.execPath,[`scripts/${name}.mjs`],name).trim());
 }
 const versions={moon:run(moon,['version'],'moon-version').trim(),node:process.version};
