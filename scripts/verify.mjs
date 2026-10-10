@@ -41,5 +41,5 @@ for(const name of ['bridge-test','cli-test','oracle']) {
 }
 const versions={moon:run(moon,['version'],'moon-version').trim(),node:process.version};
 const oracle=JSON.parse(fs.readFileSync(`${outputDir}/oracle.json`,'utf8'));
-fs.writeFileSync(`${outputDir}/verification.json`,JSON.stringify({verifiedAt:new Date().toISOString(),versions,backends:rows,bridgeBoundaryChecks:17,cliChecks:8,independentOracle:{engine:oracle.engine,version:oracle.version,cases:oracle.cases.length,matched:oracle.cases.filter(c=>c.status==='matched').length},incrementalEquivalenceProposalsPerBackend:1000},null,2));
+fs.writeFileSync(`${outputDir}/verification.json`,JSON.stringify({verifiedAt:new Date().toISOString(),versions,backends:rows,bridgeBoundaryChecks:17,cliChecks:13,independentOracle:{engine:oracle.engine,version:oracle.version,cases:oracle.cases.length,matched:oracle.cases.filter(c=>c.status==='matched').length},incrementalEquivalenceProposalsPerBackend:1000},null,2));
 console.log('Verification evidence saved in audit/2026-10-10/verification.json');

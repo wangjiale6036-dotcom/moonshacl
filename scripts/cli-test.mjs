@@ -9,6 +9,10 @@ const cases = [
   [1,['update','fixtures/dcat-ap-3.0.0.ttl','examples/dcat-data.ttl','examples/empty.ttl','examples/dcat-remove-access-url.ttl']],
   [2,['validate','examples/unsupported-shapes.ttl','examples/people-data.ttl']],
   [2,['validate','examples/missing.ttl','examples/people-data.ttl']],
+  [2,['audit','examples/people-shapes.ttl','--rdf']],
+  [2,['validate','examples/people-shapes.ttl','examples/people-data.ttl','--rdf','--rdf']],
+  [2,['validate','examples/people-shapes.ttl','examples/people-data.ttl','--unknown']],
+  [0,['validate','--','examples/people-shapes.ttl','examples/people-data.ttl']],
 ];
 for (const [expected,args] of cases) {
   const r=spawnSync(process.execPath,['cli.mjs',...args],{encoding:'utf8'});
@@ -22,4 +26,6 @@ for (const [expected,args] of cases) {
     assert.equal(output.graphTriples,11);
   }
 }
-console.log(`${cases.length}/${cases.length} CLI checks passed.`);
+const version=spawnSync(process.execPath,['cli.mjs','--version'],{encoding:'utf8'});
+assert.equal(version.status,0);assert.equal(version.stdout.trim(),'MoonSHACL 0.1.0');
+console.log(`${cases.length+1}/${cases.length+1} CLI checks passed.`);
