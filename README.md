@@ -1,5 +1,7 @@
 # MoonSHACL
 
+[![CI](https://github.com/wangjiale6036-dotcom/moonshacl/actions/workflows/ci.yml/badge.svg)](https://github.com/wangjiale6036-dotcom/moonshacl/actions/workflows/ci.yml)
+
 **MoonBit 原生 RDF 图契约编译与事务校验库。** 读取标准 SHACL shapes graph，检查跨节点关系和属性路径，并在图更新前进行校验。失败的更新保留原图，报告指出违反规则的节点、路径和来源 shape。
 
 这是基于 2017 SHACL Recommendation 的**受限 profile**，不是完整 SHACL Core/SPARQL 处理器。不支持的规则会在编译阶段返回错误；不会忽略约束后报告“通过”。
@@ -46,7 +48,7 @@ node cli.mjs validate examples/people-shapes.ttl examples/people-data.ttl --rdf
 
 ## MoonBit API
 
-模块名：`wangjiale6036-dotcom/moonshacl`；Turtle 适配包：`wangjiale6036-dotcom/moonshacl/turtle`。当前为本地 `0.1.0`，尚未发布到 Mooncakes。
+模块名：`wangjiale6036-dotcom/moonshacl`；Turtle 适配包：`wangjiale6036-dotcom/moonshacl/turtle`；当前版本 `0.1.0`。GitHub 源码可按上面的步骤构建；公开包消费示例见 `examples/consumer`。
 
 ```moonbit
 let shapes = @turtle.parse(shapes_text, scope="shapes-") |> Result::unwrap
@@ -88,9 +90,13 @@ npm test
 
 该命令执行格式检查、编译检查、三个后端测试与原生调用示例、CLI/JSON 边界检查及独立验证器对照。测试完成后即可离线运行，官方 fixtures 已固定在仓库中，测试不需要抓取在线数据。
 
-当前结果：三个后端各 21 个测试通过；98 个 W3C validation fixtures 中 76 个通过、22 个明确拒绝、0 个已执行语义失败；每个后端 1,000 次确定性更新提案与全量复验一致；8 个 CLI 检查、17 个 JSON 边界检查、14 个独立引擎场景通过。这些数字不表示完整 SHACL 认证。
+当前结果：三个后端各 21 个测试通过；98 个 W3C validation fixtures 中 76 个通过、22 个明确拒绝、0 个已执行语义失败；每个后端 1,000 次确定性更新提案与全量复验一致；13 个 CLI 检查、17 个 JSON 边界检查、14 个独立引擎场景通过。这些数字不表示完整 SHACL 认证。
 
 用例来源、逐项拒绝原因和对照字段见 [VALIDATION.md](docs/VALIDATION.md)。源码包保留 tests 和第三方许可，调查快照 `audit/` 不进入 Mooncakes 包。
+
+三个端到端场景与验收产物见 [SCENARIOS.md](docs/SCENARIOS.md)。独立消费模块在三个后端验证公开 API；`node scripts/release-smoke.mjs` 检查发布包脱离开发目录运行。源码统计脚本排除测试、生成 fixtures 和宿主层：2,020 行去空白/注释，1,539 行再去纯分隔符。可审查记录见 [docs/evidence](docs/evidence)，统计口径不代替赛事认定。
+
+精简八项 [项目申报书](PROPOSAL.zh-CN.md) 与 [维护发行流程](docs/RELEASING.md) 一并提供。
 
 ## 选题与已有方案
 

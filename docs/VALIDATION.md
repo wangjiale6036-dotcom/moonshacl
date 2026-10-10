@@ -11,12 +11,14 @@
 | W3C official validation fixtures | 每个后端 76 通过 / 22 明确拒绝 / 0 已执行语义失败 |
 | 更新缓存与全量复验 | 每个后端 1,000 次确定性提案一致 |
 | 原生消费示例 | 三个后端运行通过 |
-| Node CLI | 8/8 检查通过 |
+| Node CLI | 13/13 检查通过 |
 | JSON 输入边界 | 17/17 检查通过 |
 | rdf-validate-shacl 0.6.5 独立对照 | 14/14 场景匹配 |
 | 原始文件校验 | 113 个 W3C 资源和 DCAT-AP 文件的 SHA-256 核对通过 |
 
 这里的 21 是 MoonBit 测试块数，W3C 的 98 个用例由其中一个测试块运行；不能把两者简单相加为独立测试数。原始 JSON 结果写入仓库工作区 `audit/2026-10-10/verification.json`、`conformance-*.json`、`oracle.json`。调查与验收快照不进入 Mooncakes 发行包。
+
+公开精简快照位于 [evidence](evidence)，包括对应源提交、环境、逐项用例状态、独立引擎对照和源码统计；CI 的运行产物保存各操作系统的完整验收结果。新增三个端到端场景、独立消费模块三后端检查，以及六项干净发行安装检查，分别通过 `scripts/scenarios.mjs`、`scripts/consumer-test.mjs`、`scripts/release-smoke.mjs` 复算。
 
 ## 官方用例比较
 
