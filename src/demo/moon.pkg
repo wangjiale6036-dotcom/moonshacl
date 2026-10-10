@@ -1,0 +1,6 @@
+import {
+  "wangjiale6036-dotcom/moonshacl",
+  "wangjiale6036-dotcom/moonshacl/turtle",
+}
+
+pkgtype(kind: "executable")

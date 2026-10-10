@@ -1,0 +1,9 @@
+import {
+  "wangjiale6036-dotcom/moonshacl",
+  "wangjiale6036-dotcom/moonshacl/turtle",
+  "moonbitlang/core/json",
+}
+
+options(
+  link: { "js": { "exports": [ "request" ], "format": "esm" } },
+)

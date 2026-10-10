@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/SEMICeu/DCAT-AP",
+  "commit": "4470b8ea907b7eb9ec55ab22befd1ecd2210ff32",
+  "path": "releases/3.0.0/shacl/dcat-ap-SHACL.ttl",
+  "sha256": "92f76609d78d257123e75bc6b7155df5cc0a63f14c29fbc12b0ac95c56af2059",
+  "license": "CC-BY-4.0"
+}

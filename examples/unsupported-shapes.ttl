@@ -1,0 +1,3 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+<urn:shape> a sh:NodeShape; sh:targetNode <urn:focus>;
+  sh:sparql [ sh:select "SELECT $this WHERE { $this ?p ?o }" ] .

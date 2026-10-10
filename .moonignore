@@ -1,0 +1,10 @@
+/.tools/
+/.mooncakes/
+/_build/
+/target/
+/node_modules/
+/dist/
+/audit/
+/artifacts/
+/outputs/
+*.log

@@ -1,0 +1,1 @@
+<https://example.org/csv> <http://www.w3.org/ns/dcat#accessURL> <https://example.org/data.csv> .

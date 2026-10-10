@@ -1,0 +1,6 @@
+@prefix ex: <https://example.org/> .
+ex:alice a ex:Person; ex:name "Alice"; ex:employer ex:acme .
+ex:bob a ex:Person; ex:name "Bob"; ex:employer ex:acme .
+ex:carol a ex:Person; ex:name "Carol"; ex:employer ex:other .
+ex:acme ex:name "Acme" .
+ex:other ex:name "Other" .
