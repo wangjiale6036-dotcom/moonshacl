@@ -40,6 +40,7 @@ if(process.platform==='win32') {
   run('tar',['-xf',zip,'-C',source]);
 } else run('unzip',['-q',zip,'-d',source]);
 for(const excluded of ['.tools','.mooncakes','audit','node_modules','dist']) assert(!fs.existsSync(path.join(source,excluded)),`${excluded} leaked into source archive`);
+assert.equal(fs.readFileSync(path.join(source,'SOURCE_REVISION'),'utf8').trim(),manifest.sourceCommit);
 run(process.execPath,['scripts/build.mjs'],source);
 assert.equal(JSON.parse(run(process.execPath,[path.join(source,'cli.mjs'),'validate',path.join(source,'examples','people-shapes.ttl'),path.join(source,'examples','people-data.ttl')])).report.conforms,true);
 fs.writeFileSync('artifacts/release-smoke.json',JSON.stringify({version:manifest.version,sourceCommit:manifest.sourceCommit,platform:process.platform,checks:['asset SHA-256 and size','CLI has no npm or Mooncakes runtime install','CLI runs from a different working directory','CLI reads official DCAT base shapes','source has no private audit or toolchain','clean source builds and validates'],passed:6},null,2)+'\n');

@@ -13,12 +13,14 @@ const oracle=read(`${audit}/oracle.json`);
 assert.equal(conformance.failed,0);
 assert(oracle.cases.every(c=>c.status==='matched'));
 const revision=spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'});
-assert.equal(revision.status,0,'A source commit is required for evidence export');
+// git archive expands SOURCE_REVISION; a source zip also supports npm test.
+const archived=fs.existsSync('SOURCE_REVISION')?fs.readFileSync('SOURCE_REVISION','utf8').trim():'';
+const sourceRevision=/^[a-f0-9]{40}$/.test(archived)?archived:revision.status===0?revision.stdout.trim():null;
 const source=read('artifacts/source-audit.json');
 const scenarios=read('artifacts/scenarios/summary.json');
 const consumer=read('artifacts/consumer-source.json');
 const files={
-  'verification.json':{sourceRevision:revision.stdout.trim(),platform:process.platform,architecture:process.arch,...verification,scenarios,consumer},
+  'verification.json':{sourceRevision,platform:process.platform,architecture:process.arch,...verification,scenarios,consumer},
   'conformance.json':{passed:conformance.passed,rejected:conformance.rejected,failed:conformance.failed,cases:conformance.cases.map(c=>({name:c.name,status:c.status,...(c.errors?{reasons:c.errors.map(e=>({predicate:e.predicate,message:e.message}))}:{})}))},
   'oracle.json':oracle,
   'source-audit.json':source,

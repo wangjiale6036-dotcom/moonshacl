@@ -8,7 +8,7 @@ const registry=process.argv.includes('--registry');
 fs.mkdirSync('artifacts',{recursive:true});
 const root=fs.mkdtempSync(path.resolve('artifacts/consumer-'));
 const consumer=path.join(root,'consumer');
-fs.cpSync('examples/consumer',consumer,{recursive:true});
+fs.cpSync('examples/consumer',consumer,{recursive:true,filter:src=>!src.split(path.sep).some(p=>['_build','.mooncakes'].includes(p))});
 const env={...moonEnv,MOON_WORK:'off'};
 if(!registry) {
   const workspace=path.join(root,'moon.work');

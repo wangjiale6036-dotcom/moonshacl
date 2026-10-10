@@ -1,2 +1,3 @@
 * text=auto eol=lf
 fixtures/dcat-ap-3.0.0.ttl -text
+SOURCE_REVISION export-subst
