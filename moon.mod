@@ -10,6 +10,8 @@ source = "src"
 
 readme = "README.md"
 
+repository = "https://github.com/wangjiale6036-dotcom/moonshacl"
+
 license = "Apache-2.0"
 
 keywords = [ "rdf", "shacl", "validation", "transaction" ]
