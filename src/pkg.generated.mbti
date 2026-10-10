@@ -1,0 +1,145 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "wangjiale6036-dotcom/moonshacl"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn compile(Graph) -> Result[Plan, Array[Problem]]
+
+pub fn lang_literal(String, String) -> Term
+
+pub fn literal(String) -> Term
+
+pub let rdf : String
+
+pub let rdfs : String
+
+pub let sh : String
+
+pub fn supported_parameters() -> Array[String]
+
+pub let xsd : String
+
+// Errors
+
+// Types and methods
+type Cached
+
+pub struct Graph {
+  triples : Array[Triple]
+  spo : Map[(Term, String), Array[Term]]
+  pos : Map[(String, Term), Array[Term]]
+}
+pub fn Graph::new(Array[Triple]) -> Self
+pub fn Graph::objects(Self, Term, String) -> Array[Term]
+pub fn Graph::size(Self) -> Int
+pub fn Graph::subjects(Self, String, Term) -> Array[Term]
+pub fn Graph::to_ntriples(Self) -> String
+pub fn Graph::triples(Self) -> Array[Triple]
+pub fn Graph::values(Self, Term, Path) -> Array[Term]
+
+pub(all) enum Path {
+  Predicate(String)
+  Inverse(Path)
+  Sequence(Array[Path])
+  Alternative(Array[Path])
+  ZeroOrMore(Path)
+  OneOrMore(Path)
+  ZeroOrOne(Path)
+} derive(Eq, @debug.Debug)
+pub fn Path::equal(Self, Self) -> Bool
+pub fn Path::not_equal(Self, Self) -> Bool
+pub fn Path::to_json(Self) -> Json
+pub fn Path::to_repr(Self) -> @debug.Repr
+
+pub struct Plan {
+  shapes : Map[Term, Shape]
+  shape_order : Array[Term]
+  parents : Map[Term, Array[Term]]
+}
+pub fn Plan::validate(Self, Graph) -> Report
+pub fn Plan::validate_node(Self, Graph, Term, Term) -> Result[Report, String]
+
+pub(all) struct Problem {
+  node : Term
+  predicate : String
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_json(Self) -> Json
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Report {
+  conforms : Bool
+  results : Array[ValidationResult]
+  checked : Int
+  reused : Int
+}
+pub fn Report::to_graph(Self) -> Graph
+pub fn Report::to_json(Self) -> Json
+
+pub struct Session {
+  plan : Plan
+  mut graph : Graph
+  mut cache : Map[(Term, Term), Cached]
+}
+pub fn Session::apply(Self, Array[Triple], Array[Triple]) -> Update
+pub fn Session::graph(Self) -> Graph
+pub fn Session::new(Plan, Graph) -> Self
+pub fn Session::preview(Self, Array[Triple], Array[Triple]) -> Report
+pub fn Session::report(Self) -> Report
+
+type Shape
+
+pub(all) enum Term {
+  Iri(String)
+  Blank(String)
+  Literal(String, String, String?)
+} derive(@debug.Debug)
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::hash(Self) -> Int
+pub fn Term::hash_combine(Self, Hasher) -> Unit
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::to_json(Self) -> Json
+pub fn Term::to_ntriples(Self) -> String
+pub fn Term::to_repr(Self) -> @debug.Repr
+pub impl Eq for Term
+pub impl Hash for Term
+
+pub(all) struct Triple {
+  subject : Term
+  predicate : String
+  object : Term
+} derive(Eq, Hash, @debug.Debug)
+pub fn Triple::equal(Self, Self) -> Bool
+pub fn Triple::hash(Self) -> Int
+pub fn Triple::hash_combine(Self, Hasher) -> Unit
+pub fn Triple::not_equal(Self, Self) -> Bool
+pub fn Triple::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Update {
+  committed : Bool
+  report : Report
+}
+
+pub(all) struct ValidationResult {
+  focus_node : Term
+  source_shape : Term
+  component : String
+  severity : Term
+  path : Path?
+  value : Term?
+  messages : Array[Term]
+  details : Array[ValidationResult]
+} derive(Eq, @debug.Debug)
+pub fn ValidationResult::equal(Self, Self) -> Bool
+pub fn ValidationResult::not_equal(Self, Self) -> Bool
+pub fn ValidationResult::to_json(Self) -> Json
+pub fn ValidationResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

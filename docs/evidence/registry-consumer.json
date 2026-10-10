@@ -1,0 +1,21 @@
+{
+  "mode": "registry",
+  "module": "wangjiale6036-dotcom/moonshacl@0.1.0",
+  "backends": [
+    {
+      "target": "js",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "target": "wasm-gc",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "target": "native",
+      "passed": 1,
+      "failed": 0
+    }
+  ]
+}

@@ -20,6 +20,8 @@
 
 公开精简快照位于 [evidence](evidence)，包括对应源提交、环境、逐项用例状态、独立引擎对照和源码统计；CI 的运行产物保存各操作系统的完整验收结果。新增三个端到端场景、独立消费模块三后端检查，以及六项干净发行安装检查，分别通过 `scripts/scenarios.mjs`、`scripts/consumer-test.mjs`、`scripts/release-smoke.mjs` 复算。
 
+Mooncakes `wangjiale6036-dotcom/moonshacl@0.1.0` 已发布并重新安装，独立 registry 消费测试在三个后端通过，记录见 [registry-consumer.json](evidence/registry-consumer.json)。CI 也执行该公开包检查。GitHub 后续发行工程/文档提交与 Mooncakes 发布包时间不同；0.1.0 的 MoonBit 实现一致，GitHub 源码 zip 的精确提交写入 `SOURCE_REVISION` 和发行 `manifest.json`。
+
 ## 官方用例比较
 
 固定 [W3C 仓库 commit](https://github.com/w3c/data-shapes/tree/07458ebb1ece6addc664636d70b08444a7b66609/data-shapes-test-suite/tests/core) 的 98 个 `sht:Validate` fixtures；另包含其引用的辅助 data/shapes graphs，共 113 个资源。全部输入解析成功，规则不支持时返回编译错误。测试直接使用官方预期结果，未删改失败节点或约束。

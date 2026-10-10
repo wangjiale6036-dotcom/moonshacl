@@ -22,8 +22,11 @@ jobs:
           version: '0.10.14+7d59c7ec9'
           core-version: '0.10.14+7d59c7ec9'
       - run: node scripts/moon.mjs update
+      - run: node scripts/moon.mjs info
+      - run: git diff --exit-code -- '*.mbti'
       - run: npm ci --ignore-scripts
       - run: npm test
+      - run: node scripts/consumer-test.mjs --registry
       - run: node scripts/source-audit.mjs
       - run: node scripts/moon.mjs package
       - run: node scripts/package-release.mjs

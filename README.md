@@ -16,7 +16,9 @@ MoonTTL 已提供 MoonBit 的 RDF 解析层，MoonSHACL 补充解析之后的图
 
 ## 运行
 
-需要 MoonBit 工具链、Node.js 和 native 测试所需的 C 编译器。当前验证环境：Moon `0.1.20260920`、moonc `0.10.14`、Node `24.21.0`、Windows/MSVC。`scripts/moon.mjs` 优先使用工作区 `.tools/moon`，否则使用 PATH 中的 `moon`。工具链安装见 [MoonBit 官方文档](https://docs.moonbitlang.com/en/latest/toolchain/moon/index.html)。
+需要 MoonBit 工具链、Node.js 和 native 测试所需的 C 编译器。已验证 Moon `0.1.20260920`、moonc `0.10.14+7d59c7ec9`、Node 24；Linux/Windows CI 均通过。`scripts/moon.mjs` 优先使用工作区 `.tools/moon`，否则使用 PATH 中的 `moon`。工具链安装见 [MoonBit 官方文档](https://docs.moonbitlang.com/en/latest/toolchain/moon/index.html)。
+
+只运行 CLI 可下载 [v0.1.0 发行包](https://github.com/wangjiale6036-dotcom/moonshacl/releases/tag/v0.1.0) 中的 `moonshacl-0.1.0-cli.tar.gz`，解压后用 Node 24 运行 `node cli.mjs --help`，无需 MoonBit 编译器或 npm 安装。源码构建步骤如下：
 
 ```sh
 node scripts/moon.mjs update
@@ -48,7 +50,7 @@ node cli.mjs validate examples/people-shapes.ttl examples/people-data.ttl --rdf
 
 ## MoonBit API
 
-模块名：`wangjiale6036-dotcom/moonshacl`；Turtle 适配包：`wangjiale6036-dotcom/moonshacl/turtle`；当前版本 `0.1.0`。GitHub 源码可按上面的步骤构建；公开包消费示例见 `examples/consumer`。
+模块名：`wangjiale6036-dotcom/moonshacl`；Turtle 适配包：`wangjiale6036-dotcom/moonshacl/turtle`。[Mooncakes 0.1.0](https://mooncakes.io/docs/wangjiale6036-dotcom/moonshacl@0.1.0) 已发布并重新安装验证；在消费项目中运行 `moon add wangjiale6036-dotcom/moonshacl@0.1.0`。公开包消费示例见 `examples/consumer`。
 
 ```moonbit
 let shapes = @turtle.parse(shapes_text, scope="shapes-") |> Result::unwrap

@@ -54,6 +54,8 @@ v0.1.0 已实现四类标准 targets、七种路径形式、类与 datatype、�
 
 仓库：[wangjiale6036-dotcom/moonshacl][repo]；[源码提交历史][commits]；[发行页][release]。
 
+[Mooncakes 0.1.0](https://mooncakes.io/docs/wangjiale6036-dotcom/moonshacl@0.1.0) 已发布并通过独立重新安装验证；Linux/Windows CI 已通过。
+
 仓库已具备 MVP、测试、CI、示例和维护文档。提交覆盖完整核心基线、源码统计、CI、CLI 修复、场景验收、独立消费、公开证据、发行构建、安装验证及申报材料；没有回填日期、空提交或重复提交，赛期有效提交口径由组委会认定。
 
 核心库排除测试、生成 fixtures、demo、bridge、宿主代码、空白和注释后为 2,020 行，进一步排除纯分隔符行为 1,539 行；附复算脚本。三后端各 21 个测试块通过，W3C 98 个用例为 76 通过、22 因 profile 明确拒绝、0 已执行语义失败；另有 14 个独立引擎场景、每后端 1,000 次更新与全量复验比较。统计不代替实际价值，亦不代表完整标准认证。[验收方法及证据][validation]见仓库。
