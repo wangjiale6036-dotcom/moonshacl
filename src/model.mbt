@@ -217,6 +217,12 @@ pub(all) struct Report {
 }
 
 ///|
+/// An execution failure is distinct from a non-conforming validation report.
+pub(all) suberror ValidationFailure {
+  ValidationFailure(String)
+}
+
+///|
 /// Read dependencies include absence queries, preventing stale minCount/closed results.
 priv enum Read {
   Objects(Term, String)

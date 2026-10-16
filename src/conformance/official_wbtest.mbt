@@ -80,7 +80,7 @@ fn actual_signature(r : @moonshacl.ValidationResult) -> String {
 }
 
 ///|
-test "W3C official profile conformance" {
+test "W3C official full Core conformance" {
   let rows : Array[Json] = []
   let mut passed = 0
   let mut rejected = 0
@@ -228,8 +228,8 @@ test "W3C official profile conformance" {
   }
   println("CONFORMANCE_JSON=" + output.stringify())
   assert_eq(failed, 0)
-  assert_eq(passed, 76)
-  assert_eq(rejected, 22)
+  assert_eq(passed, 98)
+  assert_eq(rejected, 0)
 }
 
 ///|

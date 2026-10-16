@@ -11,7 +11,8 @@ assert(verification.backends.every(b=>b.failed===0 && b.w3c.failed===0));
 const conformance=read(`${audit}/conformance.json`);
 const oracle=read(`${audit}/oracle.json`);
 assert.equal(conformance.failed,0);
-assert(oracle.cases.every(c=>c.status==='matched'));
+assert(oracle.cases.every(c=>c.semanticExpectationPassed && c.inputGraphsIsomorphic && c.jsonRdfConsistent));
+assert.equal(oracle.comparisonCounts.unexpectedFailures,0);
 const revision=spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'});
 // git archive expands SOURCE_REVISION; a source zip also supports npm test.
 const archived=fs.existsSync('SOURCE_REVISION')?fs.readFileSync('SOURCE_REVISION','utf8').trim():'';

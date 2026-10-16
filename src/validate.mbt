@@ -58,7 +58,13 @@ fn evaluate_shape(
   id : Term,
   focus : Term,
   reader : Reader,
-) -> Array[ValidationResult] {
+  depth? : Int = 0,
+) -> Array[ValidationResult] raise ValidationFailure {
+  if depth >= 256 {
+    raise ValidationFailure(
+      "Validation resource limit: nested shape evaluation exceeds 256 levels",
+    )
+  }
   let shape = plan.shapes[id]
   if shape.deactivated {
     return []
@@ -94,11 +100,11 @@ fn evaluate_shape(
           }
         }
       MinCount(n) =>
-        if values.length() < n {
+        if n.compare_int(values.length()) > 0 {
           results.push(violation(shape, focus, "MinCount", None))
         }
       MaxCount(n) =>
-        if values.length() > n {
+        if n.compare_int(values.length()) < 0 {
           results.push(violation(shape, focus, "MaxCount", None))
         }
       MinLength(n) | MaxLength(n) =>
@@ -109,7 +115,12 @@ fn evaluate_shape(
           }
           let is_min = rule is MinLength(_)
           let valid = match length {
-            Some(length) => if is_min { length >= n } else { length <= n }
+            Some(length) =>
+              if is_min {
+                n.compare_int(length) <= 0
+              } else {
+                n.compare_int(length) >= 0
+              }
             None => false
           }
           if !valid {
@@ -127,6 +138,72 @@ fn evaluate_shape(
             )
           }
         }
+      Pattern(regex) =>
+        for value in values {
+          let valid = match value {
+            Iri(s) | Literal(s, _, _) =>
+              match regex.matches(s) {
+                Ok(matched) => matched
+                Err(message) => raise ValidationFailure(message)
+              }
+            Blank(_) => false
+          }
+          if !valid {
+            results.push(violation(shape, focus, "Pattern", Some(value)))
+          }
+        }
+      MinExclusive(bound)
+      | MinInclusive(bound)
+      | MaxExclusive(bound)
+      | MaxInclusive(bound) =>
+        for value in values {
+          let comparison = compare_terms(
+            value,
+            bound,
+            implicit_timezone=plan.implicit_timezone,
+          )
+          let (valid, name) = match rule {
+            MinExclusive(_) => (comparison is Some(c) && c > 0, "MinExclusive")
+            MinInclusive(_) => (comparison is Some(c) && c >= 0, "MinInclusive")
+            MaxExclusive(_) => (comparison is Some(c) && c < 0, "MaxExclusive")
+            _ => (comparison is Some(c) && c <= 0, "MaxInclusive")
+          }
+          if !valid {
+            results.push(violation(shape, focus, name, Some(value)))
+          }
+        }
+      LessThan(p) | LessThanOrEquals(p) => {
+        let other = reader.objects(focus, p)
+        let strict = rule is LessThan(_)
+        for value in values {
+          for right in other {
+            let comparison = compare_terms(
+              value,
+              right,
+              implicit_timezone=plan.implicit_timezone,
+            )
+            let valid = match comparison {
+              Some(c) => if strict { c < 0 } else { c <= 0 }
+              None => false
+            }
+            // Every failing pair produces a result, including repeated values.
+            if !valid {
+              results.push(
+                violation(
+                  shape,
+                  focus,
+                  if strict {
+                    "LessThan"
+                  } else {
+                    "LessThanOrEquals"
+                  },
+                  Some(value),
+                ),
+              )
+            }
+          }
+        }
+      }
       LanguageIn(ranges) =>
         for value in values {
           let valid = match value {
@@ -175,18 +252,26 @@ fn evaluate_shape(
         }
       Property(child) =>
         for value in values {
-          results.append(evaluate_shape(plan, child, value, reader))
+          results.append(
+            evaluate_shape(plan, child, value, reader, depth=depth + 1),
+          )
         }
       Node(child) =>
         for value in values {
-          let details = evaluate_shape(plan, child, value, reader)
+          let details = evaluate_shape(
+            plan,
+            child,
+            value,
+            reader,
+            depth=depth + 1,
+          )
           if !details.is_empty() {
             results.push(violation(shape, focus, "Node", Some(value), details~))
           }
         }
       Not(child) =>
         for value in values {
-          if evaluate_shape(plan, child, value, reader).is_empty() {
+          if evaluate_shape(plan, child, value, reader, depth=depth + 1).is_empty() {
             results.push(violation(shape, focus, "Not", Some(value)))
           }
         }
@@ -195,7 +280,13 @@ fn evaluate_shape(
           let mut conforming = 0
           let details = []
           for child in children {
-            let child_results = evaluate_shape(plan, child, value, reader)
+            let child_results = evaluate_shape(
+              plan,
+              child,
+              value,
+              reader,
+              depth=depth + 1,
+            )
             if child_results.is_empty() {
               conforming = conforming + 1
             } else {
@@ -252,11 +343,17 @@ fn evaluate_shape(
         let other = if disjoint { siblings(plan, id, qualified) } else { [] }
         let mut count = 0
         for value in values {
-          let conforms = evaluate_shape(plan, qualified, value, reader).is_empty()
+          let conforms = evaluate_shape(
+            plan,
+            qualified,
+            value,
+            reader,
+            depth=depth + 1,
+          ).is_empty()
           // Do not short-circuit dependencies: exclusion relies on every sibling.
           let mut excluded = false
           for sibling in other {
-            if evaluate_shape(plan, sibling, value, reader).is_empty() {
+            if evaluate_shape(plan, sibling, value, reader, depth=depth + 1).is_empty() {
               excluded = true
             }
           }
@@ -266,14 +363,14 @@ fn evaluate_shape(
         }
         match minimum {
           Some(n) =>
-            if count < n {
+            if n.compare_int(count) > 0 {
               results.push(violation(shape, focus, "QualifiedMinCount", None))
             }
           None => ()
         }
         match maximum {
           Some(n) =>
-            if count > n {
+            if n.compare_int(count) < 0 {
               results.push(violation(shape, focus, "QualifiedMaxCount", None))
             }
           None => ()
@@ -286,7 +383,10 @@ fn evaluate_shape(
 
 ///|
 /// Validation includes all severities in the W3C conforms flag.
-pub fn Plan::validate(self : Plan, graph : Graph) -> Report {
+pub fn Plan::validate(
+  self : Plan,
+  graph : Graph,
+) -> Report raise ValidationFailure {
   let results = []
   let mut checked = 0
   for id in self.shape_order {
@@ -309,6 +409,8 @@ pub fn Plan::validate_node(
   if !self.shapes.contains(shape) {
     return Err("Unknown compiled shape")
   }
-  let results = evaluate_shape(self, shape, focus, { graph, reads: [], })
+  let results = evaluate_shape(self, shape, focus, { graph, reads: [], }) catch {
+    ValidationFailure(message) => return Err(message)
+  }
   Ok({ conforms: results.is_empty(), results, checked: 1, reused: 0, })
 }

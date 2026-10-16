@@ -1,6 +1,6 @@
 {
   "name": "moonshacl-workspace",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "test:bridge": "node scripts/bridge-test.mjs",
     "test:cli": "node scripts/cli-test.mjs",
     "test:oracle": "node scripts/oracle.mjs",
-    "test:roadmap": "node examples/core-roadmap/verify.mjs --check-current-profile"
+    "test:roadmap": "node examples/core-roadmap/verify.mjs --require-core"
   },
   "devDependencies": {
     "@rdfjs/data-model": "2.1.1",

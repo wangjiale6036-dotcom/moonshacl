@@ -155,6 +155,8 @@ fn term(
   kind : @gen_nquads.TermKind,
   view : ArrayView[Byte],
   scope : String,
+  source : ArrayView[Byte],
+  span : (Int, Int),
 ) -> Result[@moonshacl.Term, String] {
   let text = @utf8.decode(Bytes::from_array(view)) catch {
     _ => return Err("Malformed UTF-8 in RDF term")
@@ -165,13 +167,29 @@ fn term(
         Ok(s) => Ok(@moonshacl.Iri(s))
         Err(e) => Err(e)
       }
-    BNode =>
+    BNode => {
+      // MoonTTL generates names such as genid32 and genid32n0 for [] and
+      // collections. Those are also legal explicit Turtle labels. The source
+      // span, not the materialized name, distinguishes these two identities.
+      // Prefix BOTH namespaces so an explicit label like fresh-genid32 also
+      // cannot collide with a generated node. Repeated explicit labels and
+      // repeated references to the same generated span retain their identity.
+      if span.0 < 0 || span.0 >= source.length() || span.1 <= 0 {
+        return Err("Missing source span for materialized blank node")
+      }
+      let blank_prefix = match source[span.0] {
+        b'_' => "label-"
+        b'[' | b'(' => "fresh-"
+        _ => return Err("Unexpected source syntax for materialized blank node")
+      }
       Ok(
         @moonshacl.Blank(
           scope +
+          blank_prefix +
           (if text.has_prefix("_:") { text[2:].to_owned() } else { text }),
         ),
       )
+    }
     Literal => {
       let quote : UInt16 = if text.has_prefix("\"") {
         0x22
@@ -286,20 +304,27 @@ pub fn parse(
     return Err(errors.map(e => e.to_string()))
   }
   let triples : Array[@moonshacl.Triple] = []
-  for emit in emits {
+  // With no materialization errors there is exactly one emission per parsed
+  // quad, in source order. Keep its original spans to classify blank nodes.
+  if emits.length() != quads.length() {
+    return Err(["Materialized RDF terms lost their source span association"])
+  }
+  for i, emit in emits {
     if emit.g_kind != @gen_nquads.TermKind::DefaultGraph {
       return Err([
         "Named graphs require an explicit graph-selection policy and are outside this Turtle adapter",
       ])
     }
-    let subject = match term(emit.s_kind, emit.s_view, scope) {
+    let subject = match
+      term(emit.s_kind, emit.s_view, scope, data[:], quads[i].s) {
       Ok(s) => s
       Err(e) => return Err([e])
     }
     if subject is @moonshacl.Literal(_, _, _) {
       return Err(["RDF subjects cannot be literals"])
     }
-    let object = match term(emit.o_kind, emit.o_view, scope) {
+    let object = match
+      term(emit.o_kind, emit.o_view, scope, data[:], quads[i].o) {
       Ok(o) => o
       Err(e) => return Err([e])
     }

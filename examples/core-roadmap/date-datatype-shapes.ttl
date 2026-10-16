@@ -3,7 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Separate lexical validation from ordering. Future acceptance case:
-# 0.1.0 rejects the unsupported xsd:date datatype at shape compilation.
+# Executable xsd:date lexical validation case for MoonSHACL 0.4.0.
 ex:DateDatatypeShape a sh:PropertyShape ;
   sh:targetNode ex:datedRecord ;
   sh:path ex:date ;

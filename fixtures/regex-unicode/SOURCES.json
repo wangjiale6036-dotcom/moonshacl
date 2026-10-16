@@ -1,0 +1,26 @@
+{
+  "version": "15.0.0",
+  "license": "../../licenses/Unicode-DATA-LICENSE.txt",
+  "inputs": [
+    {
+      "name": "UnicodeData.txt",
+      "url": "https://www.unicode.org/Public/15.0.0/ucd/UnicodeData.txt",
+      "sha256": "806e9aed65037197f1ec85e12be6e8cd870fc5608b4de0fffd990f689f376a73"
+    },
+    {
+      "name": "Blocks.txt",
+      "url": "https://www.unicode.org/Public/15.0.0/ucd/Blocks.txt",
+      "sha256": "529dc5d0f6386d52f2f56e004bbfab48ce2d587eea9d38ba546c4052491bd820"
+    },
+    {
+      "name": "SpecialCasing.txt",
+      "url": "https://www.unicode.org/Public/15.0.0/ucd/SpecialCasing.txt",
+      "sha256": "78b29c64b5840d25c11a9f31b665ee551b8a499eca6c70d770fcad7dd710f494"
+    }
+  ],
+  "generated": {
+    "categoryRanges": 4007,
+    "blocks": 330,
+    "caseVariantCharacters": 2885
+  }
+}

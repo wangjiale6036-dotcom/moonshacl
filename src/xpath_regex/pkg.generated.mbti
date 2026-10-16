@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "wangjiale6036-dotcom/moonshacl/xpath_regex"
+
+// Values
+pub fn compile(String, String) -> Result[Regex, String]
+
+// Errors
+
+// Types and methods
+type Expr
+
+type Nfa
+
+pub struct Regex {
+  expression : Expr
+  nfa : Nfa?
+  groups : Int
+  ignore_case : Bool
+  multiline : Bool
+  dotall : Bool
+}
+pub fn Regex::matches(Self, String) -> Result[Bool, String]
+
+// Type aliases
+
+// Traits

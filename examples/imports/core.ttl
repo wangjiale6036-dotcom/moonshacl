@@ -1,0 +1,5 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+<urn:Product> a sh:NodeShape;
+  sh:targetNode <urn:item>;
+  sh:property [ sh:path <urn:price>; sh:datatype xsd:decimal; sh:minInclusive 0; sh:minCount 1 ] .

@@ -1,6 +1,6 @@
 name = "wangjiale6036-dotcom/moonshacl"
 
-version = "0.1.0"
+version = "0.4.0"
 
 import {
   "thy1016/moonttl@0.3.0",

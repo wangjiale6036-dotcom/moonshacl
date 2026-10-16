@@ -19,7 +19,7 @@ MoonBit 数据目录工具导入 `examples/dcat-data.ttl`，执行未经修改�
 ## 发布管线中的规则能力检查
 
 维护者收到 shapes 文件，先运行 `audit` 确认规则可执行，再处理数据。
-支持的 people shapes 返回 supported；含未实现 pattern 的规则必须返回退出码 2 和 problems，且没有伪造的 conforms 报告。
+people shapes 返回 supported；pattern 等全部 Core 规则实际执行。示例 unsupported-shapes 含 SPARQL 扩展，使用 --strict 时返回退出码 2 和 problems，不产生伪造的 conforms 报告；默认 Core 模式提供未执行扩展的 diagnostics。
 产物 `03-profile-*.json`。这是编译支持范围检查，不是“数据不符合”的退出码 1。
 
-以上行为与统计数量分开定义。完整 profile 见 [PROFILE](PROFILE.md)，独立语义对照见 [VALIDATION](VALIDATION.md)。
+以上行为与统计数量分开定义。完整能力契约 见 [PROFILE](PROFILE.md)，独立语义对照见 [VALIDATION](VALIDATION.md)。

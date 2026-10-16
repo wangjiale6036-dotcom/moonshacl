@@ -1,12 +1,7 @@
 {
   "schemaVersion": 1,
-  "status": "future Core acceptance cases; not implemented by MoonSHACL 0.1.0",
+  "status": "MoonSHACL 0.4.0 executable Core acceptance cases",
   "baseline": "https://www.w3.org/TR/2017/REC-shacl-20170720/",
-  "currentMoonSHACL": {
-    "version": "0.1.0",
-    "expectedStatusForEveryCase": "unsupported-or-invalid-shapes",
-    "note": "The shape compiler must reject these unsupported constraints/datatypes. A rejection is not a validation report and must not be counted as either a passing or failing SHACL validation result."
-  },
   "expectedFields": [
     "conforms",
     "sourceConstraintComponent",
@@ -165,5 +160,10 @@
         ]
       }
     }
-  ]
+  ],
+  "historicalMoonSHACL": {
+    "version": "0.1.0",
+    "expectedStatusForEveryCase": "unsupported-or-invalid-shapes",
+    "note": "The shape compiler must reject these unsupported constraints/datatypes. A rejection is not a validation report and must not be counted as either a passing or failing SHACL validation result."
+  }
 }

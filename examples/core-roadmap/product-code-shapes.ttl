@@ -1,7 +1,7 @@
 @prefix ex: <https://example.org/core-roadmap/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-# Future Core acceptance case; MoonSHACL 0.1.0 rejects sh:pattern/sh:flags.
+# Executable Core acceptance case for MoonSHACL 0.4.0.
 ex:ProductCodeShape a sh:PropertyShape ;
   sh:targetNode ex:product ;
   sh:path ex:code ;

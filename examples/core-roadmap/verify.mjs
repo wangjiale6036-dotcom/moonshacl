@@ -8,7 +8,7 @@ const base = new URL('./', import.meta.url);
 const manifest = JSON.parse(fs.readFileSync(new URL('expectations.json', base), 'utf8'));
 const checkCurrentProfile = process.argv.includes('--check-current-profile');
 const requireCore = process.argv.includes('--require-core');
-assert(!(checkCurrentProfile && requireCore), 'Choose a baseline check or future Core acceptance, not both');
+assert(!(checkCurrentProfile && requireCore), 'Choose a historical baseline check or Core acceptance, not both');
 assert(process.argv.slice(2).every(arg=>['--check-current-profile','--require-core'].includes(arg)), 'Unknown verification option');
 const request = checkCurrentProfile || requireCore
   ? (await import('../../dist/moonshacl.mjs')).request
@@ -48,7 +48,7 @@ for (const item of manifest.cases) {
   if (request) {
     const current = JSON.parse(request(JSON.stringify({ shapes, data })));
     if (checkCurrentProfile) {
-      assert.equal(current.status, manifest.currentMoonSHACL.expectedStatusForEveryCase, item.id + ': current profile rejection');
+      assert.equal(current.status, manifest.historicalMoonSHACL.expectedStatusForEveryCase, item.id + ': current profile rejection');
       assert.equal(current.report, undefined, item.id + ': rejection must not fabricate a validation report');
     } else {
       assert.equal(current.status, 'validated', item.id + ': Core feature has not been implemented');
@@ -66,6 +66,6 @@ console.log(JSON.stringify({
   matchedCases: rows.length,
   checkCurrentProfile,
   requireCore,
-  note: requireCore ? 'MoonSHACL matched these ten examples; broader Core gates still apply.' : 'Oracle matches define future acceptance expectations, not implemented Core support.',
+  note: requireCore ? 'MoonSHACL matched these ten examples; broader Core gates still apply.' : 'Oracle-only run; use --require-core to verify MoonSHACL execution.',
   rows,
 }, null, 2));

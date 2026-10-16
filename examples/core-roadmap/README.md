@@ -1,6 +1,6 @@
 # SHACL 2017 Core 补齐验收案例
 
-这里保存三个场景、十组输入及机器可读预期，用于后续完整 Core 阶段的验收。**这些不是 MoonSHACL 0.1.0 已实现功能的演示。** 当前版本会在形状编译时返回 `unsupported-or-invalid-shapes`，不会生成符合／不符合的数据校验结论；这十例均已确认如此。
+这里保存三个场景、十组输入及机器可读预期，已用于 MoonSHACL 0.4.0 实际验收。产品返回 validated 并匹配预期；历史 v0.1.0 对这些规则的编译拒绝不再算通过。
 
 语义基线为 [SHACL 2017 Recommendation](https://www.w3.org/TR/2017/REC-shacl-20170720/)。`expectations.json` 列出每例的形状文件、数据文件、`conforms` 和所有预期违规的组件、焦点、路径、命名形状。结果顺序不参与比较。
 
@@ -32,17 +32,15 @@ node examples/core-roadmap/verify.mjs
 
 这会使用锁定的独立引擎 `rdf-validate-shacl@0.6.5` 检查预期。2026-10-16 的结果为 **10/10 匹配**，比较字段为 `conforms`、`sourceConstraintComponent`、`focusNode`、`resultPath`、`sourceShape`。
 
-如需复核当前 0.1.0 的明确拒绝行为：
+产品验收运行：
 
 ```sh
 npm run build
-node examples/core-roadmap/verify.mjs --check-current-profile
+npm run test:roadmap
 ```
 
-`--check-current-profile` 专门断言现有版本拒绝这些案例；未来实现相应能力后应调整该选项对应的断言，不能继续把编译拒绝算作验收通过。独立引擎预期检查和产品实现验收是两项不同的检查。
-
-未来产品验收运行 `node examples/core-roadmap/verify.mjs --require-core`，要求 MoonSHACL 真正返回 validated 并匹配预期。**该命令在当前 v0.1.0 应返回非零退出码**，不能改成跳过或把编译拒绝计为合格。它仍只验收这十例，不代替 29 组件和官方完整矩阵。
+该命令使用 --require-core，要求 MoonSHACL 真正执行并匹配全部预期。旧 --check-current-profile 仅用于历史 v0.1.0，不用于当前验收。
 
 ## 覆盖边界
 
-这十例是申报阶段可复现的验收样例，不等同于完整 Core 一致性测试。简单 ASCII 正则和 `i` 标志不能证明完整正则语义；这里的 decimal 数值不能证明任意精度实现正确，也不能用于声称二进制浮点比较足够；日期案例没有覆盖闰年、所有非法日历值、时区混合、非可比值和跨类型比较。后续仍需按规范补齐这些边界及官方测试，并记录不同引擎的分歧。
+这十例是申报阶段可复现的验收样例，不等同于完整 Core 一致性测试。简单 ASCII 正则和 `i` 标志不能证明完整正则语义；这里的 decimal 数值不能证明任意精度实现正确，也不能用于声称二进制浮点比较足够；日期案例没有覆盖闰年、所有非法日历值、时区混合、非可比值和跨类型比较。这些边界另由标量、XPath 正则、官方 Core 和双独立引擎测试覆盖，见 ../../docs/VALIDATION.md；这里十例不单独证明完整性。

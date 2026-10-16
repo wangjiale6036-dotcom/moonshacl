@@ -1,11 +1,19 @@
 ///|
-fn supported_datatype(datatype : String) -> Bool {
-  datatype == rdf + "langString" ||
+fn integer_datatype(datatype : String) -> Bool {
   [
-    "string", "boolean", "integer", "int", "long", "short", "byte", "unsignedLong",
-    "unsignedInt", "unsignedShort", "unsignedByte", "positiveInteger", "negativeInteger",
-    "nonNegativeInteger", "nonPositiveInteger", "decimal", "hexBinary", "duration",
+    "integer", "int", "long", "short", "byte", "unsignedLong", "unsignedInt", "unsignedShort",
+    "unsignedByte", "positiveInteger", "negativeInteger", "nonNegativeInteger", "nonPositiveInteger",
   ].any(d => datatype == xsd + d)
+}
+
+///|
+fn parse_integer(value : String) -> BigInt? {
+  let s = value.trim(chars=" \t\r\n").to_owned()
+  if !digits(without_sign(s)) {
+    return None
+  }
+  let numeric = if s.has_prefix("+") { s[1:].to_owned() } else { s }
+  Some(@string.parse_bigint(numeric) catch { _ => return None })
 }
 
 ///|
@@ -117,6 +125,12 @@ fn valid_lexical(value : String, datatype : String, language : String?) -> Bool 
   if datatype == xsd + "decimal" {
     return unsigned_decimal(without_sign(s))
   }
+  if datatype == xsd + "float" || datatype == xsd + "double" {
+    return valid_float_lexical(s)
+  }
+  if datatype == xsd + "dateTime" || datatype == xsd + "date" {
+    return parse_calendar(s, datatype == xsd + "dateTime") is Some(_)
+  }
   if datatype == xsd + "hexBinary" {
     return s.length() % 2 == 0 &&
       s
@@ -130,11 +144,16 @@ fn valid_lexical(value : String, datatype : String, language : String?) -> Bool 
   if datatype == xsd + "duration" {
     return valid_duration(s)
   }
-  if !digits(without_sign(s)) {
-    return false
+  if !integer_datatype(datatype) {
+    // SHACL 2017 section 4.1.2 requires lexical checks for the SPARQL 1.1
+    // built-in datatypes. For an arbitrary/custom datatype, exact IRI matching
+    // is handled by the caller; unknown lexical semantics are not invented.
+    return true
   }
-  let numeric = if s.has_prefix("+") { s[1:].to_owned() } else { s }
-  let n = @string.parse_bigint(numeric) catch { _ => return false }
+  let n = match parse_integer(s) {
+    Some(n) => n
+    None => return false
+  }
   let bounds : (String, String)? = match datatype[xsd.length():].to_owned() {
     "byte" => Some(("-128", "127"))
     "short" => Some(("-32768", "32767"))

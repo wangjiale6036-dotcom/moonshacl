@@ -45,7 +45,7 @@ fn cached_validate(
   graph : Graph,
   cache : Map[(Term, Term), Cached],
   changes : Array[Triple],
-) -> (Report, Map[(Term, Term), Cached]) {
+) -> (Report, Map[(Term, Term), Cached]) raise ValidationFailure {
   let next : Map[(Term, Term), Cached] = Map([])
   let results = []
   let mut checked = 0
@@ -76,7 +76,10 @@ fn cached_validate(
 
 ///|
 /// The initial graph may be invalid; only conforming updates can be committed.
-pub fn Session::new(plan : Plan, graph : Graph) -> Session {
+pub fn Session::new(
+  plan : Plan,
+  graph : Graph,
+) -> Session raise ValidationFailure {
   let (_, cache) = cached_validate(plan, graph, Map([]), [])
   { plan, graph, cache, }
 }
@@ -87,7 +90,7 @@ pub fn Session::graph(self : Session) -> Graph {
 }
 
 ///|
-pub fn Session::report(self : Session) -> Report {
+pub fn Session::report(self : Session) -> Report raise ValidationFailure {
   let (report, _) = cached_validate(self.plan, self.graph, self.cache, [])
   report
 }
@@ -97,7 +100,7 @@ fn Session::candidate(
   self : Session,
   additions : Array[Triple],
   removals : Array[Triple],
-) -> (Graph, Report, Map[(Term, Term), Cached]) {
+) -> (Graph, Report, Map[(Term, Term), Cached]) raise ValidationFailure {
   let triples = self.graph.triples.filter(t => !removals.contains(t))
   triples.append(additions)
   let graph = Graph::new(triples)
@@ -130,7 +133,7 @@ pub fn Session::preview(
   self : Session,
   additions : Array[Triple],
   removals : Array[Triple],
-) -> Report {
+) -> Report raise ValidationFailure {
   let (_, report, _) = self.candidate(additions, removals)
   report
 }
@@ -141,7 +144,7 @@ pub fn Session::apply(
   self : Session,
   additions : Array[Triple],
   removals : Array[Triple],
-) -> Update {
+) -> Update raise ValidationFailure {
   let (graph, report, cache) = self.candidate(additions, removals)
   let committed = report.conforms
   if committed {

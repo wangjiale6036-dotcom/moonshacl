@@ -1,6 +1,14 @@
 ///|
 /// A MoonBit consumer uses the same API on JS, Wasm-GC and native.
 fn main {
+  run() catch {
+    @moonshacl.ValidationFailure(message) =>
+      println("Validation failure: " + message)
+  }
+}
+
+///|
+fn run() -> Unit raise @moonshacl.ValidationFailure {
   let shapes = @turtle.parse(
       (
         #|@prefix ex: <urn:> . @prefix sh: <http://www.w3.org/ns/shacl#> .

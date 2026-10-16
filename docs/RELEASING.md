@@ -5,6 +5,7 @@
 ```sh
 node scripts/moon.mjs update
 npm ci --ignore-scripts
+python -m pip install -r requirements-oracle.txt
 npm test
 node scripts/export-evidence.mjs --snapshot
 ```

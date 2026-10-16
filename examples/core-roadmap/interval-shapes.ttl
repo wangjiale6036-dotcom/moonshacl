@@ -3,7 +3,7 @@
 
 # Values in these data files are valid xsd:dateTime literals with explicit Z.
 # Keep comparison assertions independent from datatype validation below.
-# Future Core acceptance cases; 0.1.0 rejects both comparison constraints.
+# Executable Core acceptance case for MoonSHACL 0.4.0.
 ex:StrictStartShape a sh:PropertyShape ;
   sh:targetNode ex:interval ;
   sh:path ex:start ;

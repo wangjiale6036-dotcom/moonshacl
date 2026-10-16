@@ -70,10 +70,7 @@ test "RDF identity, duplicate triples and language case" {
 
 ///|
 test "Unsupported semantics and malformed parameters fail compilation" {
-  for
-    parameter in [
-      "sparql", "js", "rule", "target", "pattern", "flags", "minInclusive", "unknownExtension",
-    ] {
+  for parameter in ["sparql", "js", "rule", "target", "unknownExtension"] {
     let s = @moonshacl.Term::Iri("urn:s")
     match
       @moonshacl.compile(
@@ -89,6 +86,7 @@ test "Unsupported semantics and malformed parameters fail compilation" {
             object: @moonshacl.literal("whatever"),
           },
         ]),
+        strict=true,
       ) {
       Err(_) => ()
       Ok(_) => fail("accepted unsupported " + parameter)
@@ -97,8 +95,8 @@ test "Unsupported semantics and malformed parameters fail compilation" {
   for
     n in [
       @moonshacl.literal("1"),
-      @moonshacl.Term::Literal("-1", @moonshacl.xsd + "integer", None),
-      @moonshacl.Term::Literal("2147483648", @moonshacl.xsd + "integer", None),
+      @moonshacl.Term::Literal("1.5", @moonshacl.xsd + "integer", None),
+      @moonshacl.Term::Literal("invalid", @moonshacl.xsd + "integer", None),
     ] {
     match
       @moonshacl.compile(
@@ -140,6 +138,11 @@ test "Recursive shapes and cyclic paths are explicitly rejected" {
   match
     @moonshacl.compile(
       @moonshacl.Graph::new([
+        {
+          subject: @moonshacl.Term::Iri("urn:s"),
+          predicate: @moonshacl.rdf + "type",
+          object: @moonshacl.Iri(@moonshacl.sh + "PropertyShape"),
+        },
         {
           subject: @moonshacl.Term::Iri("urn:s"),
           predicate: @moonshacl.sh + "path",
@@ -340,8 +343,8 @@ test "Reports are valid standalone RDF with distinct generated blank nodes" {
       @moonshacl.Graph::new([
         {
           subject: s,
-          predicate: @moonshacl.sh + "targetNode",
-          object: @moonshacl.Term::Blank("result0"),
+          predicate: @moonshacl.rdf + "type",
+          object: @moonshacl.Term::Iri(@moonshacl.sh + "NodeShape"),
         },
         {
           subject: s,
@@ -351,7 +354,12 @@ test "Reports are valid standalone RDF with distinct generated blank nodes" {
       ]),
     )
     |> Result::unwrap
-  let graph = plan.validate(@moonshacl.Graph::new([])).to_graph()
+  let graph = (plan.validate_node(
+    @moonshacl.Graph::new([]),
+    s,
+    @moonshacl.Term::Blank("result0"),
+  )
+  |> Result::unwrap).to_graph()
   assert_eq(
     graph
     .objects(@moonshacl.Term::Blank("report"), @moonshacl.sh + "result")

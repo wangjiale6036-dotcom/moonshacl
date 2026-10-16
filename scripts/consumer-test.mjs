@@ -5,6 +5,8 @@ import {spawnSync} from 'node:child_process';
 import {moon,moonEnv} from './runtime.mjs';
 
 const registry=process.argv.includes('--registry');
+const version=JSON.parse(fs.readFileSync('package.json','utf8')).version;
+assert(fs.readFileSync('examples/consumer/moon.mod','utf8').includes(`"wangjiale6036-dotcom/moonshacl@${version}"`));
 fs.mkdirSync('artifacts',{recursive:true});
 const root=fs.mkdtempSync(path.resolve('artifacts/consumer-'));
 const consumer=path.join(root,'consumer');
@@ -27,5 +29,5 @@ for(const target of ['js','wasm-gc','native']) {
   assert(/Total tests: 1, passed: 1, failed: 0/.test(output),output.slice(-2000));
   backends.push({target,passed:1,failed:0});
 }
-fs.writeFileSync(`artifacts/consumer-${registry?'registry':'source'}.json`,JSON.stringify({mode:registry?'registry':'source-workspace',module:'wangjiale6036-dotcom/moonshacl@0.1.0',backends},null,2)+'\n');
+fs.writeFileSync(`artifacts/consumer-${registry?'registry':'source'}.json`,JSON.stringify({mode:registry?'registry':'source-workspace',module:`wangjiale6036-dotcom/moonshacl@${version}`,backends},null,2)+'\n');
 console.log(`Independent ${registry?'registry':'source'} consumer: 3/3 backends passed.`);

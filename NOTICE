@@ -3,4 +3,6 @@ Copyright 2026 MoonSHACL contributors.
 
 Original MoonSHACL source is licensed under Apache License 2.0.
 W3C tests and SEMIC DCAT-AP shapes have separate licenses and attribution.
+Unicode data Copyright Unicode, Inc.; see licenses/Unicode-DATA-LICENSE.txt.
+W3C QT3 test material Copyright W3C and respective contributors.
 See THIRD_PARTY.md and licenses/.

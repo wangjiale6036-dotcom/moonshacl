@@ -46,7 +46,7 @@ assert([...graph(accepted.graphRdf)].some(q=>q.object.value==='Acme Limited'));
 // A pipeline audits its shape profile before accepting user data.
 const supported=run('03-profile-accepted',['audit','examples/people-shapes.ttl'],0);
 assert.equal(supported.status,'supported');
-const unsupported=run('03-profile-rejected',['validate','examples/unsupported-shapes.ttl','examples/people-data.ttl'],2);
+const unsupported=run('03-profile-rejected',['validate','examples/unsupported-shapes.ttl','examples/people-data.ttl','--strict'],2);
 assert.equal(unsupported.status,'unsupported-or-invalid-shapes');
 assert(unsupported.problems.length>0);assert.equal(unsupported.report,undefined);
 fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify({scenarios:3,passed:3,scope:'Self-built integration examples; unchanged DCAT base shapes with synthetic data, not external adoption.'},null,2)+'\n');

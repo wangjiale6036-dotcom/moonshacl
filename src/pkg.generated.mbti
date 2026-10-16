@@ -6,11 +6,13 @@ import {
 }
 
 // Values
-pub fn compile(Graph) -> Result[Plan, Array[Problem]]
+pub fn compile(Graph, strict? : Bool, max_depth? : Int, implicit_timezone? : Int?) -> Result[Plan, Array[Problem]]
 
 pub fn lang_literal(String, String) -> Term
 
 pub fn literal(String) -> Term
+
+pub fn load_shapes(Graph, Graph, Map[String, Graph], root_iri? : String?) -> Result[Graph, String]
 
 pub let rdf : String
 
@@ -23,6 +25,9 @@ pub fn supported_parameters() -> Array[String]
 pub let xsd : String
 
 // Errors
+pub(all) suberror ValidationFailure {
+  ValidationFailure(String)
+}
 
 // Types and methods
 type Cached
@@ -58,8 +63,11 @@ pub struct Plan {
   shapes : Map[Term, Shape]
   shape_order : Array[Term]
   parents : Map[Term, Array[Term]]
+  diagnostics : Array[Problem]
+  implicit_timezone : Int?
 }
-pub fn Plan::validate(Self, Graph) -> Report
+pub fn Plan::diagnostics(Self) -> Array[Problem]
+pub fn Plan::validate(Self, Graph) -> Report raise ValidationFailure
 pub fn Plan::validate_node(Self, Graph, Term, Term) -> Result[Report, String]
 
 pub(all) struct Problem {
@@ -86,11 +94,11 @@ pub struct Session {
   mut graph : Graph
   mut cache : Map[(Term, Term), Cached]
 }
-pub fn Session::apply(Self, Array[Triple], Array[Triple]) -> Update
+pub fn Session::apply(Self, Array[Triple], Array[Triple]) -> Update raise ValidationFailure
 pub fn Session::graph(Self) -> Graph
-pub fn Session::new(Plan, Graph) -> Self
-pub fn Session::preview(Self, Array[Triple], Array[Triple]) -> Report
-pub fn Session::report(Self) -> Report
+pub fn Session::new(Plan, Graph) -> Self raise ValidationFailure
+pub fn Session::preview(Self, Array[Triple], Array[Triple]) -> Report raise ValidationFailure
+pub fn Session::report(Self) -> Report raise ValidationFailure
 
 type Shape
 

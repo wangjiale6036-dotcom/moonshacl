@@ -4,7 +4,7 @@
 
 # The business price interval is 0 <= amount < 1000.
 # Separate properties expose the other two boundary operators independently.
-# Future Core acceptance cases; 0.1.0 rejects all four range constraints.
+# Executable Core acceptance case for MoonSHACL 0.4.0.
 ex:PriceShape a sh:PropertyShape ;
   sh:targetNode ex:invoice ;
   sh:path ex:amount ;

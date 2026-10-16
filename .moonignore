@@ -8,3 +8,7 @@
 /artifacts/
 /outputs/
 *.log
+
+**/_build/
+**/.mooncakes/
+**/node_modules/

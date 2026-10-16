@@ -1,90 +1,82 @@
-# MoonSHACL 0.1.0 验收记录
+# MoonSHACL 0.4.0 验收记录
 
-验证日期：2026-10-10。环境为 Windows/MSVC、Moon `0.1.20260920`、moonc `0.10.14+7d59c7ec9`、Node `24.21.0`。重跑命令：安装已固定的依赖后，在仓库根目录运行 `npm test`。
+基线为 SHACL 2017 Part A；实现范围与配置见 [PROFILE](PROFILE.md)，逐组件正反例见 [CORE-MATRIX](CORE-MATRIX.md)。本轮记录于 2026-10-16；源提交、实际执行时间和平台由 [evidence](evidence) 及 CI 产物记录。历史 v0.1.0 的 76/22/0 保留在旧 tag，不再作为当前门槛。
 
-## 结果
+## 固定验收
 
-| 检查 | 结果 |
+| 检查 | 结果 / 门槛 |
 |---|---|
-| `moon fmt --check` / `moon check` | 通过，编译检查无警告 |
-| JS / Wasm-GC / native | 每个后端 21/21 MoonBit 测试通过 |
-| W3C official validation fixtures | 每个后端 76 通过 / 22 明确拒绝 / 0 已执行语义失败 |
-| 更新缓存与全量复验 | 每个后端 1,000 次确定性提案一致 |
-| 原生消费示例 | 三个后端运行通过 |
-| Node CLI | 13/13 检查通过 |
-| JSON 输入边界 | 17/17 检查通过 |
-| rdf-validate-shacl 0.6.5 独立对照 | 14/14 场景匹配 |
-| 原始文件校验 | 113 个 W3C 资源和 DCAT-AP 文件的 SHA-256 核对通过 |
+| fmt / check | 通过，编译无警告 |
+| JS / Wasm-GC / native | 每后端 1,749 个测试块通过 |
+| W3C Core | 每后端 98/98，零排除、零失败 |
+| 官方 XPath2 正则 | 146 个 matches + 1,542 个兼容回归，三后端通过 |
+| 原创正则测试 | 7 组，含 NFA/捕获执行器 13,068 个确定性组合对照 |
+| 增量与全量 | 每后端 2,000 次编辑提案一致，检查 preview、apply、最终图及缓存回滚 |
+| JSON / CLI | 38 / 18 项通过 |
+| 独立实现 | 142 个场景 × 2 引擎，284 次比较 |
+| 独立比较结果 | 276 次一致、7 个精确记录差异、1 个精确记录异常；0 未解释失败 |
+| 匿名节点比较器自检 | 3 项：拒绝错配来源节点和丢失重复结果，接受一致重命名 |
+| Core 业务案例 | 10/10，产品实际执行并匹配预期 |
+| 第三方字节与生成复现 | 113 个 Core 资源、DCAT、Unicode 输入/表、QT3 输入/生成测试全部核对 |
 
-这里的 21 是 MoonBit 测试块数，W3C 的 98 个用例由其中一个测试块运行；不能把两者简单相加为独立测试数。原始 JSON 结果写入仓库工作区 `audit/2026-10-10/verification.json`、`conformance-*.json`、`oracle.json`。调查与验收快照不进入 Mooncakes 发行包。
+1,749 是 MoonBit 测试块数，包含单独的正则测试；98 个 Core fixtures 在一个块内运行，29 个组件正反例在一个矩阵块内运行，不能把这些数字简单相加为独立测试总数。每后端 2,000 次提案也属于若干测试块中的循环检查。
 
-公开精简快照位于 [evidence](evidence)，包括对应源提交、环境、逐项用例状态、独立引擎对照和源码统计；CI 的运行产物保存各操作系统的完整验收结果。新增三个端到端场景、独立消费模块三后端检查，以及六项干净发行安装检查，分别通过 `scripts/scenarios.mjs`、`scripts/consumer-test.mjs`、`scripts/release-smoke.mjs` 复算。
+```sh
+node scripts/moon.mjs update
+npm ci --ignore-scripts
+python -m pip install -r requirements-oracle.txt
+npm test
+npm run test:roadmap
+```
 
-Mooncakes `wangjiale6036-dotcom/moonshacl@0.1.0` 已发布并重新安装，独立 registry 消费测试在三个后端通过，记录见 [registry-consumer.json](evidence/registry-consumer.json)。CI 也执行该公开包检查。GitHub 后续发行工程/文档提交与 Mooncakes 发布包时间不同；0.1.0 的 MoonBit 实现一致，GitHub 源码 zip 的精确提交写入 `SOURCE_REVISION` 和发行 `manifest.json`。
+固定 Moon 0.1.20260920 / moonc 0.10.14+7d59c7ec9、Node 24；Python 仅用于独立测试。首次安装依赖后，标准测试无需联网。Linux/Windows CI 均运行 JS、Wasm-GC、native，相同规则用于本地与 CI。
 
-## 官方用例比较
+## 官方用例与完整性
 
-固定 [W3C 仓库 commit](https://github.com/w3c/data-shapes/tree/07458ebb1ece6addc664636d70b08444a7b66609/data-shapes-test-suite/tests/core) 的 98 个 `sht:Validate` fixtures；另包含其引用的辅助 data/shapes graphs，共 113 个资源。全部输入解析成功，规则不支持时返回编译错误。测试直接使用官方预期结果，未删改失败节点或约束。
+固定 [W3C data-shapes commit 07458e…](https://github.com/w3c/data-shapes/tree/07458ebb1ece6addc664636d70b08444a7b66609/data-shapes-test-suite/tests/core)，98 个 sht:Validate，加引用资源共 113 个。原始字节和官方预期不变，既不删除旧版拒绝项，也不把拒绝计作通过。
 
-比较 `conforms`、focusNode、sourceShape、sourceConstraintComponent、resultSeverity、value、结构化 resultPath；官方要求的 resultMessage 必须出现在报告中。结果按多重集合比较，保留两个不同根约束产生的相同错误。标准可选的额外消息/detail 不要求与其他处理器完全一致。
+比较 conforms、focusNode、sourceShape、sourceConstraintComponent、resultSeverity、value 和结构化 resultPath，要求官方消息出现。结果按多重集合比较，保留逐失败值对及不同约束产生的重复结果。可选的额外消息/detail 不要求所有引擎一致。
 
-逐项能力边界固定在测试中：必须保持 76/22/0，不能把新增语义失败改归为“不支持”后静默让测试通过。这是项目声明的受限 profile 验收，不是完整 SHACL Core 认证。
+29 组件均有端到端正反例；另检查大整数、decimal 精度、直接 binary32 舍入、NaN/INF、日期词法/时区、Unicode、列表、sequence 注解、深层无环输入、shape 发现、扩展诊断、资源闭包、执行失败和匿名节点身份。这些审查补充官方 98 个用例，未声称官方测试穷尽标准或获得 W3C 认证。
 
-### 22 个明确拒绝的用例
+## 两个独立引擎
 
-| 用例 | 原因 |
+固定 rdf-validate-shacl 0.6.5、pySHACL 0.30.1 / RDFLib 7.6.0。默认 oracle 脚本运行 98 个官方用例和 44 个补充场景。分别独立解析输入，对输入图和必需结果投影作 RDF 图同构，保持匿名 sourceShape/focus/value 的关联和每条结果身份；路径按结构比较。JSON 与本产品 RDF 报告也互相核对。
+
+所有 142 个产品结果须符合固定预期。下列参考引擎分歧采用精确断言，既不改产品迎合它，也不计为“一致”；任何新差异均让脚本失败：
+
+| 参考引擎 | 已记录行为 |
 |---|---|
-| `complex/personexample.ttl` | pattern |
-| `node/maxExclusive-001.ttl` | 数值范围 |
-| `node/maxInclusive-001.ttl` | 数值范围 |
-| `node/minExclusive-001.ttl` | 数值范围 |
-| `node/minInclusive-001.ttl` | 数值范围 |
-| `node/minInclusive-002.ttl` | 数值范围 |
-| `node/minInclusive-003.ttl` | 数值范围 |
-| `node/pattern-001.ttl` | pattern |
-| `node/pattern-002.ttl` | pattern/flags |
-| `path/path-strange-001.ttl` | sequence head 的额外属性超出严格路径范围 |
-| `path/path-strange-002.ttl` | sequence head 的额外属性超出严格路径范围 |
-| `property/datatype-001.ttl` | 未实现 xsd:date 词法校验 |
-| `property/lessThan-001.ttl` | lessThan |
-| `property/lessThan-002.ttl` | lessThan |
-| `property/lessThanOrEquals-001.ttl` | lessThanOrEquals |
-| `property/maxExclusive-001.ttl` | 数值范围 |
-| `property/maxInclusive-001.ttl` | 数值范围 |
-| `property/minExclusive-001.ttl` | 数值范围 |
-| `property/minExclusive-002.ttl` | 数值范围 |
-| `property/or-datatypes-001.ttl` | 未实现 rdf:HTML 词法校验 |
-| `property/pattern-001.ttl` | pattern |
-| `property/pattern-002.ttl` | pattern/flags |
+| RDF/JS | 超 binary64 整数及精确 decimal 比较丢精度（2 例） |
+| RDF/JS | xsd:float 的 INF 处理差异（1 例） |
+| RDF/JS | languageIn 大写范围未按不区分大小写匹配（1 例） |
+| RDF/JS | 未要求 SHACL shape 类型就创建隐式类 target（1 例） |
+| pySHACL | 正则 s 标志未应用（1 例） |
+| pySHACL | uniqueLang 的 "1" boolean 被当作 RDF term true（1 例，固定官方用例） |
+| pySHACL | count-free qualified sibling 抛异常（1 例） |
 
-两个 path-strange 用例说明本 profile 比标准路径允许范围严格，并不意味着官方输入错误。其余未支持组件也不能算校验通过。
+原始输入、预期摘要、实际结果及依据在 oracle.json。另保留 shacl-engine 1.1.0 对空数据图跳过显式 literal target 的观察，它不计入两主引擎的一致次数。
 
-## 独立引擎对照
+日期混合时区有公开的上下文区别：默认 XSD 部分序匹配锁定 SHACL 用例；显式 implicitTimezoneMinutes 支持 XPath 动态上下文。这两种模式各有边界测试，不把它们混成单一“任意宿主完全一致”承诺。
 
-固定 `rdf-validate-shacl@0.6.5`，由 `n3@1.26.0` 独立解析同样的输入。场景包括共享名称删除、inverse、datatype、uniqueLang、closed、qualified、xone、alternative 去重、数据图 subclass，以及官方 DCAT-AP 正例/缺失 accessURL。
+## 正则与数据完整性
 
-比较 conformance、focusNode、sourceConstraintComponent、severity、value、路径结构；IRI sourceShape 精确比较。由于两套解析器的空白节点标签不同，匿名 sourceShape 只比较 BlankNode 类型，未作完整图同构比较。不得称所有报告字段完全相同。另用 N3 重新解析产品 RDF 报告，检查顶层结果数量。
+纯 MoonBit 的解析器、NFA 和捕获执行器不调用宿主正则。固定 Unicode 15.0 类别/块/大小写表；QT3 的 XPath2 适用案例共 1,688 个。其余 XPath3/XSD1.1 或外围函数类型/表达式用例逐项列于 fixtures/regex-w3c-source.json。不是排除 SHACL Core 组件，也没有删掉导致实现失败的适用案例。
 
-次级 `shacl-engine@1.1.0` 对空数据图中的显式 literal target 会返回通过，其 `ShapeValidator.js` 在 `dataset.size===0` 时跳过验证；这个差异已记录。MoonSHACL 继续验证显式 target 并返回 datatype 违反结果，主对照引擎同意。未修改产品以迎合该行为，也未把该场景记录为“所有引擎一致”。
+verify-fixtures.mjs 校验原文件 SHA-256，并在只读内存文件系统重跑生成器、格式化比对生成表、测试及 manifest。来源、许可与非原创数据边界见 THIRD_PARTY.md。
 
-## 官方 DCAT-AP 演示边界
+## 更新与装载
 
-使用 [DCAT-AP 3.0.0 base SHACL 文件](https://github.com/SEMICeu/DCAT-AP/blob/4470b8ea907b7eb9ec55ab22befd1ecd2210ff32/releases/3.0.0/shacl/dcat-ap-SHACL.ttl)，commit 与 SHA-256 在 `fixtures/DCAT-SOURCE.json`。生成脚本直接读取 Git blob，避免 Windows checkout 换行转换改变原始文件。
+原 400 次基本编辑、600 次共享/逆向/重复路径及 target/subclass 变化保留；新增 1,000 次混合编码、金额、时间和属性对编辑。每次核对 preview、apply、候选与提交图、当前报告，并检查拒绝回滚。全量和缓存共用语义，因此这部分证明更新等价，语义由官方预期与独立引擎另行检查。
 
-`examples/dcat-data.ttl` 包含 Dataset、Distribution、title/description、accessURL，以及 URL 的显式 `rdfs:Resource` 类型。本引擎没有把所有 IRI 自动推理为 Resource；示例给出满足 base shapes class 检查所需的类型。
+imports/shapesGraph 覆盖循环、缺失、根文档回边及冲突；各文档 blank scope 隔离。Turtle adapter 区分显式标签与匿名/集合生成节点，回归覆盖用户标签 genid32 与生成编号碰撞，避免误合并改变验证结论。
 
-正例通过；删除 accessURL 的更新不通过并保持原图。没有验证完整 DCAT-AP 官方服务的其他 shapes、词表、远程 imports 或推理配置，不能把演示等同于官方完整认证。
+Regex 超预算或嵌套 shape 超 256 层会返回 ValidationFailure；即使另一 or 分支通过，也不会吞掉失败；Session 图和缓存不变。路径有独立预算，不把资源失败当作符合或普通数据违反。
 
-## 更新正确性与独立性
+## 集成、安装和来源
 
-400 次提案覆盖基本新增/删除/type/name；600 次提案覆盖共享两跳路径、inverse 入边、重复路径循环、target 集合与 subclass 变化。每次分别比较 preview、apply、最终图和当前 report 与全量复验；拒绝时检查原图不变。另有 qualified sibling、closed 零读取和防御性路径副本的回归测试。
+三个端到端场景见 [SCENARIOS](SCENARIOS.md)，独立 MoonBit consumer 在三个后端测试 API。公开 registry 使用 `node scripts/consumer-test.mjs --registry` 独立安装验收；发布后证据记录在 registry-consumer.json。
 
-全量与缓存模式共用本项目约束语义，因此这些 1,000 次提案只能证明更新模式与全量模式一致；语义本身由官方预期结果和独立引擎对照补充检查。没有随机压力测试、并发隔离验证或百万级图性能基准。
+源码 zip 与 CLI tar.gz 由干净 Git HEAD 构建，SOURCE_REVISION / manifest.json / SHA256SUMS 记录源版本和哈希。release-smoke.mjs 执行六项下载包布局/隔离运行检查。CLI 不需要 MoonBit、Python 或 npm；源码包保留测试、资料和许可。CI 默认测试源码，release/manual 另检查公开 registry，避免发布前检查尚不存在的新版本。
 
-共享公司名称删除示例有三个 Person focus nodes。提案报告 `checked=2, reused=1`，定位 Alice/Bob，Carol 结果复用；拒绝后原始 CLI 示例图保持 11 triples。原生消费示例更精简，保留 8 triples，三个后端结果一致。
-
-## 原创代码与依赖
-
-RDF term/索引、规则编译、路径求值、约束执行、读取依赖追踪、更新预检、标准报告由 MoonBit 实现。Turtle 语法和 materialization 复用已有 MoonTTL；CLI 只负责文件/参数传输，测试验证器只用于对照。生成的 W3C/DCAT fixtures 是第三方测试资料，不属于原创代码量。
-
-完整支持范围、低层 Graph API 的合法 RDF 输入前提、Session 内存/并发边界见 [PROFILE.md](PROFILE.md)。
+公开源码统计排除 tests、生成 fixtures/Unicode 表、第三方数据、demo、bridge、JavaScript 宿主和依赖。本轮核心 3,998 物理行、3,597 去空白/注释行、2,758 再去纯分隔符行；复算以 source-audit.json 为准，不代替赛事认定。没有并发隔离、百万级图性能或外部用户采用的测试结论。
