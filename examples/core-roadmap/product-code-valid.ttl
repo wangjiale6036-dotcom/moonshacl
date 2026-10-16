@@ -1,0 +1,4 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+
+# Lowercase passes because the shape explicitly sets the i flag.
+ex:product ex:code "sku-0042" .

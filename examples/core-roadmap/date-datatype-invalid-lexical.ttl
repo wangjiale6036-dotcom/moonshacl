@@ -1,0 +1,5 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Legal Turtle containing an ill-typed RDF literal; it is not a Turtle error.
+ex:datedRecord ex:date "not-a-date"^^xsd:date .

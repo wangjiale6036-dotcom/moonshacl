@@ -6,6 +6,8 @@
 
 这是基于 2017 SHACL Recommendation 的**受限 profile**，不是完整 SHACL Core/SPARQL 处理器。不支持的规则会在编译阶段返回错误；不会忽略约束后报告“通过”。
 
+以上描述的是已发布的 **v0.1.0**。本次申报的**最终交付目标是完整 SHACL 2017 Core**；pattern/flags、范围与排序比较等缺项纳入必做。阶段时间、最终验收门槛和待实现案例见 [Core 路线与范围](docs/CORE-ROADMAP.zh-CN.md)，不得将路线图误读为当前能力。
+
 ## 适合什么需求
 
 MoonTTL 已提供 MoonBit 的 RDF 解析层，MoonSHACL 补充解析之后的图约束执行层。适用于需要 MoonBit 同进程嵌入的 RDF 导入、共享对象引用检查和数据更新预检。

@@ -1,0 +1,7 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:interval ex:start "2026-10-16T08:00:00Z"^^xsd:dateTime ;
+  ex:end "2026-10-16T09:00:00Z"^^xsd:dateTime ;
+  ex:inclusiveStart "2026-10-16T08:00:00Z"^^xsd:dateTime ;
+  ex:inclusiveEnd "2026-10-16T09:00:00Z"^^xsd:dateTime .

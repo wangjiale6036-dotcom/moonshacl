@@ -1,5 +1,7 @@
 # MoonSHACL 0.1.0 能力契约
 
+本文只描述已发布 v0.1.0 的实际能力。申报最终目标已明确为完整 SHACL 2017 Core；现有限制中属于 Core 的缺项列入必做，阶段、验收和案例见 [最终范围与阶段安排](CORE-ROADMAP.zh-CN.md)。该计划不表示当前版本已实现。
+
 基线为 [SHACL 2017 Recommendation](https://www.w3.org/TR/shacl/)，RDF 1.1 单个 data graph/shapes graph。编译成功表示规则属于以下范围，不表示数据通过；无 target 的 shape 不会自行产生 focus nodes，可用 `validate_node` 显式执行。空 shapes graph 在显式提供时有效，请避免把它当作已有规则的校验。
 
 ## Targets、路径与结果

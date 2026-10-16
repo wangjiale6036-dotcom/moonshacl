@@ -1,0 +1,25 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# The business price interval is 0 <= amount < 1000.
+# Separate properties expose the other two boundary operators independently.
+# Future Core acceptance cases; 0.1.0 rejects all four range constraints.
+ex:PriceShape a sh:PropertyShape ;
+  sh:targetNode ex:invoice ;
+  sh:path ex:amount ;
+  sh:datatype xsd:decimal ;
+  sh:minInclusive "0"^^xsd:decimal ;
+  sh:maxExclusive "1000"^^xsd:decimal .
+
+ex:LowerExclusiveShape a sh:PropertyShape ;
+  sh:targetNode ex:invoice ;
+  sh:path ex:lowerExclusive ;
+  sh:datatype xsd:decimal ;
+  sh:minExclusive "0"^^xsd:decimal .
+
+ex:UpperInclusiveShape a sh:PropertyShape ;
+  sh:targetNode ex:invoice ;
+  sh:path ex:upperInclusive ;
+  sh:datatype xsd:decimal ;
+  sh:maxInclusive "1000"^^xsd:decimal .

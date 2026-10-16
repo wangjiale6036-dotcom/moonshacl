@@ -8,6 +8,8 @@
 
 参赛类型：2026 年 10 月黑客松，新项目申报，个人参赛；版本：v0.1.0；许可证：Apache-2.0。
 
+2026-10-16 范围补正：当前 v0.1.0 为阶段性成果；最终申报交付为完整 SHACL 2017 Core，计划 v1.0，不以受限 profile 作为终点。
+
 ## 二、项目简介
 
 MoonSHACL 为 MoonBit 应用提供 RDF 数据图的规则编译、跨节点关系检查和更新预检。它读取 SHACL shapes，沿属性路径检查数据；更新违反规则时保留原图，并报告出错节点、路径及来源规则。
@@ -28,9 +30,9 @@ pySHACL、RDF/JS 验证器和 RDF4J 已有成熟能力，事务或增量校验�
 
 1. **数据目录导入。** MoonBit 目录工具输入 RDF 元数据和 DCAT-AP base shapes，解析、编译并检查后输出 JSON/RDF 报告。固定正例须通过；删除 distribution 的 accessURL 须报告 MinCount 违反并拒绝更新，原图保持不变。
 2. **共享对象编辑。** 元数据编辑器输入原图及增删三元组，预检受影响节点。删除共享公司名称须定位 Alice/Bob 两人、复用 Carol 的结果；同一提案替换名称须成功，导出图重新读入后仍通过校验。失败时图与缓存均保留。
-3. **发布管线的规则检查。** 维护者输入待使用的 shapes，先编译检查，再验证数据。受支持规则可执行；未实现的 pattern/SPARQL 等须返回明确错误和退出码 2，不能忽略约束后给出“通过”，也不能混同于数据不符合的退出码 1。
+3. **发布管线的规则检查。** 维护者输入待使用的 shapes，先编译检查，再验证数据。v0.1.0 对尚未实现的 pattern 等返回明确错误；最终版本必须执行全部 Core 规则，并区分数据违反、输入/执行失败和未执行扩展，不能忽略 Core 约束后给出“通过”。
 
-三个场景均已实现自建集成演示，输入为公开规则与合成数据，暂无外部用户采用证明。[运行方法与验收产物][scenarios]见仓库。
+上述三个场景的 v0.1.0 行为均已有自建集成演示；场景 3 的完整 Core 执行属于后续阶段。输入为公开规则与合成数据，暂无外部用户采用证明。[运行方法与验收产物][scenarios]见仓库。
 
 ## 五、核心功能及验收边界
 
@@ -38,9 +40,18 @@ v0.1.0 已实现四类标准 targets、七种路径形式、类与 datatype、�
 
 直接验收：共享名称删除报告两个失败节点，`checked=2, reused=1`，CLI 示例图仍为 11 triples；原子替换后旧值消失、新值存在，读回校验通过。不支持的 shapes 必须在执行前拒绝。独立调用模块在三个后端验证修复提交、预览无副作用和失败回滚。
 
-当前为 2017 SHACL 的受限 profile，不宣称完整 Core 或 SHACL 1.2。未实现 SPARQL/JS、自定义组件、递归 shapes、远程 imports、完整推理、pattern、数值范围及部分 datatype。Session 不提供并发或磁盘事务；每次更新仍重建候选图和 targets，暂无优于成熟引擎的性能结论。[完整边界][profile]可逐项核查。
+**最终范围：完整 SHACL 2017 Core（2017 Recommendation Part A），覆盖全部 29 个约束组件、targets、路径及报告语义。** 当前缺失的 pattern/flags、min/max inclusive/exclusive、lessThan/lessThanOrEquals 均为必做；同时补齐 datatype、合法路径/参数、图装载和报告兼容问题，不仅增加组件名称。
 
-后续通过 GitHub Issues 收集下游反馈，优先完善兼容回归、较大图的内存评估和有实际需求的规则；新增功能须有标准或独立对照，不扩大未经验证的兼容声明。
+| 阶段 | 工程计划 | 交付及验收 |
+|---|---|---|
+| v0.1.0 | 已完成 | 保留受限实现与 76/22/0 的真实基线 |
+| v0.2 | 10 月 17—21 日 | 补齐七个缺失组件及比较基础；编码、金额、起止时间案例达到预期 |
+| v0.3 | 10 月 22—26 日 | 完成 Core 兼容审计；现有 98 个官方用例全部符合语义预期，零 profile 拒绝 |
+| v1.0 | 10 月 27—30 日 | 29 组件与通用语义矩阵全部通过，完成跨后端/独立对照、更新回归和公开包验收 |
+
+以上是开发目标，非组委会截止日期；不达验收条件则继续修复，不降级为受限终点。98 个用例全过也不单独等同完整性，仍须逐条规范审计及边界测试。最终不包含 SHACL-SPARQL/JS/AF、自定义 SPARQL 组件、SHACL 1.2、完整推理服务或数据库并发/持久化；递归按规范未定义语义采取明确失败策略。
+
+附带案例：① `^SKU-[0-9]{4}$` 与忽略大小写 flags，合法编码通过、缺位编码产生 pattern 违反；② decimal 金额 0/1000 的四种开闭边界逐项验收；③ start/end 的严格与非严格 dateTime 比较，覆盖先于、相等、逆序，另附独立 xsd:date 词法案例作为附加兼容承诺。案例预期已作为验收材料，当前版本仍拒绝这些规则，不能写成已实现。完整文件、阶段退出条件及实现边界分别见 [Core 最终范围与案例][core-roadmap]、[v0.1.0 能力契约][profile]。
 
 ## 六、项目性质与原创说明
 
@@ -66,5 +77,6 @@ v0.1.0 已实现四类标准 targets、七种路径形式、类与 datatype、�
 [research]: https://github.com/wangjiale6036-dotcom/moonshacl/blob/main/docs/RESEARCH.zh-CN.md
 [scenarios]: https://github.com/wangjiale6036-dotcom/moonshacl/blob/main/docs/SCENARIOS.md
 [profile]: https://github.com/wangjiale6036-dotcom/moonshacl/blob/main/docs/PROFILE.md
+[core-roadmap]: https://github.com/wangjiale6036-dotcom/moonshacl/blob/main/docs/CORE-ROADMAP.zh-CN.md
 [sources]: https://github.com/wangjiale6036-dotcom/moonshacl/blob/main/THIRD_PARTY.md
 [validation]: https://github.com/wangjiale6036-dotcom/moonshacl/blob/main/docs/VALIDATION.md

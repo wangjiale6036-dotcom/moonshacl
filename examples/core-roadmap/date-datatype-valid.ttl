@@ -1,0 +1,4 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:datedRecord ex:date "2026-10-16"^^xsd:date .

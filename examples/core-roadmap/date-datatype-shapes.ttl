@@ -1,0 +1,10 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Separate lexical validation from ordering. Future acceptance case:
+# 0.1.0 rejects the unsupported xsd:date datatype at shape compilation.
+ex:DateDatatypeShape a sh:PropertyShape ;
+  sh:targetNode ex:datedRecord ;
+  sh:path ex:date ;
+  sh:datatype xsd:date .

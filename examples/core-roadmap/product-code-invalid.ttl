@@ -1,0 +1,3 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+
+ex:product ex:code "sku-42" .

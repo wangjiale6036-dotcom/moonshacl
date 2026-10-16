@@ -8,7 +8,8 @@
     "test": "node scripts/verify.mjs",
     "test:bridge": "node scripts/bridge-test.mjs",
     "test:cli": "node scripts/cli-test.mjs",
-    "test:oracle": "node scripts/oracle.mjs"
+    "test:oracle": "node scripts/oracle.mjs",
+    "test:roadmap": "node examples/core-roadmap/verify.mjs --check-current-profile"
   },
   "devDependencies": {
     "@rdfjs/data-model": "2.1.1",

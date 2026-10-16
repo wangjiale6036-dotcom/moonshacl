@@ -1,0 +1,6 @@
+@prefix ex: <https://example.org/core-roadmap/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:invoice ex:amount "1000"^^xsd:decimal ;
+  ex:lowerExclusive "0.01"^^xsd:decimal ;
+  ex:upperInclusive "1000.01"^^xsd:decimal .

@@ -26,6 +26,8 @@ jobs:
       - run: git diff --exit-code -- '*.mbti'
       - run: npm ci --ignore-scripts
       - run: npm test
+      - name: Check future Core case expectations (current features remain pending)
+        run: npm run test:roadmap
       - run: node scripts/consumer-test.mjs --registry
       - run: node scripts/source-audit.mjs
       - run: node scripts/moon.mjs package

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "status": "future Core acceptance cases; not implemented by MoonSHACL 0.1.0",
+  "baseline": "https://www.w3.org/TR/2017/REC-shacl-20170720/",
+  "currentMoonSHACL": {
+    "version": "0.1.0",
+    "expectedStatusForEveryCase": "unsupported-or-invalid-shapes",
+    "note": "The shape compiler must reject these unsupported constraints/datatypes. A rejection is not a validation report and must not be counted as either a passing or failing SHACL validation result."
+  },
+  "expectedFields": [
+    "conforms",
+    "sourceConstraintComponent",
+    "focusNode",
+    "resultPath",
+    "sourceShape"
+  ],
+  "cases": [
+    {
+      "id": "product-code-valid",
+      "shapes": "product-code-shapes.ttl",
+      "data": "product-code-valid.ttl",
+      "expected": {
+        "conforms": true,
+        "violations": []
+      }
+    },
+    {
+      "id": "product-code-invalid",
+      "shapes": "product-code-shapes.ttl",
+      "data": "product-code-invalid.ttl",
+      "expected": {
+        "conforms": false,
+        "violations": [
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#PatternConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/product",
+            "resultPath": "https://example.org/core-roadmap/code",
+            "sourceShape": "https://example.org/core-roadmap/ProductCodeShape"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amount-valid-boundaries",
+      "shapes": "amount-shapes.ttl",
+      "data": "amount-valid-boundaries.ttl",
+      "expected": {
+        "conforms": true,
+        "violations": []
+      }
+    },
+    {
+      "id": "amount-invalid-lower",
+      "shapes": "amount-shapes.ttl",
+      "data": "amount-invalid-lower.ttl",
+      "expected": {
+        "conforms": false,
+        "violations": [
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinInclusiveConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/invoice",
+            "resultPath": "https://example.org/core-roadmap/amount",
+            "sourceShape": "https://example.org/core-roadmap/PriceShape"
+          },
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinExclusiveConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/invoice",
+            "resultPath": "https://example.org/core-roadmap/lowerExclusive",
+            "sourceShape": "https://example.org/core-roadmap/LowerExclusiveShape"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amount-invalid-upper",
+      "shapes": "amount-shapes.ttl",
+      "data": "amount-invalid-upper.ttl",
+      "expected": {
+        "conforms": false,
+        "violations": [
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MaxExclusiveConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/invoice",
+            "resultPath": "https://example.org/core-roadmap/amount",
+            "sourceShape": "https://example.org/core-roadmap/PriceShape"
+          },
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MaxInclusiveConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/invoice",
+            "resultPath": "https://example.org/core-roadmap/upperInclusive",
+            "sourceShape": "https://example.org/core-roadmap/UpperInclusiveShape"
+          }
+        ]
+      }
+    },
+    {
+      "id": "interval-valid-before",
+      "shapes": "interval-shapes.ttl",
+      "data": "interval-valid-before.ttl",
+      "expected": {
+        "conforms": true,
+        "violations": []
+      }
+    },
+    {
+      "id": "interval-invalid-after",
+      "shapes": "interval-shapes.ttl",
+      "data": "interval-invalid-after.ttl",
+      "expected": {
+        "conforms": false,
+        "violations": [
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#LessThanConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/interval",
+            "resultPath": "https://example.org/core-roadmap/start",
+            "sourceShape": "https://example.org/core-roadmap/StrictStartShape"
+          },
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#LessThanOrEqualsConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/interval",
+            "resultPath": "https://example.org/core-roadmap/inclusiveStart",
+            "sourceShape": "https://example.org/core-roadmap/InclusiveStartShape"
+          }
+        ]
+      }
+    },
+    {
+      "id": "interval-equal-boundary",
+      "shapes": "interval-shapes.ttl",
+      "data": "interval-equal-boundary.ttl",
+      "expected": {
+        "conforms": false,
+        "violations": [
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#LessThanConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/interval",
+            "resultPath": "https://example.org/core-roadmap/start",
+            "sourceShape": "https://example.org/core-roadmap/StrictStartShape"
+          }
+        ]
+      }
+    },
+    {
+      "id": "date-datatype-valid",
+      "shapes": "date-datatype-shapes.ttl",
+      "data": "date-datatype-valid.ttl",
+      "expected": {
+        "conforms": true,
+        "violations": []
+      }
+    },
+    {
+      "id": "date-datatype-invalid-lexical",
+      "shapes": "date-datatype-shapes.ttl",
+      "data": "date-datatype-invalid-lexical.ttl",
+      "expected": {
+        "conforms": false,
+        "violations": [
+          {
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#DatatypeConstraintComponent",
+            "focusNode": "https://example.org/core-roadmap/datedRecord",
+            "resultPath": "https://example.org/core-roadmap/date",
+            "sourceShape": "https://example.org/core-roadmap/DateDatatypeShape"
+          }
+        ]
+      }
+    }
+  ]
+}
