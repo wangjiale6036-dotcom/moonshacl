@@ -1,21 +1,6 @@
 {
   "mode": "registry",
-  "module": "wangjiale6036-dotcom/moonshacl@0.1.0",
-  "backends": [
-    {
-      "target": "js",
-      "passed": 1,
-      "failed": 0
-    },
-    {
-      "target": "wasm-gc",
-      "passed": 1,
-      "failed": 0
-    },
-    {
-      "target": "native",
-      "passed": 1,
-      "failed": 0
-    }
-  ]
+  "module": "wangjiale6036-dotcom/moonshacl@0.4.0",
+  "status": "pending-publication",
+  "note": "The first publication cannot contain its own post-publication installation evidence. The verified result will be committed to main and attached to the GitHub release after publication."
 }

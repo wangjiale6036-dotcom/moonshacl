@@ -1,8 +1,8 @@
 {
-  "sourceRevision": "8c9982fea13af0b9788076f03a429769b263cfea",
+  "sourceRevision": "a8b1004a10bdfc155f9bd72352e15226cf998699",
   "platform": "win32",
   "architecture": "x64",
-  "verifiedAt": "2026-10-16T11:17:46.367Z",
+  "verifiedAt": "2026-10-16T11:22:31.890Z",
   "versions": {
     "moon": "moon 0.1.20260920 (914d7da 2026-09-20)\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
     "node": "v24.21.0"
