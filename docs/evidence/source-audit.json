@@ -3,6 +3,7 @@
   "excluded": [
     "tests",
     "generated conformance fixtures",
+    "generated Unicode tables and source data",
     "demo",
     "bridge",
     "JavaScript host",
@@ -11,21 +12,27 @@
   "files": [
     {
       "file": "src/compile.mbt",
-      "physical": 670,
-      "excludingBlankAndComment": 633,
-      "excludingDelimiterOnly": 478
+      "physical": 817,
+      "excludingBlankAndComment": 773,
+      "excludingDelimiterOnly": 587
     },
     {
       "file": "src/datatype.mbt",
-      "physical": 162,
-      "excludingBlankAndComment": 151,
-      "excludingDelimiterOnly": 117
+      "physical": 181,
+      "excludingBlankAndComment": 165,
+      "excludingDelimiterOnly": 126
+    },
+    {
+      "file": "src/loading.mbt",
+      "physical": 56,
+      "excludingBlankAndComment": 52,
+      "excludingDelimiterOnly": 40
     },
     {
       "file": "src/model.mbt",
-      "physical": 262,
-      "excludingBlankAndComment": 181,
-      "excludingDelimiterOnly": 149
+      "physical": 268,
+      "excludingBlankAndComment": 184,
+      "excludingDelimiterOnly": 151
     },
     {
       "file": "src/path.mbt",
@@ -41,26 +48,56 @@
     },
     {
       "file": "src/session.mbt",
-      "physical": 152,
-      "excludingBlankAndComment": 123,
-      "excludingDelimiterOnly": 95
+      "physical": 155,
+      "excludingBlankAndComment": 126,
+      "excludingDelimiterOnly": 98
     },
     {
       "file": "src/turtle/parse.mbt",
-      "physical": 316,
-      "excludingBlankAndComment": 287,
-      "excludingDelimiterOnly": 221
+      "physical": 341,
+      "excludingBlankAndComment": 304,
+      "excludingDelimiterOnly": 234
     },
     {
       "file": "src/validate.mbt",
-      "physical": 314,
-      "excludingBlankAndComment": 300,
-      "excludingDelimiterOnly": 216
+      "physical": 416,
+      "excludingBlankAndComment": 401,
+      "excludingDelimiterOnly": 293
+    },
+    {
+      "file": "src/value_calendar.mbt",
+      "physical": 243,
+      "excludingBlankAndComment": 216,
+      "excludingDelimiterOnly": 168
+    },
+    {
+      "file": "src/value_compare.mbt",
+      "physical": 60,
+      "excludingBlankAndComment": 55,
+      "excludingDelimiterOnly": 41
+    },
+    {
+      "file": "src/value_numeric.mbt",
+      "physical": 192,
+      "excludingBlankAndComment": 166,
+      "excludingDelimiterOnly": 131
+    },
+    {
+      "file": "src/xpath_regex/nfa.mbt",
+      "physical": 160,
+      "excludingBlankAndComment": 142,
+      "excludingDelimiterOnly": 108
+    },
+    {
+      "file": "src/xpath_regex/regex.mbt",
+      "physical": 734,
+      "excludingBlankAndComment": 668,
+      "excludingDelimiterOnly": 518
     }
   ],
   "totals": {
-    "physical": 2251,
-    "excludingBlankAndComment": 2020,
-    "excludingDelimiterOnly": 1539
+    "physical": 3998,
+    "excludingBlankAndComment": 3597,
+    "excludingDelimiterOnly": 2758
   }
 }

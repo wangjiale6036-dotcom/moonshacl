@@ -1,108 +1,6653 @@
 {
-  "engine": "rdf-validate-shacl",
-  "version": "0.6.5",
+  "engines": [
+    {
+      "name": "rdf-validate-shacl",
+      "version": "0.6.5"
+    },
+    {
+      "name": "pySHACL",
+      "version": "0.30.1",
+      "rdflib": "7.6.0"
+    }
+  ],
+  "comparison": "RDF graph isomorphism over input graphs plus projected result graphs, preserving anonymous sourceShape/focus/value identity and distinct result multiplicity; paths compared structurally.",
   "comparedFields": [
     "conforms",
     "focusNode",
-    "sourceShape (IRI exact, blank-node kind only)",
+    "sourceShape (input-linked blank-node isomorphism)",
     "sourceConstraintComponent",
     "resultSeverity",
     "value",
     "resultPath (structural)"
   ],
+  "optionalFields": "Engine-generated resultMessage and detail excluded; official fixture tests separately check required messages.",
+  "projectionSelfTests": 3,
+  "totalCases": 142,
+  "comparisonCounts": {
+    "total": 284,
+    "matched": 276,
+    "documentedEngineDivergences": 7,
+    "documentedEngineErrors": 1,
+    "unexpectedFailures": 0
+  },
   "cases": [
     {
       "name": "people-valid",
+      "group": "original-regressions",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
       "conforms": true,
       "results": 0,
       "status": "matched"
     },
     {
       "name": "shared-name-missing",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 2,
       "status": "matched"
     },
     {
       "name": "inverse-count",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "node-datatype",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "language-unique",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "UniqueLangConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "UniqueLangConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "UniqueLangConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "UniqueLangConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "closed",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClosedConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClosedConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClosedConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClosedConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "qualified",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "logic",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "XoneConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "XoneConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "XoneConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "XoneConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "alternative-path",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
     },
     {
       "name": "class-closure",
+      "group": "original-regressions",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
       "conforms": true,
       "results": 0,
       "status": "matched"
     },
     {
       "name": "qualified-sibling-without-count",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "status": "documented-engine-error",
+          "errorType": "ConstraintLoadError",
+          "error": "QualifiedValueShapeConstraintComponent must have at lease one sh:qualifiedMinCount or sh:qualifiedMaxCount\nFor reference, see https://www.w3.org/TR/shacl/#QualifiedValueShapeConstraintComponent",
+          "reason": "The pinned pySHACL rejects the count-free sibling shape, while SHACL instantiates a component only when all mandatory parameters are present. The raw qualifiedValueShape still participates in sibling exclusion.",
+          "specification": "https://www.w3.org/TR/2017/REC-shacl-20170720/#constraint-components"
+        }
+      ],
       "conforms": false,
       "results": 1,
-      "status": "matched"
+      "status": "documented-engine-divergence"
     },
     {
       "name": "signed-integer",
+      "group": "original-regressions",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
       "conforms": true,
       "results": 0,
       "status": "matched"
     },
     {
       "name": "dcat-valid",
+      "group": "original-regressions",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
       "conforms": true,
       "results": 0,
       "status": "matched"
     },
     {
       "name": "dcat-access-url-missing",
+      "group": "original-regressions",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
       "conforms": false,
       "results": 1,
       "status": "matched"
+    },
+    {
+      "name": "core-product-code-valid",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "core-product-code-invalid",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "PatternConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "PatternConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "core-amount-valid-boundaries",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "core-amount-invalid-lower",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "core-amount-invalid-upper",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxExclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxExclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxExclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxExclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "core-interval-valid-before",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "core-interval-invalid-after",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanOrEqualsConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanOrEqualsConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanOrEqualsConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanOrEqualsConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "core-interval-equal-boundary",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "LessThanConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "LessThanConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "core-date-datatype-valid",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "core-date-datatype-invalid-lexical",
+      "group": "seven-new-components",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "integer-above-binary64-precision",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "The pinned RDF/JS validator compares these values through binary64 Number, losing the exact integer/decimal distinction. The product expectation is independently fixed from the exact ordered values.",
+          "specification": "https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "decimal-exact-order",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "The pinned RDF/JS validator compares these values through binary64 Number, losing the exact integer/decimal distinction. The product expectation is independently fixed from the exact ordered values.",
+          "specification": "https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "numeric-type-promotion",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "float-nan-range",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "float-infinity",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "The pinned RDF/JS numeric comparison does not recognize the valid XSD INF lexical form. Positive infinity is greater than finite 1.",
+          "specification": "https://www.w3.org/TR/sparql11-query/#OperatorMapping"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "float-invalid-lexical",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "dateTime-offset-equality",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "LessThanConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "LessThanConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "incomparable-property-values",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "LessThanConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "LessThanConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "comparison-pair-multiplicity",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "custom-datatype-iri-match",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "huge-cardinality-threshold",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "regex-multiline",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "regex-dot-all",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "pySHACL 0.30.1 PatternConstraintComponent.__init__ maps only i and m flags; it ignores the XPath s flag. MoonSHACL and the RDF/JS oracle match across newlines.",
+          "specification": "https://www.w3.org/TR/2010/REC-xpath-functions-20101214/#flags"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "regex-backreference",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "language-range-case-insensitive",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "The pinned RDF/JS validator compares a language range case-sensitively. SPARQL langMatches applies case-insensitive basic language-range filtering.",
+          "specification": "https://www.w3.org/TR/sparql11-query/#func-langMatches"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "implicit-class-requires-shape-instance",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "A constraint makes ex:S a shape, but implicit class targets additionally require a SHACL instance of sh:NodeShape or sh:PropertyShape. The RDF/JS validator omits that second condition.",
+          "specification": "https://www.w3.org/TR/2017/REC-shacl-20170720/#ImplicitClassTarget"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "node-multiple-equals-constraints",
+      "group": "semantic-boundaries",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "distinct-anonymous-source-shapes",
+      "group": "blank-node-identity",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "shared-anonymous-source-multiplicity",
+      "group": "blank-node-identity",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "anonymous-focus-and-value",
+      "group": "blank-node-identity",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/complex/personexample.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "ClassConstraintComponent",
+          "ClosedConstraintComponent",
+          "MaxCountConstraintComponent",
+          "PatternConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "ClassConstraintComponent",
+          "ClosedConstraintComponent",
+          "MaxCountConstraintComponent",
+          "PatternConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "ClassConstraintComponent",
+            "ClosedConstraintComponent",
+            "MaxCountConstraintComponent",
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "ClassConstraintComponent",
+            "ClosedConstraintComponent",
+            "MaxCountConstraintComponent",
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/complex/shacl-shacl.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/misc/deactivated-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/misc/deactivated-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/misc/message-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/misc/severity-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/misc/severity-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/and-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "AndConstraintComponent",
+          "AndConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "AndConstraintComponent",
+          "AndConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "AndConstraintComponent",
+            "AndConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "AndConstraintComponent",
+            "AndConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/and-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "AndConstraintComponent",
+          "AndConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "AndConstraintComponent",
+          "AndConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "AndConstraintComponent",
+            "AndConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "AndConstraintComponent",
+            "AndConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/class-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/class-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/class-003.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 5,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 5,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 5,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 5,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 5,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/closed-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClosedConstraintComponent",
+          "ClosedConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClosedConstraintComponent",
+          "ClosedConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClosedConstraintComponent",
+            "ClosedConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClosedConstraintComponent",
+            "ClosedConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/closed-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClosedConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClosedConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClosedConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClosedConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/datatype-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/datatype-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/disjoint-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DisjointConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "DisjointConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DisjointConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "DisjointConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/equals-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/hasValue-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "HasValueConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "HasValueConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "HasValueConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "HasValueConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/in-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/languageIn-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/maxExclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 6,
+        "components": [
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 6,
+        "components": [
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 6,
+          "components": [
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 6,
+          "components": [
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 6,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/maxInclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/maxLength-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 5,
+        "components": [
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 5,
+        "components": [
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent",
+          "MaxLengthConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 5,
+          "components": [
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 5,
+          "components": [
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent",
+            "MaxLengthConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 5,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/minExclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 6,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 6,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 6,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 6,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 6,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/minInclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/minInclusive-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/minInclusive-003.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent",
+          "MinInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent",
+            "MinInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/minLength-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "MinLengthConstraintComponent",
+          "MinLengthConstraintComponent",
+          "MinLengthConstraintComponent",
+          "MinLengthConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "MinLengthConstraintComponent",
+          "MinLengthConstraintComponent",
+          "MinLengthConstraintComponent",
+          "MinLengthConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "MinLengthConstraintComponent",
+            "MinLengthConstraintComponent",
+            "MinLengthConstraintComponent",
+            "MinLengthConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "MinLengthConstraintComponent",
+            "MinLengthConstraintComponent",
+            "MinLengthConstraintComponent",
+            "MinLengthConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/node-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/nodeKind-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/not-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NotConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NotConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NotConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NotConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/not-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NotConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NotConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NotConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NotConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/or-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "OrConstraintComponent",
+          "OrConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "OrConstraintComponent",
+          "OrConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "OrConstraintComponent",
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "OrConstraintComponent",
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/pattern-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "PatternConstraintComponent",
+          "PatternConstraintComponent",
+          "PatternConstraintComponent",
+          "PatternConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "PatternConstraintComponent",
+          "PatternConstraintComponent",
+          "PatternConstraintComponent",
+          "PatternConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "PatternConstraintComponent",
+            "PatternConstraintComponent",
+            "PatternConstraintComponent",
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "PatternConstraintComponent",
+            "PatternConstraintComponent",
+            "PatternConstraintComponent",
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/pattern-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "PatternConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "PatternConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/qualified-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/xone-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "XoneConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "XoneConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "XoneConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "XoneConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/node/xone-duplicate.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "XoneConstraintComponent",
+          "XoneConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "XoneConstraintComponent",
+          "XoneConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "XoneConstraintComponent",
+            "XoneConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "XoneConstraintComponent",
+            "XoneConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-alternative-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-complex-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "HasValueConstraintComponent",
+          "HasValueConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "HasValueConstraintComponent",
+          "HasValueConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "HasValueConstraintComponent",
+            "HasValueConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "HasValueConstraintComponent",
+            "HasValueConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-complex-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-inverse-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-oneOrMore-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-sequence-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-sequence-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinCountConstraintComponent",
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinCountConstraintComponent",
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-sequence-duplicate-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-strange-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-strange-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-unused-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-zeroOrMore-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/path/path-zeroOrOne-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/and-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "AndConstraintComponent",
+          "AndConstraintComponent",
+          "AndConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "AndConstraintComponent",
+          "AndConstraintComponent",
+          "AndConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "AndConstraintComponent",
+            "AndConstraintComponent",
+            "AndConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "AndConstraintComponent",
+            "AndConstraintComponent",
+            "AndConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/class-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/datatype-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/datatype-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/datatype-003.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "OrConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "OrConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/datatype-ill-formed.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/disjoint-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DisjointConstraintComponent",
+          "DisjointConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DisjointConstraintComponent",
+          "DisjointConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DisjointConstraintComponent",
+            "DisjointConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DisjointConstraintComponent",
+            "DisjointConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/equals-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 5,
+        "components": [
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 5,
+        "components": [
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent",
+          "EqualsConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 5,
+          "components": [
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 5,
+          "components": [
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent",
+            "EqualsConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 5,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/hasValue-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "HasValueConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "HasValueConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "HasValueConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "HasValueConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/in-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/languageIn-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent",
+          "LanguageInConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent",
+            "LanguageInConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/lessThan-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/lessThan-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 4,
+        "components": [
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent",
+          "LessThanConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 4,
+          "components": [
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent",
+            "LessThanConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 4,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/lessThanOrEquals-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "LessThanOrEqualsConstraintComponent",
+          "LessThanOrEqualsConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "LessThanOrEqualsConstraintComponent",
+          "LessThanOrEqualsConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "LessThanOrEqualsConstraintComponent",
+            "LessThanOrEqualsConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "LessThanOrEqualsConstraintComponent",
+            "LessThanOrEqualsConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/maxCount-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/maxCount-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/maxExclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent",
+          "MaxExclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent",
+            "MaxExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/maxInclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxInclusiveConstraintComponent",
+          "MaxInclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxInclusiveConstraintComponent",
+            "MaxInclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/maxLength-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxLengthConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxLengthConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxLengthConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxLengthConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/minCount-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/minCount-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/minExclusive-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/minExclusive-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MinExclusiveConstraintComponent",
+          "MinExclusiveConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MinExclusiveConstraintComponent",
+            "MinExclusiveConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/minLength-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinLengthConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MinLengthConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinLengthConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MinLengthConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/node-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/node-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NodeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NodeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/nodeKind-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 27,
+        "components": [
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 27,
+        "components": [
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent",
+          "NodeKindConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 27,
+          "components": [
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 27,
+          "components": [
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent",
+            "NodeKindConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 27,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/not-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NotConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "NotConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NotConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "NotConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/or-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "OrConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "OrConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/or-datatypes-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "OrConstraintComponent",
+          "OrConstraintComponent",
+          "OrConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "OrConstraintComponent",
+          "OrConstraintComponent",
+          "OrConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "OrConstraintComponent",
+            "OrConstraintComponent",
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "OrConstraintComponent",
+            "OrConstraintComponent",
+            "OrConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/pattern-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "PatternConstraintComponent",
+          "PatternConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "PatternConstraintComponent",
+          "PatternConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "PatternConstraintComponent",
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "PatternConstraintComponent",
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/pattern-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "PatternConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "PatternConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "PatternConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/property-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/qualifiedMinCountDisjoint-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/qualifiedValueShape-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/qualifiedValueShapesDisjoint-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "QualifiedMinCountConstraintComponent",
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "QualifiedMinCountConstraintComponent",
+          "QualifiedMinCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "QualifiedMinCountConstraintComponent",
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "QualifiedMinCountConstraintComponent",
+            "QualifiedMinCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/uniqueLang-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "UniqueLangConstraintComponent",
+          "UniqueLangConstraintComponent",
+          "UniqueLangConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 3,
+        "components": [
+          "UniqueLangConstraintComponent",
+          "UniqueLangConstraintComponent",
+          "UniqueLangConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "UniqueLangConstraintComponent",
+            "UniqueLangConstraintComponent",
+            "UniqueLangConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 3,
+          "components": [
+            "UniqueLangConstraintComponent",
+            "UniqueLangConstraintComponent",
+            "UniqueLangConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 3,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/property/uniqueLang-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": true,
+        "results": 0,
+        "components": []
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": true,
+          "results": 0,
+          "components": [],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "UniqueLangConstraintComponent"
+          ],
+          "status": "documented-engine-divergence",
+          "reason": "The official uniqueLang-002 fixture requires RDF-term true, not the distinct \"1\"^^xsd:boolean literal. pySHACL coerces \"1\" to Python True and activates the constraint.",
+          "specification": "https://www.w3.org/TR/2017/REC-shacl-20170720/#UniqueLangConstraintComponent"
+        }
+      ],
+      "conforms": true,
+      "results": 0,
+      "status": "documented-engine-divergence"
+    },
+    {
+      "name": "w3c/targets/multipleTargets-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/targets/targetClass-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/targets/targetClassImplicit-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "InConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "InConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/targets/targetNode-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/targets/targetObjectsOf-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "DatatypeConstraintComponent",
+          "DatatypeConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "DatatypeConstraintComponent",
+            "DatatypeConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/targets/targetSubjectsOf-001.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 1,
+        "components": [
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 1,
+          "components": [
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 1,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/targets/targetSubjectsOf-002.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxCountConstraintComponent",
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "MaxCountConstraintComponent",
+          "MaxCountConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxCountConstraintComponent",
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "MaxCountConstraintComponent",
+            "MaxCountConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
+    },
+    {
+      "name": "w3c/validation-reports/shared.ttl",
+      "group": "official-core",
+      "product": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "inputGraphsIsomorphic": true,
+      "jsonRdfConsistent": true,
+      "semanticExpectationPassed": true,
+      "expectedSummary": {
+        "conforms": false,
+        "results": 2,
+        "components": [
+          "ClassConstraintComponent",
+          "ClassConstraintComponent"
+        ]
+      },
+      "comparisons": [
+        {
+          "engine": "rdf-validate-shacl",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        },
+        {
+          "engine": "pySHACL",
+          "conforms": false,
+          "results": 2,
+          "components": [
+            "ClassConstraintComponent",
+            "ClassConstraintComponent"
+          ],
+          "status": "matched"
+        }
+      ],
+      "conforms": false,
+      "results": 2,
+      "status": "matched"
     }
   ],
+  "failures": [],
   "secondaryObservations": [
     {
       "engine": "shacl-engine",
       "version": "1.1.0",
       "case": "explicit literal target, empty data graph",
       "conforms": true,
-      "note": "ShapeValidator.js skips all validation when dataset.size === 0. MoonSHACL follows the explicit target and reports a datatype violation; primary oracle agrees."
+      "note": "ShapeValidator.js skips validation when dataset.size === 0; both primary independent oracles validate the explicit target."
     }
   ]
 }

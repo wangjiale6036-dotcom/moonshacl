@@ -1,8 +1,8 @@
 {
-  "sourceRevision": "e66949695840e9761ecf01310e30192b49680e3b",
+  "sourceRevision": "8c9982fea13af0b9788076f03a429769b263cfea",
   "platform": "win32",
   "architecture": "x64",
-  "verifiedAt": "2026-10-10T15:12:15.159Z",
+  "verifiedAt": "2026-10-16T11:17:46.367Z",
   "versions": {
     "moon": "moon 0.1.20260920 (914d7da 2026-09-20)\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
     "node": "v24.21.0"
@@ -10,50 +10,66 @@
   "backends": [
     {
       "target": "js",
-      "tests": 21,
-      "passed": 21,
+      "tests": 1749,
+      "passed": 1749,
       "failed": 0,
       "w3c": {
-        "passed": 76,
-        "rejected": 22,
+        "passed": 98,
+        "rejected": 0,
         "failed": 0
       },
       "consumerDemo": "passed"
     },
     {
       "target": "wasm-gc",
-      "tests": 21,
-      "passed": 21,
+      "tests": 1749,
+      "passed": 1749,
       "failed": 0,
       "w3c": {
-        "passed": 76,
-        "rejected": 22,
+        "passed": 98,
+        "rejected": 0,
         "failed": 0
       },
       "consumerDemo": "passed"
     },
     {
       "target": "native",
-      "tests": 21,
-      "passed": 21,
+      "tests": 1749,
+      "passed": 1749,
       "failed": 0,
       "w3c": {
-        "passed": 76,
-        "rejected": 22,
+        "passed": 98,
+        "rejected": 0,
         "failed": 0
       },
       "consumerDemo": "passed"
     }
   ],
-  "bridgeBoundaryChecks": 17,
-  "cliChecks": 13,
+  "bridgeBoundaryChecks": 38,
+  "cliChecks": 18,
   "independentOracle": {
-    "engine": "rdf-validate-shacl",
-    "version": "0.6.5",
-    "cases": 14,
-    "matched": 14
+    "engines": [
+      {
+        "name": "rdf-validate-shacl",
+        "version": "0.6.5"
+      },
+      {
+        "name": "pySHACL",
+        "version": "0.30.1",
+        "rdflib": "7.6.0"
+      }
+    ],
+    "cases": 142,
+    "comparisonCounts": {
+      "total": 284,
+      "matched": 276,
+      "documentedEngineDivergences": 7,
+      "documentedEngineErrors": 1,
+      "unexpectedFailures": 0
+    },
+    "projectionSelfTests": 3
   },
-  "incrementalEquivalenceProposalsPerBackend": 1000,
+  "incrementalEquivalenceProposalsPerBackend": 2000,
   "scenarios": {
     "scenarios": 3,
     "passed": 3,
@@ -61,7 +77,7 @@
   },
   "consumer": {
     "mode": "source-workspace",
-    "module": "wangjiale6036-dotcom/moonshacl@0.1.0",
+    "module": "wangjiale6036-dotcom/moonshacl@0.4.0",
     "backends": [
       {
         "target": "js",
