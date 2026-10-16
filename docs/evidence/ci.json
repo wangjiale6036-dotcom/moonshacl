@@ -1,0 +1,24 @@
+{
+  "runId": 38893450042,
+  "sourceRevision": "20c43c52e0cb79b0fe5d03f1ac468958c957496d",
+  "url": "https://github.com/wangjiale6036-dotcom/moonshacl/actions/runs/38893450042",
+  "status": "completed",
+  "conclusion": "success",
+  "event": "push",
+  "jobs": [
+    {
+      "name": "verify (windows-latest)",
+      "conclusion": "success",
+      "html_url": "https://github.com/wangjiale6036-dotcom/moonshacl/actions/runs/38893450042/job/116948213972",
+      "started_at": "2026-10-16T11:23:28Z",
+      "completed_at": "2026-10-16T11:26:27Z"
+    },
+    {
+      "name": "verify (ubuntu-latest)",
+      "conclusion": "success",
+      "html_url": "https://github.com/wangjiale6036-dotcom/moonshacl/actions/runs/38893450042/job/116948214183",
+      "started_at": "2026-10-16T11:23:29Z",
+      "completed_at": "2026-10-16T11:25:00Z"
+    }
+  ]
+}

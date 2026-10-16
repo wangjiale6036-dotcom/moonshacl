@@ -75,7 +75,9 @@ Regex 超预算或嵌套 shape 超 256 层会返回 ValidationFailure；即使�
 
 ## 集成、安装和来源
 
-三个端到端场景见 [SCENARIOS](SCENARIOS.md)，独立 MoonBit consumer 在三个后端测试 API。公开 registry 使用 `node scripts/consumer-test.mjs --registry` 独立安装验收；发布后证据记录在 registry-consumer.json。
+三个端到端场景见 [SCENARIOS](SCENARIOS.md)，独立 MoonBit consumer 在三个后端测试 API。公开 Mooncakes v0.4.0 已发布，并通过 `node scripts/consumer-test.mjs --registry` 从包库独立安装，三后端均通过；包来源提交和 SHA-256 记录在 [registry-consumer.json](evidence/registry-consumer.json)。发布后补充的证据提交仅改变文档，产品源码与发布来源一致。
+
+[GitHub CI](https://github.com/wangjiale6036-dotcom/moonshacl/actions/runs/38893450042) 已在 Windows/Linux 完成全部测试和打包检查，[机器记录](evidence/ci.json) 保留源提交及两个任务结果。
 
 源码 zip 与 CLI tar.gz 由干净 Git HEAD 构建，SOURCE_REVISION / manifest.json / SHA256SUMS 记录源版本和哈希。release-smoke.mjs 执行六项下载包布局/隔离运行检查。CLI 不需要 MoonBit、Python 或 npm；源码包保留测试、资料和许可。CI 默认测试源码，release/manual 另检查公开 registry，避免发布前检查尚不存在的新版本。
 

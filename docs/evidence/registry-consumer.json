@@ -1,6 +1,25 @@
 {
   "mode": "registry",
   "module": "wangjiale6036-dotcom/moonshacl@0.4.0",
-  "status": "pending-publication",
-  "note": "The first publication cannot contain its own post-publication installation evidence. The verified result will be committed to main and attached to the GitHub release after publication."
+  "backends": [
+    {
+      "target": "js",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "target": "wasm-gc",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "target": "native",
+      "passed": 1,
+      "failed": 0
+    }
+  ],
+  "verifiedAt": "2026-10-16T11:37:15.657Z",
+  "publishedSourceRevision": "20c43c52e0cb79b0fe5d03f1ac468958c957496d",
+  "publishedPackageSHA256": "1080e33b9e483c594d7e27267fdfa5f5963d0e1378a4bab074d66c2f4d46fb80",
+  "note": "Installed from the public Mooncakes registry into an independent consumer, without a workspace override. Post-publication evidence commits only update documentation; the product sources match publishedSourceRevision."
 }
