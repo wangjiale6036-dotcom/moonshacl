@@ -1,0 +1,40 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix app: <urn:moonshacl:catalogue-import:> .
+
+# MoonSHACL's local catalogue-import profile, not the official DCAT-AP shapes.
+# External URL, media-type and licence resources need not carry rdf:type here.
+app:Dataset a sh:NodeShape ;
+  sh:targetClass dcat:Dataset ;
+  sh:property [
+    sh:path dct:title ; sh:minCount 1 ; sh:nodeKind sh:Literal ;
+    sh:minLength 1 ; sh:uniqueLang true ;
+    sh:message "The imported dataset needs a nonempty title."@en
+  ] ;
+  sh:property [
+    sh:path dct:description ; sh:minCount 1 ; sh:nodeKind sh:Literal ;
+    sh:minLength 1
+  ] ;
+  sh:property [
+    sh:path dcat:distribution ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+    sh:class dcat:Distribution ; sh:node app:Distribution ;
+    sh:message "Every linked distribution must remain usable after the update."@en
+  ] .
+
+app:Distribution a sh:NodeShape ;
+  sh:targetClass dcat:Distribution ;
+  sh:property [
+    sh:path dcat:accessURL ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+    sh:pattern "^https?://" ;
+    sh:message "A distribution must retain an HTTP(S) access URL."@en
+  ] ;
+  sh:property [
+    sh:path dcat:downloadURL ; sh:nodeKind sh:IRI ; sh:pattern "^https?://"
+  ] ;
+  sh:property [
+    sh:path dct:license ; sh:minCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path dct:format ; sh:minCount 1 ; sh:nodeKind sh:IRI
+  ] .

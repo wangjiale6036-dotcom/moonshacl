@@ -1,0 +1,38 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "wangjiale6036-dotcom/moonshacl/benchmark"
+
+import {
+  "wangjiale6036-dotcom/moonshacl",
+}
+
+// Values
+pub fn measure(Fixture, Int) -> Int
+
+pub fn metadata(Fixture) -> String
+
+pub fn prepare(Int, Int, Int) -> Fixture
+
+pub fn verify(Fixture) -> String
+
+// Errors
+
+// Types and methods
+pub struct Fixture {
+  people : Int
+  sharing : Int
+  changes : Int
+  data_text : String
+  shapes_text : String
+  shapes : @moonshacl.Graph
+  graph : @moonshacl.Graph
+  invalid_graph : @moonshacl.Graph
+  plan : @moonshacl.Plan
+  session : @moonshacl.Session
+  old_names : Array[@moonshacl.Triple]
+  new_names : Array[@moonshacl.Triple]
+  mut renamed : Bool
+}
+
+// Type aliases
+
+// Traits

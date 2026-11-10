@@ -1,0 +1,2 @@
+# Deliberate error injection: do not apply this to the source portal.
+<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras> .

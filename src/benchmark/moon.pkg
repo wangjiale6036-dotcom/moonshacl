@@ -1,0 +1,13 @@
+import {
+  "wangjiale6036-dotcom/moonshacl",
+  "wangjiale6036-dotcom/moonshacl/turtle",
+}
+
+options(
+  link: {
+    "js": {
+      "exports": [ "prepare", "measure", "verify", "metadata" ],
+      "format": "esm",
+    },
+  },
+)

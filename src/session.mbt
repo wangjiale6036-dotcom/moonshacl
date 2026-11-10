@@ -29,14 +29,12 @@ fn copy_result(r : ValidationResult) -> ValidationResult {
 }
 
 ///|
-fn read_affected(read : Read, changes : Array[Triple]) -> Bool {
-  changes.any(t => {
-    match read {
-      Objects(s, p) => t.subject == s && t.predicate == p
-      Subjects(p, o) => t.predicate == p && t.object == o
-      Outgoing(s) => t.subject == s
-    }
-  })
+fn record_change(changes : Map[Read, Bool], triple : Triple) -> Unit {
+  // Include absence reads as well as present values. A new or removed edge
+  // invalidates each direction and any closed-shape read of its subject.
+  changes[Objects(triple.subject, triple.predicate)] = true
+  changes[Subjects(triple.predicate, triple.object)] = true
+  changes[Outgoing(triple.subject)] = true
 }
 
 ///|
@@ -44,7 +42,8 @@ fn cached_validate(
   plan : Plan,
   graph : Graph,
   cache : Map[(Term, Term), Cached],
-  changes : Array[Triple],
+  changes : Map[Read, Bool],
+  retain_cache? : Bool = true,
 ) -> (Report, Map[(Term, Term), Cached]) raise ValidationFailure {
   let next : Map[(Term, Term), Cached] = Map([])
   let results = []
@@ -55,20 +54,31 @@ fn cached_validate(
   for id in plan.shape_order {
     for focus in target_nodes(plan.shapes[id], graph) {
       let key = (id, focus)
-      let entry = match cache.get(key) {
-        Some(old) if !old.reads.any(r => read_affected(r, changes)) => {
+      let (entry, from_cache) = match cache.get(key) {
+        Some(old) if !old.reads.any(r => changes.contains(r)) => {
           reused = reused + 1
-          old
+          (old, true)
         }
         _ => {
           let reader : Reader = { graph, reads: [], }
           let results = evaluate_shape(plan, id, focus, reader)
           checked = checked + 1
-          { reads: reader.reads, results, }
+          ({ reads: reader.reads, results, }, false)
         }
       }
-      next[key] = entry
-      results.append(entry.results.map(copy_result))
+      if retain_cache {
+        next[key] = entry
+      }
+      // A preview discards its candidate cache. Newly evaluated results already
+      // own their mutable paths/messages/details, so they can escape directly.
+      // Reused results always require isolation from the live session cache.
+      results.append(
+        if retain_cache || from_cache {
+          entry.results.map(copy_result)
+        } else {
+          entry.results
+        },
+      )
     }
   }
   ({ conforms: results.is_empty(), results, checked, reused, }, next)
@@ -80,7 +90,7 @@ pub fn Session::new(
   plan : Plan,
   graph : Graph,
 ) -> Session raise ValidationFailure {
-  let (_, cache) = cached_validate(plan, graph, Map([]), [])
+  let (_, cache) = cached_validate(plan, graph, Map([]), Map([]))
   { plan, graph, cache, }
 }
 
@@ -91,7 +101,7 @@ pub fn Session::graph(self : Session) -> Graph {
 
 ///|
 pub fn Session::report(self : Session) -> Report raise ValidationFailure {
-  let (report, _) = cached_validate(self.plan, self.graph, self.cache, [])
+  let (report, _) = cached_validate(self.plan, self.graph, self.cache, Map([]))
   report
 }
 
@@ -100,30 +110,52 @@ fn Session::candidate(
   self : Session,
   additions : Array[Triple],
   removals : Array[Triple],
+  retain_cache? : Bool = true,
 ) -> (Graph, Report, Map[(Term, Term), Cached]) raise ValidationFailure {
-  let triples = self.graph.triples.filter(t => !removals.contains(t))
-  triples.append(additions)
-  let graph = Graph::new(triples)
-  let before : Map[Triple, Bool] = Map([])
-  let after : Map[Triple, Bool] = Map([])
-  for t in self.graph.triples {
-    before[t] = true
+  let removed : Map[Triple, Bool] = Map([])
+  let added : Map[Triple, Bool] = Map([])
+  for t in removals {
+    removed[t] = true
   }
-  for t in graph.triples {
-    after[t] = true
+  for t in additions {
+    added[t] = false
   }
-  let changes = []
+  let triples = []
+  let changes : Map[Read, Bool] = Map([])
   for t in self.graph.triples {
-    if !after.contains(t) {
-      changes.push(t)
+    if !removed.contains(t) {
+      triples.push(t)
+    } else if !added.contains(t) {
+      record_change(changes, t)
     }
   }
-  for t in graph.triples {
-    if !before.contains(t) {
-      changes.push(t)
+  // Retained triples are already unique. Visit additions in input order,
+  // keeping their first representative only when not retained from the old
+  // graph. This proves uniqueness without hashing every retained triple again.
+  // The map uses the same RDF equality as Graph::new, including language case.
+  for t in additions {
+    if added[t] {
+      continue
+    }
+    added[t] = true
+    let existed = self.graph.spo
+      .get_or_default((t.subject, t.predicate), [])
+      .contains(t.object)
+    if !existed {
+      record_change(changes, t)
+    }
+    if !existed || removed.contains(t) {
+      triples.push(t)
     }
   }
-  let (report, cache) = cached_validate(self.plan, graph, self.cache, changes)
+  let graph = Graph::from_unique(triples)
+  let (report, cache) = cached_validate(
+    self.plan,
+    graph,
+    self.cache,
+    changes,
+    retain_cache~,
+  )
   (graph, report, cache)
 }
 
@@ -134,7 +166,7 @@ pub fn Session::preview(
   additions : Array[Triple],
   removals : Array[Triple],
 ) -> Report raise ValidationFailure {
-  let (_, report, _) = self.candidate(additions, removals)
+  let (_, report, _) = self.candidate(additions, removals, retain_cache=false)
   report
 }
 

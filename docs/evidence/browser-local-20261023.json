@@ -1,0 +1,15 @@
+{
+  "verifiedAt": "2026-10-23T01:04:09.662Z",
+  "scope": "Local browser on http://127.0.0.1:4173; not online deployment acceptance",
+  "engineSha256": "75e0b07d2b4595b0253523335fc5e0ba8c8acfa02b716d936ef20792d8654ae6",
+  "checks": [
+    "Initial people graph conforms",
+    "Shared-name deletion rejected: committed=false, two results, checked=2/reused=1",
+    "Atomic rename with embedded quotation marks committed and graph readback matches",
+    "Deletion after successful rename rejected using current graph",
+    "Public catalogue initializes conforming under application shapes",
+    "Catalogue accessURL deletion rejected: two results, checked=2/reused=3",
+    "Catalogue replacement with source download URL committed and readback shows new accessURL",
+    "Performance panel displays formal 0.97–3.00 and 1/12, round-two 11.97→9.76 and 67.10→53.19, independent-confirmation report link, 5000-person table 53.19/56.54"
+  ]
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142d38">
+  <meta name="description" content="MoonSHACL 交互实验室：运行真实 MoonBit 校验引擎，在关联数据的错误更新落地之前发现问题。">
+  <title>MoonSHACL · 交互实验室</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到演示</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="MoonSHACL 交互实验室首页"><span class="brand-mark" aria-hidden="true">m<span>◒</span></span><span>MoonSHACL<small>INTERACTIVE LAB</small></span></a>
+    <div class="engine"><span class="engine-dot" id="engine-dot"></span><span id="engine-status">引擎加载中</span><span class="engine-divider">/</span><span>MoonBit → JavaScript</span></div>
+    <a class="top-link" href="#evidence">查看校验依据 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">关联数据 · 更新预检 · 原子提交</p><h1 id="page-title">在错误更新落地之前<span>。</span></h1><p class="intro-copy">一次小小的删除，可能影响一整片关联数据。先检查，再决定是否提交。</p></div>
+      <div class="intro-note"><span class="note-number">01—03</span><p>尝试删除 → 看见影响 → 修复提交<br><span>每一次结果，都由真实引擎在本地计算。</span></p></div>
+    </section>
+
+    <div class="workspace-tabs" role="tablist" aria-label="选择演示场景">
+      <button type="button" id="tab-people" class="workspace-tab active" role="tab" aria-selected="true" aria-controls="scenario-panel" data-scenario="people"><span>01</span> 共享对象演示</button>
+      <button type="button" id="tab-catalogue" class="workspace-tab" role="tab" aria-selected="false" aria-controls="scenario-panel" data-scenario="catalogue" tabindex="-1"><span>02</span> 真实数据应用</button>
+      <div class="local-note"><span aria-hidden="true">◈</span> 浏览器本地执行 · 无数据上传</div>
+    </div>
+
+    <section id="scenario-panel" role="tabpanel" aria-labelledby="tab-people">
+      <div id="load-error" class="error-banner" role="alert" hidden></div>
+      <div id="unavailable" class="unavailable" hidden><h2>真实数据应用正在准备</h2><p>可复现的数据来源、约束与修复流程将在此展示。</p></div>
+      <div id="workspace" class="workspace">
+        <section class="graph-panel" aria-labelledby="graph-title">
+          <div class="panel-heading"><div><p class="eyebrow" id="graph-kicker">THE CONNECTED DATA</p><h2 id="graph-title">三个人，两家公司，一个共享名称。</h2></div><span id="triple-count" class="subtle-badge">加载中</span></div>
+          <p class="graph-description" id="graph-description">Alice 和 Bob 共享 Acme。规则要求，每个人沿 employer → name 都能找到公司名称。</p>
+          <div id="catalogue-context" class="catalogue-context" hidden></div>
+          <div class="graph-toolbar"><div class="view-switch" role="group" aria-label="图视图"><button type="button" id="view-current" class="active" aria-pressed="true">已保存图</button><button type="button" id="view-proposal" aria-pressed="false" disabled>本次提案</button></div><div class="graph-legend"><span><i class="legend-current"></i>已保存</span><span><i class="legend-affected"></i>校验关联</span></div></div>
+          <div class="graph-stage" id="graph-stage" aria-busy="true">
+            <svg id="people-graph" viewBox="0 0 760 420" role="img" aria-labelledby="svg-title svg-desc"><title id="svg-title">人物与公司的关联图</title><desc id="svg-desc">图正在加载。</desc></svg>
+            <div id="catalogue-graph" class="catalogue-graph" hidden></div>
+            <div id="graph-loading" class="graph-loading"><span class="spinner" aria-hidden="true"></span><span>正在启动 MoonSHACL 引擎…</span></div>
+          </div>
+          <div class="graph-caption"><span class="caption-symbol" aria-hidden="true">↳</span><p id="graph-caption">先确认初始图符合规则，再尝试一次更新。</p></div>
+        </section>
+
+        <aside class="control-panel" aria-labelledby="control-title">
+          <div class="control-header"><p class="eyebrow">TRY AN UPDATE</p><h2 id="control-title">让问题发生在预检里</h2></div>
+          <div class="step"><div class="step-number">1</div><div><h3 id="remove-title">删除共享公司的名称</h3><p id="remove-copy">看似只改了一家公司，实际会影响哪些人？</p><button type="button" class="button button-danger" id="remove-button" disabled><span aria-hidden="true">−</span><span id="remove-button-label">尝试删除名称</span><span aria-hidden="true">↗</span></button></div></div>
+          <div class="step step-repair"><div class="step-number">2</div><div><h3 id="repair-title">在同一次更新中修复</h3><p id="repair-copy">将删除与新增组成原子更新，通过后才提交。</p><label for="company-name" id="replacement-label">新的公司名称</label><input id="company-name" name="company-name" value="Acme Limited" maxlength="160" autocomplete="off" disabled><button type="button" class="button button-primary" id="repair-button" disabled><span aria-hidden="true">✓</span><span id="repair-button-label">预检并提交替换</span><span aria-hidden="true">↗</span></button></div></div>
+          <div class="control-footer"><button type="button" class="text-button" id="reset-button" disabled><span aria-hidden="true">↺</span> 重置初始数据</button><span id="session-tag">初始会话</span></div>
+        </aside>
+      </div>
+
+      <section id="result-panel" class="result-panel" aria-labelledby="result-title" aria-busy="true">
+        <div class="result-overview"><span id="result-icon" class="result-icon" aria-hidden="true">…</span><div><p class="eyebrow" id="result-eyebrow">LIVE VALIDATION</p><h2 id="result-title">等待初始校验</h2><p id="result-description">启动后将直接校验源数据。</p></div></div>
+        <div class="work-metrics"><div><strong id="checked">—</strong><span>重新校验</span></div><div><strong id="reused">—</strong><span>复用结果</span></div><p>根校验任务数<br><span>不代表耗时或加速比</span></p></div>
+        <div id="report-results" class="report-results"></div>
+      </section>
+    </section>
+
+    <section id="evidence" class="evidence" aria-labelledby="evidence-title">
+      <div class="evidence-heading"><div><p class="eyebrow">OPEN THE EVIDENCE</p><h2 id="evidence-title">结果可以检查，也可以带走。</h2></div><div class="export-actions"><button class="button button-outline" id="export-graph" type="button" disabled>导出已保存图 <span>.nt ↓</span></button><button class="button button-outline" id="export-report" type="button" disabled>导出本次结果 <span>.json ↓</span></button></div></div>
+      <div class="evidence-grid"><div class="source-accordions"><details><summary>本次引擎响应 <span>JSON</span></summary><pre id="raw-json" tabindex="0">等待执行</pre></details><details><summary>已保存的数据图 <span>N-Triples</span></summary><pre id="raw-data" tabindex="0">等待加载</pre></details><details><summary>校验规则与原始数据 <span>Turtle</span></summary><h3>校验规则</h3><pre id="source-shapes" tabindex="0"></pre><h3>原始数据</h3><pre id="source-data" tabindex="0"></pre><div id="source-attribution"></div></details><details><summary>本次更新内容 <span>Delta</span></summary><h3>删除</h3><pre id="delta-removals" tabindex="0">暂无更新</pre><h3>新增</h3><pre id="delta-additions" tabindex="0">暂无更新</pre></details></div><div class="activity"><h3><span class="activity-dot" aria-hidden="true"></span>本次会话记录</h3><ol id="activity-log"><li class="log-empty">引擎准备就绪后开始记录。</li></ol></div></div>
+    </section>
+    <section class="performance" aria-labelledby="performance-title">
+      <div class="performance-heading"><div><p class="eyebrow">MEASURE THE TRADEOFF</p><h2 id="performance-title">性能有边界，测量可复现。</h2></div><div class="performance-links"><a href="./PERFORMANCE.zh-CN.md" download>完整性能报告 ↗</a><a href="./PERFORMANCE-CONFIRMATION.zh-CN.md" download>独立复测 ↗</a><a href="./performance.json" download>原始采样 JSON ↓</a></div></div>
+      <p id="performance-summary">正在读取已保存的基准测量…</p>
+      <p id="performance-round2" hidden></p>
+      <p id="performance-improvements" hidden></p>
+      <details id="performance-details" hidden><summary>展开两个同规模场景的对照 <span>BENCHMARK</span></summary><div class="performance-data"><table id="performance-table"></table><div class="performance-notes"><p>比值 = 全量路径耗时 ÷ 缓存预检耗时；小于 1 表示缓存预检更慢。测量使用持续会话，排除解析、编译及 JSON 序列化。</p><p>全量路径包含候选图重建。图已建好的纯全量校验是另一口径，详见报告；这些合成人物 / 公司场景不代表生产数据或跨引擎排名。</p><p id="performance-environment"></p></div></div></details>
+    </section>
+    <footer class="footer"><p><strong>MoonSHACL</strong><span>从一个关联约束，看见标准的价值。</span></p><p>SHACL Core · MoonBit · 本地计算</p></footer>
+  </main>
+  <div class="sr-only" id="live-status" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

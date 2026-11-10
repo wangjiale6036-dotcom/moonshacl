@@ -9,7 +9,12 @@
     "test:bridge": "node scripts/bridge-test.mjs",
     "test:cli": "node scripts/cli-test.mjs",
     "test:oracle": "node scripts/oracle.mjs",
-    "test:roadmap": "node examples/core-roadmap/verify.mjs --require-core"
+    "test:roadmap": "node examples/core-roadmap/verify.mjs --require-core",
+    "demo:build": "node scripts/build-demo.mjs",
+    "demo:serve": "node scripts/serve-demo.mjs",
+    "test:demo": "node scripts/demo-test.mjs",
+    "test:real-data": "node scripts/real-data.mjs",
+    "benchmark": "node scripts/benchmark.mjs"
   },
   "devDependencies": {
     "@rdfjs/data-model": "2.1.1",

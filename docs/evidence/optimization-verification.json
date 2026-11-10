@@ -1,0 +1,205 @@
+{
+  "recordedAt": "2026-10-23T01:00:45.334Z",
+  "timezone": "Asia/Shanghai",
+  "round": 2,
+  "source": {
+    "baseRevision": "68156d2ab94309e18822ad93b6fd433feca32646",
+    "workingTreeModified": true,
+    "releaseStatus": "Unreleased second optimization based on v0.4.0; not an existing release or remote CI result.",
+    "benchmarkSourceSha256": "6f6a607ecf4b6883bf0e15efa09efe9f1ef9c366ecf7f30cad56a446e2a069e3",
+    "files": {
+      "moon.mod": "e0df35a909c09034e99b2d059beb43ca1446d91c85960403e2993d1504217249",
+      "scripts/benchmark.mjs": "b6c6ae46b2f059c9938cbdc3d07b46afcc0e5a79159174e8f5201fafe0fb3f93",
+      "scripts/runtime.mjs": "57d4c9c6ae4abfeff48b4f1a0ce7ae1d3ef75548e7c28f3c1cdae68a865c0046",
+      "src/benchmark/benchmark.mbt": "51aec852916fe1e8c72a08b54abdfeab15a5457f04a7fec20c5b085522115bdf",
+      "src/benchmark/moon.pkg": "7b0494ec22a5a832ae0a0d81b2294d9dffdd3004996108b96da0fb18c9db3db2",
+      "src/compile.mbt": "9ea83bf74d7a129f3d9fc179a55e444ff0a407e76256f07c6e4ead0e4279a359",
+      "src/datatype.mbt": "74c4f5fdb5ce02e5da019a169947822d299acd11970425a615b2bcc04e9df696",
+      "src/loading.mbt": "fc8f832a8d383e296d574804feced99add7b41eb191a7e54915fd8995c09e3ee",
+      "src/model.mbt": "556109deedb44d3b9a833aaea4c6cf115fb63db21513b34ddbd3519af23e1307",
+      "src/moon.pkg": "dc6a363879a4fd100ea16fe957b6548800aa308e25c6f70d720592d11894b92b",
+      "src/path.mbt": "eedc00be934e93722f845be00188d1d93822629baea6bf5b5e6a859b54a8b3c1",
+      "src/report.mbt": "1cd8d0117284e50702d4fd16a2ddaa62129af89a15050bf33762fd06da21a07e",
+      "src/session.mbt": "a38d80bed16bb036556cf628978ca4305d462ed23603fda80a32ac288adb3d79",
+      "src/turtle/moon.pkg": "1b62b620f21b8f014cf1bc57c32e1db9ecb1d5dc48faa9a684b0ae7daa518ef5",
+      "src/turtle/parse.mbt": "74d299d292391d23eb50e23357be160e95d1eac8c7a1d9813035525f07dbceb7",
+      "src/validate.mbt": "6f7bc6d0e4ecc17ed069d96c113b9f7a54df2fd99c60d8525c325564ddb2946f",
+      "src/value_calendar.mbt": "1acdb85621bd3b500d32ac6e1b569d6817b37d7a97224695a11d8ee4dfe9d072",
+      "src/value_compare.mbt": "2c0564c10433ecfc8d490f2a00f08feb5d52491cf7611a41d4101310a115dbaf",
+      "src/value_numeric.mbt": "ea2f5ad431aa2f3461117746cae66972be67e7a9614134c4c2333df986afcead",
+      "src/xpath_regex/moon.pkg": "cbb5c5775f3c2c36c5cd0e08d2e373d5f85b0b0d3cadf40918ee9099a649a1c2",
+      "src/xpath_regex/nfa.mbt": "396190b3cee2cb0b01caeb147309bbaf1b1bea75607d3b9f6d4a28b7f8df3e61",
+      "src/xpath_regex/regex.mbt": "d2cf19c38d182dc99283cf1fae1850039c3a6b51956d375b1dd607bc1770069a",
+      "src/xpath_regex/unicode_generated.mbt": "355ef561b3c9d820732a35f0fdc384557ca0f6c9bbe21612f06a7ca3fb67edad"
+    },
+    "boundaryTestFiles": {
+      "src/session_optimization_wbtest.mbt": "98a80b1c632fd8607dcb4d498b090c04a9129e15ded9286a172bd0c151d52d61",
+      "src/session_round2_wbtest.mbt": "3e5c87a054444f16bbf2aa028944758ad4a727bbc529abe66373c334432d233e"
+    }
+  },
+  "aggregateVerification": {
+    "passed": true,
+    "command": "node scripts/verify.mjs",
+    "verifiedAt": "2026-10-23T00:56:19.104Z",
+    "sourceEvidence": "audit/2026-10-10/verification.json"
+  },
+  "backends": [
+    {
+      "target": "js",
+      "tests": 1756,
+      "passed": 1756,
+      "failed": 0,
+      "w3c": {
+        "passed": 98,
+        "rejected": 0,
+        "failed": 0
+      },
+      "consumerDemo": "passed",
+      "incrementalEquivalenceProposals": 2000,
+      "firstRoundBoundaryTestBlocks": 4,
+      "secondRoundBoundaryTestBlocks": 3,
+      "secondRoundMixedGraphEdits": 400
+    },
+    {
+      "target": "wasm-gc",
+      "tests": 1756,
+      "passed": 1756,
+      "failed": 0,
+      "w3c": {
+        "passed": 98,
+        "rejected": 0,
+        "failed": 0
+      },
+      "consumerDemo": "passed",
+      "incrementalEquivalenceProposals": 2000,
+      "firstRoundBoundaryTestBlocks": 4,
+      "secondRoundBoundaryTestBlocks": 3,
+      "secondRoundMixedGraphEdits": 400
+    },
+    {
+      "target": "native",
+      "tests": 1756,
+      "passed": 1756,
+      "failed": 0,
+      "w3c": {
+        "passed": 98,
+        "rejected": 0,
+        "failed": 0
+      },
+      "consumerDemo": "passed",
+      "incrementalEquivalenceProposals": 2000,
+      "firstRoundBoundaryTestBlocks": 4,
+      "secondRoundBoundaryTestBlocks": 3,
+      "secondRoundMixedGraphEdits": 400
+    }
+  ],
+  "formatCheck": "passed",
+  "compileCheck": "passed",
+  "fixtureIntegrity": "113 W3C resources, DCAT-AP, Unicode 15 inputs/tables and 1688 QT3 regex cases; regeneration matched",
+  "bridge": {
+    "checks": 38,
+    "passed": 38,
+    "failed": 0
+  },
+  "cli": {
+    "checks": 18,
+    "passed": 18,
+    "failed": 0
+  },
+  "demo": {
+    "executedAt": "2026-10-23T01:00:45.215Z",
+    "engineSha256": "75e0b07d2b4595b0253523335fc5e0ba8c8acfa02b716d936ef20792d8654ae6",
+    "checks": [
+      "bundled engine identity and licenses",
+      "initial graph conforms",
+      "shared-node deletion rejected with two affected people",
+      "unaffected root result reused",
+      "rejection preserves graph",
+      "atomic rename commits and readback conforms",
+      "subsequent edit uses latest committed graph",
+      "invalid input is an execution error",
+      "public data provenance retained",
+      "public catalogue validates against declared application rules",
+      "injected catalogue deletion rejected",
+      "catalogue atomic repair commits and validates"
+    ],
+    "passed": 12,
+    "failed": 0,
+    "scope": "Packaged engine and fixture acceptance; browser interactions are checked separately."
+  },
+  "independentOracle": {
+    "engines": [
+      {
+        "name": "rdf-validate-shacl",
+        "version": "0.6.5"
+      },
+      {
+        "name": "pySHACL",
+        "version": "0.30.1",
+        "rdflib": "7.6.0"
+      }
+    ],
+    "cases": 142,
+    "comparisonCounts": {
+      "total": 284,
+      "matched": 276,
+      "documentedEngineDivergences": 7,
+      "documentedEngineErrors": 1,
+      "unexpectedFailures": 0
+    },
+    "projectionSelfTests": 3
+  },
+  "scenarios": {
+    "scenarios": 3,
+    "passed": 3,
+    "scope": "Self-built integration examples; unchanged DCAT base shapes with synthetic data, not external adoption."
+  },
+  "consumer": {
+    "mode": "source-workspace",
+    "module": "wangjiale6036-dotcom/moonshacl@0.4.0",
+    "backends": [
+      {
+        "target": "js",
+        "passed": 1,
+        "failed": 0
+      },
+      {
+        "target": "wasm-gc",
+        "passed": 1,
+        "failed": 0
+      },
+      {
+        "target": "native",
+        "passed": 1,
+        "failed": 0
+      }
+    ]
+  },
+  "realData": {
+    "checks": 41,
+    "passed": 41,
+    "evidence": "real-data.json",
+    "sha256": "c3157fe03aa36d2250f815028b676b8923a6026a2c218d3cc41bd315ee598020"
+  },
+  "performance": {
+    "evidence": "benchmark.json",
+    "sha256": "39e8106d929a46756365b4b23871231eaebdbee455ebb54d2ee7214ae2015a30",
+    "scenarios": 12,
+    "samplesPerOperation": 25,
+    "operations": 11,
+    "allBeforeAfterChecksPassed": true,
+    "confirmationEvidence": "benchmark-round2-confirmation.json",
+    "confirmationSha256": "c893b0c7d80df4e283388e7091c0c8baad95a5998490e4bb25268d6312266815",
+    "confirmationSourceMatches": true,
+    "selection": "The first full 25-sample run is the formal report; the subsequent independent run is retained separately, never selected as a replacement."
+  },
+  "executionNote": "The aggregate verify.mjs completed in one invocation on 2026-10-23, without sandbox permission failure or resumed sections. Only names/comments in the new tests were subsequently clarified; format check and all three new test blocks were rerun. No implementation source changed after verification. Historical files under audit/2026-10-10 are a legacy output path; use verifiedAt for the execution date.",
+  "commands": [
+    "node scripts/verify.mjs",
+    "node scripts/real-data.mjs --record",
+    "node scripts/benchmark.mjs --sizes 100,1000,5000 --samples 25 --warmups 5",
+    "node scripts/benchmark.mjs --sizes 100,1000,5000 --samples 25 --warmups 5 --no-build --output artifacts/benchmark-round2-confirmation.json",
+    "node scripts/build-demo.mjs --skip-engine",
+    "node scripts/demo-test.mjs"
+  ]
+}

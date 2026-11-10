@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "scope": "One real public metadata record, frozen and projected without invented source statements; local integration demonstration, not external adoption or full DCAT-AP certification.",
+  "command": "node scripts/real-data.mjs",
+  "snapshotDate": "2026-10-21T02:36:13.505Z",
+  "source": {
+    "recordUrl": "https://data.europa.eu/data/datasets/https-data-gov-lt-datasets-1948-?locale=en",
+    "endpoint": "https://data.europa.eu/sparql",
+    "datasetIri": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-",
+    "responseSha256": "5e499fd950f1cbd23b98279a0c5adfdfbb2df5418a3a6b224ccd146f2bcd3f34",
+    "querySha256": "4ce32906d01cf018c48c7f94caab27231f4d47021539eb14f8ea26686f4f1d24",
+    "metadataLicense": {
+      "id": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "evidenceUrl": "https://data.europa.eu/en/legal-notice",
+      "scope": "The public portal metadata; not the underlying air-quality observations."
+    },
+    "underlyingDataLicense": {
+      "id": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/deed.lt",
+      "evidence": "dct:license statements of all four distributions in source-response.ttl. Underlying observations are not downloaded or redistributed."
+    }
+  },
+  "engine": {
+    "bridge": "dist/moonshacl.mjs",
+    "sha256": "75e0b07d2b4595b0253523335fc5e0ba8c8acfa02b716d936ef20792d8654ae6",
+    "node": "v24.21.0"
+  },
+  "checks": 41,
+  "passed": 41,
+  "failed": 0,
+  "counts": {
+    "sourceTriples": 341,
+    "importedTriples": 31,
+    "distributions": 4,
+    "finalTriples": 31
+  },
+  "rawOfficial": {
+    "status": "validated",
+    "conforms": false,
+    "results": 26,
+    "diagnostics": [],
+    "work": {
+      "checked": 5,
+      "reused": 0
+    },
+    "profile": {
+      "file": "fixtures/dcat-ap-3.0.0.ttl",
+      "sha256": "92f76609d78d257123e75bc6b7155df5cc0a63f14c29fbc12b0ac95c56af2059",
+      "url": "https://github.com/SEMICeu/DCAT-AP/blob/4470b8ea907b7eb9ec55ab22befd1ecd2210ff32/releases/3.0.0/shacl/dcat-ap-SHACL.ttl",
+      "license": "CC-BY-4.0",
+      "scope": "Unmodified DCAT-AP 3.0.0 base shapes only; no additional vocabulary graph or inference layer."
+    },
+    "report": {
+      "conforms": false,
+      "results": [
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DatasetShape/04d197dc40f01e87093bdd0446a9fdb1a9d44319"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/accrualPeriodicity"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/frequency/NEVER"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DatasetShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#contactPoint"
+          },
+          "value": {
+            "termType": "BlankNode",
+            "value": "data-label-vb6172785576"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DatasetShape/b3ec0655204c62a2531244aaeab12f1a2c5e5b5d"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/publisher"
+          },
+          "value": {
+            "termType": "BlankNode",
+            "value": "data-label-vb6172785577"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DatasetShape/c1d40f7102c8201949576e76be48b991b47958d9"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/creator"
+          },
+          "value": {
+            "termType": "BlankNode",
+            "value": "data-label-vb6172785578"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DatasetShape/dede6a68a95ac0f43ca88def472d8fc001f86ebe"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#theme"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DatasetShape/ee60fdd4b8581460f5fc4077813b8bb3e3d77441"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/accessRights"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/access-right/PUBLIC"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/06ed12d1071a78728d10628eb2d072781559eb75"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#mediaType"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://www.iana.org/assignments/media-types/application/json"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/653804840386e33525b3d39d205c174780be414b"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#accessURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/format"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/file-type/JSON"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/a07d6e7a0a1790b89a1ce7ff602cbbd9ea835282"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#downloadURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/jsonl"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/dbcf2adef675735c48b532392359af27af5e8b71"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/license"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://creativecommons.org/licenses/by/4.0/deed.lt"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/06ed12d1071a78728d10628eb2d072781559eb75"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#mediaType"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://www.iana.org/assignments/media-types/text/csv"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/653804840386e33525b3d39d205c174780be414b"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#accessURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/format"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/file-type/CSV"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/a07d6e7a0a1790b89a1ce7ff602cbbd9ea835282"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#downloadURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/csv"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/dbcf2adef675735c48b532392359af27af5e8b71"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/license"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://creativecommons.org/licenses/by/4.0/deed.lt"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/06ed12d1071a78728d10628eb2d072781559eb75"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#mediaType"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://www.iana.org/assignments/media-types/application/json"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/653804840386e33525b3d39d205c174780be414b"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#accessURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/format"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/file-type/JSON"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/a07d6e7a0a1790b89a1ce7ff602cbbd9ea835282"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#downloadURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/json"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/dbcf2adef675735c48b532392359af27af5e8b71"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/license"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://creativecommons.org/licenses/by/4.0/deed.lt"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/06ed12d1071a78728d10628eb2d072781559eb75"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#mediaType"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://www.iana.org/assignments/media-types/application/rdf+xml"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/653804840386e33525b3d39d205c174780be414b"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#accessURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/format"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://publications.europa.eu/resource/authority/file-type/RDF"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/a07d6e7a0a1790b89a1ce7ff602cbbd9ea835282"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#downloadURL"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/rdf"
+          },
+          "resultMessage": [],
+          "detail": []
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806"
+          },
+          "sourceShape": {
+            "termType": "NamedNode",
+            "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/shacl/dcat-ap-SHACL.ttl#dcat:DistributionShape/dbcf2adef675735c48b532392359af27af5e8b71"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#ClassConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://purl.org/dc/terms/license"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "https://creativecommons.org/licenses/by/4.0/deed.lt"
+          },
+          "resultMessage": [],
+          "detail": []
+        }
+      ],
+      "work": {
+        "checked": 5,
+        "reused": 0
+      }
+    }
+  },
+  "projectedOfficial": {
+    "status": "validated",
+    "conforms": false,
+    "results": 20,
+    "diagnostics": [],
+    "work": {
+      "checked": 5,
+      "reused": 0
+    },
+    "note": "官方 base 的 Class 违规是此查询切片未包含链接资源类型的结果；未补造类型以获取通过，也不能据此认定上游完整目录不合规。"
+  },
+  "originalApplication": {
+    "status": "validated",
+    "conforms": true,
+    "results": 0,
+    "diagnostics": [],
+    "work": {
+      "checked": 5,
+      "reused": 0
+    }
+  },
+  "importedApplication": {
+    "status": "validated",
+    "conforms": true,
+    "results": 0,
+    "diagnostics": [],
+    "work": {
+      "checked": 5,
+      "reused": 0
+    }
+  },
+  "deliberatelyBroken": {
+    "status": "validated",
+    "conforms": false,
+    "results": 2,
+    "diagnostics": [],
+    "work": {
+      "checked": 5,
+      "reused": 0
+    }
+  },
+  "rejected": {
+    "status": "updated",
+    "conforms": false,
+    "results": 2,
+    "diagnostics": [],
+    "committed": false,
+    "work": {
+      "checked": 2,
+      "reused": 3
+    },
+    "rollbackGraphEqualsOriginal": true,
+    "report": {
+      "conforms": false,
+      "results": [
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-"
+          },
+          "sourceShape": {
+            "termType": "BlankNode",
+            "value": "shapes-fresh-genid745"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#NodeConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#distribution"
+          },
+          "value": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "resultMessage": [
+            {
+              "termType": "Literal",
+              "value": "Every linked distribution must remain usable after the update.",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            }
+          ],
+          "detail": [
+            {
+              "focusNode": {
+                "termType": "NamedNode",
+                "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+              },
+              "sourceShape": {
+                "termType": "BlankNode",
+                "value": "shapes-fresh-genid1065"
+              },
+              "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "resultSeverity": {
+                "termType": "NamedNode",
+                "value": "http://www.w3.org/ns/shacl#Violation"
+              },
+              "resultPath": {
+                "predicate": "http://www.w3.org/ns/dcat#accessURL"
+              },
+              "value": null,
+              "resultMessage": [
+                {
+                  "termType": "Literal",
+                  "value": "A distribution must retain an HTTP(S) access URL.",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                }
+              ],
+              "detail": []
+            }
+          ]
+        },
+        {
+          "focusNode": {
+            "termType": "NamedNode",
+            "value": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc"
+          },
+          "sourceShape": {
+            "termType": "BlankNode",
+            "value": "shapes-fresh-genid1065"
+          },
+          "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+          "resultSeverity": {
+            "termType": "NamedNode",
+            "value": "http://www.w3.org/ns/shacl#Violation"
+          },
+          "resultPath": {
+            "predicate": "http://www.w3.org/ns/dcat#accessURL"
+          },
+          "value": null,
+          "resultMessage": [
+            {
+              "termType": "Literal",
+              "value": "A distribution must retain an HTTP(S) access URL.",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            }
+          ],
+          "detail": []
+        }
+      ],
+      "work": {
+        "checked": 2,
+        "reused": 3
+      }
+    }
+  },
+  "accepted": {
+    "status": "updated",
+    "conforms": true,
+    "results": 0,
+    "diagnostics": [],
+    "committed": true,
+    "work": {
+      "checked": 2,
+      "reused": 3
+    },
+    "changedTriples": {
+      "removed": 1,
+      "added": 1
+    },
+    "replacementIsPublishedDownloadUrl": true,
+    "graphEqualsExpected": true
+  },
+  "readback": {
+    "status": "validated",
+    "conforms": true,
+    "results": 0,
+    "diagnostics": [],
+    "work": {
+      "checked": 5,
+      "reused": 0
+    }
+  },
+  "sourceUnchanged": true,
+  "exportFile": "artifacts/real-catalogue/committed.nt",
+  "outputGraphSha256": "ecf8f8337ab8a5f32aefd43120bf8df5e38e2229236fbe600a16df4a80517ae6"
+}

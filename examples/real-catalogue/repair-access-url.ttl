@@ -1,0 +1,2 @@
+# Local import policy: expose the already published CSV download as the access entry.
+<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/csv> .

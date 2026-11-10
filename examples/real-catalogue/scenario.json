@@ -1,0 +1,60 @@
+{
+  "id": "kaunas-air-quality",
+  "title": "Kaunas 空气质量开放目录",
+  "description": "从欧盟官方目录导入立陶宛 Kaunas 空气质量元数据。删除 CSV 访问入口会影响该分发条目与所属数据集；将入口原子替换为源记录已有的 CSV 下载地址后，本地工作副本通过校验。",
+  "sourceUrl": "https://data.europa.eu/data/datasets/https-data-gov-lt-datasets-1948-?locale=en",
+  "sourceLabel": "data.europa.eu · Air quality in Kaunas",
+  "recordIri": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-",
+  "affectedLabel": "CSV 分发条目及所属数据集",
+  "distributionIri": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc",
+  "originalAccessUrl": "https://get.data.gov.lt/datasets/gov/kaunas/oras",
+  "replacementAccessUrl": "https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/csv",
+  "currentUrl": "https://get.data.gov.lt/datasets/gov/kaunas/oras",
+  "replacementUrl": "https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/csv",
+  "metadataLicense": {
+    "id": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidenceUrl": "https://data.europa.eu/en/legal-notice",
+    "scope": "The public portal metadata; not the underlying air-quality observations."
+  },
+  "dataLicense": {
+    "id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/deed.lt",
+    "evidence": "dct:license statements of all four distributions in source-response.ttl. Underlying observations are not downloaded or redistributed."
+  },
+  "sourceSha256": "5e499fd950f1cbd23b98279a0c5adfdfbb2df5418a3a6b224ccd146f2bcd3f34",
+  "sourceTriples": 341,
+  "importedTriples": 31,
+  "distributionCount": 4,
+  "profileLabel": "MoonSHACL 本地目录导入 profile（非完整 DCAT-AP 认证）",
+  "officialSummary": {
+    "conforms": false,
+    "results": 26,
+    "description": "冻结官方查询切片验收：341 条原始语句 / 26 个 Class 违规。链接资源的类型描述未随查询切片获取；此结果不是对上游完整目录的判定。31 条导入投影单独检验为 20 个 Class 违规。现场交互采用明确的本地导入 profile。"
+  },
+  "source": {
+    "recordUrl": "https://data.europa.eu/data/datasets/https-data-gov-lt-datasets-1948-?locale=en",
+    "originalCatalogueUrl": "https://data.gov.lt/datasets/1948/",
+    "responseFile": "examples/real-catalogue/source-response.ttl",
+    "queryFile": "examples/real-catalogue/source-query.rq",
+    "manifestFile": "examples/real-catalogue/SOURCES.json",
+    "retrievedAt": "2026-10-21T02:36:13.505Z",
+    "projection": "从 341 条官方查询响应中按白名单筛出 31 条原始语句；只保留英文或无语言标签的文本，未补造任何类型或字段。",
+    "profile": "自定义本地目录导入 profile，与官方 DCAT-AP 3.0.0 base 结果分别呈现。"
+  },
+  "baseline": {
+    "rawOfficialConforms": false,
+    "rawOfficialResults": 26,
+    "projectedOfficialConforms": false,
+    "projectedOfficialResults": 20,
+    "applicationConforms": true,
+    "note": "官方 base 的 Class 违规是此查询切片未包含链接资源类型的结果；未补造类型以获取通过，也不能据此认定上游完整目录不合规。"
+  },
+  "mutationLabel": "人为错误注入：删除 CSV accessURL",
+  "repairLabel": "本地变更：将 CSV 官方下载链接用作访问入口",
+  "repairNote": "替换值已存在于原记录的 dcat:downloadURL；这是本地工作副本的访问策略调整，未修改官方快照或写回上游。",
+  "data": "# Unmodified statements projected from the frozen data.europa.eu response.\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://purl.org/dc/terms/description> \"Monitoring data for air quality sensors\"@en .\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://purl.org/dc/terms/title> \"Air quality in Kaunas\"@en .\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Dataset> .\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://www.w3.org/ns/dcat#distribution> <http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> .\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://www.w3.org/ns/dcat#distribution> <http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> .\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://www.w3.org/ns/dcat#distribution> <http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> .\n<http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> <http://www.w3.org/ns/dcat#distribution> <http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> .\n<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/JSON> .\n<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/deed.lt> .\n<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Distribution> .\n<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras> .\n<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> <http://www.w3.org/ns/dcat#downloadURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/jsonl> .\n<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> <http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/json> .\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/CSV> .\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/deed.lt> .\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Distribution> .\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras> .\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#downloadURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/csv> .\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/text/csv> .\n<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/JSON> .\n<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/deed.lt> .\n<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Distribution> .\n<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras> .\n<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> <http://www.w3.org/ns/dcat#downloadURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/json> .\n<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> <http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/json> .\n<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/RDF> .\n<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/deed.lt> .\n<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Distribution> .\n<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras> .\n<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> <http://www.w3.org/ns/dcat#downloadURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/rdf> .\n<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> <http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/rdf+xml> .\n",
+  "shapes": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dct: <http://purl.org/dc/terms/> .\n@prefix app: <urn:moonshacl:catalogue-import:> .\n\n# MoonSHACL's local catalogue-import profile, not the official DCAT-AP shapes.\n# External URL, media-type and licence resources need not carry rdf:type here.\napp:Dataset a sh:NodeShape ;\n  sh:targetClass dcat:Dataset ;\n  sh:property [\n    sh:path dct:title ; sh:minCount 1 ; sh:nodeKind sh:Literal ;\n    sh:minLength 1 ; sh:uniqueLang true ;\n    sh:message \"The imported dataset needs a nonempty title.\"@en\n  ] ;\n  sh:property [\n    sh:path dct:description ; sh:minCount 1 ; sh:nodeKind sh:Literal ;\n    sh:minLength 1\n  ] ;\n  sh:property [\n    sh:path dcat:distribution ; sh:minCount 1 ; sh:nodeKind sh:IRI ;\n    sh:class dcat:Distribution ; sh:node app:Distribution ;\n    sh:message \"Every linked distribution must remain usable after the update.\"@en\n  ] .\n\napp:Distribution a sh:NodeShape ;\n  sh:targetClass dcat:Distribution ;\n  sh:property [\n    sh:path dcat:accessURL ; sh:minCount 1 ; sh:nodeKind sh:IRI ;\n    sh:pattern \"^https?://\" ;\n    sh:message \"A distribution must retain an HTTP(S) access URL.\"@en\n  ] ;\n  sh:property [\n    sh:path dcat:downloadURL ; sh:nodeKind sh:IRI ; sh:pattern \"^https?://\"\n  ] ;\n  sh:property [\n    sh:path dct:license ; sh:minCount 1 ; sh:nodeKind sh:IRI\n  ] ;\n  sh:property [\n    sh:path dct:format ; sh:minCount 1 ; sh:nodeKind sh:IRI\n  ] .\n",
+  "removals": "# Deliberate error injection: do not apply this to the source portal.\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras> .\n",
+  "repairAdditions": "# Local import policy: expose the already published CSV download as the access entry.\n<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> <http://www.w3.org/ns/dcat#accessURL> <https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/csv> .\n"
+}

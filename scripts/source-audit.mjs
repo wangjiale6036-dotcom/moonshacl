@@ -16,7 +16,7 @@ const rows = files.map(file => {
 });
 const totals = Object.fromEntries(['physical','excludingBlankAndComment','excludingDelimiterOnly']
   .map(key => [key, rows.reduce((sum, row) => sum + row[key], 0)]));
-const report = {method:'Whole-line // comments and blanks removed; strict count also excludes delimiter-only lines. Not an official contest determination.', excluded:['tests','generated conformance fixtures','generated Unicode tables and source data','demo','bridge','JavaScript host','dependencies'], files:rows, totals};
+const report = {method:'Whole-line // comments and blanks removed; strict count also excludes delimiter-only lines. Not an official contest determination.', excluded:['tests','generated conformance fixtures','generated Unicode tables and source data','demo','benchmark','bridge','JavaScript host','dependencies'], files:rows, totals};
 const target = process.argv[2] || 'artifacts/source-audit.json';
 fs.mkdirSync(path.dirname(target), {recursive:true});
 fs.writeFileSync(target, JSON.stringify(report, null, 2)+'\n');

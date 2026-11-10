@@ -1,0 +1,6 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+CONSTRUCT { <http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> ?p ?o . ?dist ?dp ?do }
+WHERE {
+  <http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> ?p ?o .
+  OPTIONAL { <http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-> dcat:distribution ?dist . ?dist ?dp ?do }
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "title": "Air quality in Kaunas",
+  "datasetIri": "http://data.europa.eu/88u/dataset/https-data-gov-lt-datasets-1948-",
+  "recordUrl": "https://data.europa.eu/data/datasets/https-data-gov-lt-datasets-1948-?locale=en",
+  "originalCatalogueUrl": "https://data.gov.lt/datasets/1948/",
+  "endpoint": "https://data.europa.eu/sparql",
+  "retrievedAt": "2026-10-21T02:36:13.505Z",
+  "responseHeaders": {
+    "date": "Wed, 21 Oct 2026 02:36:12 GMT",
+    "contentType": "text/turtle; charset=UTF-8"
+  },
+  "attribution": "Data.europa.eu metadata for the Lithuanian open-data catalogue record “Air quality in Kaunas”.",
+  "metadataLicense": {
+    "id": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidenceUrl": "https://data.europa.eu/en/legal-notice",
+    "scope": "The public portal metadata; not the underlying air-quality observations."
+  },
+  "underlyingDataLicense": {
+    "id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/deed.lt",
+    "evidence": "dct:license statements of all four distributions in source-response.ttl. Underlying observations are not downloaded or redistributed."
+  },
+  "response": {
+    "file": "source-response.ttl",
+    "sha256": "5e499fd950f1cbd23b98279a0c5adfdfbb2df5418a3a6b224ccd146f2bcd3f34",
+    "bytes": 15608,
+    "triples": 341,
+    "scope": "Exact UTF-8 SPARQL CONSTRUCT response: all direct statements about this dataset and its four distributions. This is a graph slice, not the complete upstream catalogue; linked vocabulary, publisher/contact and quality-measurement node descriptions are not traversed."
+  },
+  "query": {
+    "file": "source-query.rq",
+    "sha256": "4ce32906d01cf018c48c7f94caab27231f4d47021539eb14f8ea26686f4f1d24",
+    "url": "https://data.europa.eu/sparql?query=PREFIX+dcat%3A+%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fdcat%23%3E%0ACONSTRUCT+%7B+%3Chttp%3A%2F%2Fdata.europa.eu%2F88u%2Fdataset%2Fhttps-data-gov-lt-datasets-1948-%3E+%3Fp+%3Fo+.+%3Fdist+%3Fdp+%3Fdo+%7D%0AWHERE+%7B%0A++%3Chttp%3A%2F%2Fdata.europa.eu%2F88u%2Fdataset%2Fhttps-data-gov-lt-datasets-1948-%3E+%3Fp+%3Fo+.%0A++OPTIONAL+%7B+%3Chttp%3A%2F%2Fdata.europa.eu%2F88u%2Fdataset%2Fhttps-data-gov-lt-datasets-1948-%3E+dcat%3Adistribution+%3Fdist+.+%3Fdist+%3Fdp+%3Fdo+%7D%0A%7D&format=text%2Fturtle"
+  },
+  "extraction": {
+    "file": "data.ttl",
+    "method": "Select only the predicates listed here; retain untagged and en literals. Preserve RDF terms exactly; sort and serialize as N-Triples. Do not add missing type triples or invent facts.",
+    "datasetPredicates": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://purl.org/dc/terms/title",
+      "http://purl.org/dc/terms/description",
+      "http://www.w3.org/ns/dcat#distribution"
+    ],
+    "distributionPredicates": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/ns/dcat#accessURL",
+      "http://www.w3.org/ns/dcat#downloadURL",
+      "http://purl.org/dc/terms/format",
+      "http://purl.org/dc/terms/license",
+      "http://www.w3.org/ns/dcat#mediaType"
+    ],
+    "literalLanguages": [
+      "",
+      "en"
+    ],
+    "excluded": "Other languages, contact/publisher links, quality metrics, other non-import fields and linked resource descriptions. No individual contact details are included in the projection."
+  },
+  "officialProfile": {
+    "file": "fixtures/dcat-ap-3.0.0.ttl",
+    "sha256": "92f76609d78d257123e75bc6b7155df5cc0a63f14c29fbc12b0ac95c56af2059",
+    "url": "https://github.com/SEMICeu/DCAT-AP/blob/4470b8ea907b7eb9ec55ab22befd1ecd2210ff32/releases/3.0.0/shacl/dcat-ap-SHACL.ttl",
+    "license": "CC-BY-4.0",
+    "scope": "Unmodified DCAT-AP 3.0.0 base shapes only; no additional vocabulary graph or inference layer."
+  },
+  "applicationProfile": {
+    "file": "application-shapes.ttl",
+    "name": "MoonSHACL local catalogue-import profile",
+    "scope": "Require title/description, linked typed distributions, HTTP(S) access/download IRIs, and format/licence IRIs. Does not claim complete DCAT-AP validation."
+  },
+  "transaction": {
+    "distributionIri": "http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc",
+    "errorInjection": "Delete the existing CSV distribution accessURL from a local candidate.",
+    "repair": "Atomically replace that accessURL with the same distribution’s existing downloadURL. This is a local access-entry policy change supported by a published source URL, not an upstream data correction or an assertion that the portal changed."
+  },
+  "expected": {
+    "rawOfficialConforms": false,
+    "rawOfficialResults": 26,
+    "projectedOfficialConforms": false,
+    "projectedOfficialResults": 20
+  }
+}

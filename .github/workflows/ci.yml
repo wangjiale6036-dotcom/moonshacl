@@ -34,6 +34,14 @@ jobs:
       - run: npm test
       - name: Verify executable Core acceptance cases
         run: npm run test:roadmap
+      - name: Verify frozen public catalogue workflow
+        run: npm run test:real-data
+      - name: Verify browser demo distribution
+        run: |
+          npm run demo:build
+          npm run test:demo
+      - name: Smoke-check reproducible Session benchmark
+        run: node scripts/benchmark.mjs --smoke
       - name: Verify published package in an independent consumer
         if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
         run: node scripts/consumer-test.mjs --registry

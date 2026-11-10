@@ -95,6 +95,19 @@ pub fn Graph::new(triples : Array[Triple]) -> Graph {
 }
 
 ///|
+// Internal constructor for an owned array already proved RDF-distinct by the
+// session delta builder. Public Graph::new must still deduplicate arbitrary input.
+fn Graph::from_unique(triples : Array[Triple]) -> Graph {
+  let spo : Map[(Term, String), Array[Term]] = Map([])
+  let pos : Map[(String, Term), Array[Term]] = Map([])
+  for t in triples {
+    spo.get_or_init((t.subject, t.predicate), () => []).push(t.object)
+    pos.get_or_init((t.predicate, t.object), () => []).push(t.subject)
+  }
+  { triples, spo, pos, }
+}
+
+///|
 pub fn Graph::triples(self : Graph) -> Array[Triple] {
   self.triples.copy()
 }
@@ -228,7 +241,7 @@ priv enum Read {
   Objects(Term, String)
   Subjects(String, Term)
   Outgoing(Term)
-}
+} derive(Eq, Hash)
 
 ///|
 priv struct Reader {

@@ -20,6 +20,12 @@ Turtle 适配调用其 `gen_trig`、`gen_nquads` public API。本项目自身代
 
 `fixtures/dcat-ap-3.0.0.ttl` 未作修改；测试中的 MoonBit 字符串为同文件内容。示例 RDF 数据由本项目编写。本项目没有欧盟官方验证服务的全部资源、推理或认证覆盖。
 
+## 公开空气质量目录元数据
+
+`examples/real-catalogue/` 冻结 data.europa.eu 提供的立陶宛 “Air quality in Kaunas” 目录元数据。门户元数据使用 CC0 1.0，来源及许可依据见该目录的 `SOURCES.json`；原始 SPARQL 响应、查询和 SHA-256 均保留。用于导入的 `data.ttl` 是原始三元组的明确字段投影，不补造上游事实。
+
+条目所链接的底层空气质量观测数据另标注 CC BY 4.0；本项目没有下载或再分发观测数据。演示中的错误注入与访问入口替换仅作用于本地副本，不改写源门户。应用规则由本项目编写，不等同官方完整 DCAT-AP 配置。
+
 ## 仅用于测试的 JavaScript 依赖
 
 `n3@1.26.0`（MIT）、`rdf-validate-shacl@0.6.5`（MIT）、`shacl-engine@1.1.0`（MIT）、`@rdfjs/data-model@2.1.1`（MIT）。具体安装版本及传递依赖固定在 `package-lock.json`，许可证位于各安装包。它们用于独立解析/语义对照，不进入产品的原生规则逻辑。Node CLI 本身只使用内置文件和进程功能。

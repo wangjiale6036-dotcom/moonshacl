@@ -1,0 +1,358 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://data.europa.eu/88u/dataset/> .
+@prefix dcat:	<http://www.w3.org/ns/dcat#> .
+ns1:https-data-gov-lt-datasets-1948-	rdf:type	dcat:Dataset .
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:	<http://purl.org/dc/terms/> .
+ns1:https-data-gov-lt-datasets-1948-	dcterms:modified	"2025-12-18"^^xsd:date .
+@prefix ns5:	<http://www.w3.org/ns/dqv#> .
+ns1:https-data-gov-lt-datasets-1948-	ns5:hasQualityMeasurement	_:vb6781513060 ,
+		_:vb6781513061 ,
+		_:vb6781513056 ,
+		_:vb6781513057 ,
+		_:vb6781513059 ,
+		_:vb6781513052 ,
+		_:vb6781513053 ,
+		_:vb6781513054 ,
+		_:vb6781513055 ,
+		_:vb6781513048 ,
+		_:vb6781513050 ,
+		_:vb6781513051 ,
+		_:vb6781513044 ,
+		_:vb6781513045 ,
+		_:vb6781513046 ,
+		_:vb6781513009 ,
+		_:vb6781513000 ,
+		_:vb6781513001 ,
+		_:vb6781512998 ,
+		_:vb6781512968 ,
+		_:vb6781512970 ,
+		_:vb6781512971 ,
+		_:vb6781512961 ;
+	dcat:distribution	<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd> ,
+		<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806> ,
+		<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503> ,
+		<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc> ;
+	dcterms:title	"Il-kwalit\u00E0 tal-arja fil-belt ta\u2019 Kaunas"@mt-t-lt-t0-mtec ,
+		"Qualidade do ar na cidade de Kaunas"@pt-t-lt-t0-mtec ,
+		"Luftqualit\u00E4t in Kaunas Stadt"@de-t-lt-t0-mtec ,
+		"Kvalita ovzdu\u0161ia v meste Kaunas"@sk-t-lt-t0-mtec ,
+		"Calitatea aerului \u00EEn ora\u0219ul Kaunas"@ro-t-lt-t0-mtec ,
+		"\u03A0\u03BF\u03B9\u03CC\u03C4\u03B7\u03C4\u03B1 \u03C4\u03BF\u03C5 \u03B1\u03AD\u03C1\u03B1 \u03C3\u03C4\u03B7\u03BD \u03C0\u03CC\u03BB\u03B7 \u039A\u03AC\u03BF\u03C5\u03BD\u03B1\u03C2"@el-t-lt-t0-mtec ,
+		"Kaunas v\u00E1ros leveg\u0151min\u0151s\u00E9ge"@hu-t-lt-t0-mtec ,
+		"Qualit\u00E9 de l'air dans la ville de Kaunas"@fr-t-lt-t0-mtec ,
+		"Calidad del aire en la ciudad de Kaunas"@es-t-lt-t0-mtec ,
+		"Air quality in Kaunas"@en ,
+		"Gaisa kvalit\u0101te Kau\u0146as pils\u0113t\u0101"@lv-t-lt-t0-mtec ,
+		"Qualit\u00E0 dell'aria nella citt\u00E0 di Kaunas"@it-t-lt-t0-mtec ,
+		"C\u00E1il\u00EDocht an aeir i gcathair Kaunas"@ga-t-lt-t0-mtec ,
+		"Luftkvalitet i Kaunas by"@da-t-lt-t0-mtec ,
+		"Jako\u015B\u0107 powietrza w mie\u015Bcie Kowno"@pl-t-lt-t0-mtec ,
+		"\u00D5hukvaliteet Kaunases"@et-t-lt-t0-mtec ,
+		"Kakovost zraka v mestu Kaunas"@sl-t-lt-t0-mtec ,
+		"Oro kokyb\u0117 Kauno mieste"@lt ,
+		"\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u043D\u0430 \u0432\u044A\u0437\u0434\u0443\u0445\u0430 \u0432 \u0433\u0440\u0430\u0434 \u041A\u0430\u0443\u043D\u0430\u0441"@bg-t-lt-t0-mtec ,
+		"Luchtkwaliteit in Kaunas stad"@nl-t-lt-t0-mtec ,
+		"\u042F\u043A\u0456\u0441\u0442\u044C \u043F\u043E\u0432\u0456\u0442\u0440\u044F \u0432 \u043C\u0456\u0441\u0442\u0456 \u041A\u0430\u0443\u043D\u0430\u0441"@uk-t-lt-t0-mtec ,
+		"Ilmanlaatu kaupungissa Kaunas"@fi-t-lt-t0-mtec ,
+		"Kvalita ovzdu\u0161\u00ED ve m\u011Bst\u011B Kaunas"@cs-t-lt-t0-mtec ,
+		"Kvaliteta zraka u gradu Kaunas"@hr-t-lt-t0-mtec ,
+		"Luftkvalitet i Kaunas stad"@sv-t-lt-t0-mtec .
+@prefix ns6:	<http://publications.europa.eu/resource/authority/data-theme/> .
+ns1:https-data-gov-lt-datasets-1948-	dcat:theme	ns6:ENVI ;
+	dcterms:creator	_:vb6172785578 .
+@prefix ns7:	<http://publications.europa.eu/resource/authority/frequency/> .
+ns1:https-data-gov-lt-datasets-1948-	dcterms:accrualPeriodicity	ns7:NEVER .
+@prefix ns8:	<http://data.europa.eu/88u/metrics/> .
+ns1:https-data-gov-lt-datasets-1948-	ns5:hasQualityMetadata	ns8:https-data-gov-lt-datasets-1948- ;
+	ns5:hasQualityAnnotation	_:vb6781513058 ;
+	dcat:keyword	"oro kokyb\u0117" ;
+	dcterms:publisher	_:vb6172785577 ;
+	dcterms:description	"Monitorowanie danych z czujnik\u00F3w jako\u015Bci powietrza"@pl-t-lt-t0-mtec ,
+		"Overv\u00E5gningsdata for luftkvalitetssensorer"@da-t-lt-t0-mtec ,
+		"Oro kokyb\u0117s davikli\u0173 steb\u0117jimo duomenys"@lt ,
+		"Monitoring data for air quality sensors"@en ,
+		"Datele de monitorizare ale senzorilor de calitate a aerului"@ro-t-lt-t0-mtec ,
+		"\u0414\u0430\u043D\u0456 \u043C\u043E\u043D\u0456\u0442\u043E\u0440\u0438\u043D\u0433\u0443 \u0434\u0430\u0442\u0447\u0438\u043A\u0456\u0432 \u044F\u043A\u043E\u0441\u0442\u0456 \u043F\u043E\u0432\u0456\u0442\u0440\u044F"@uk-t-lt-t0-mtec ,
+		"Donn\u00E9es de surveillance des capteurs de qualit\u00E9 de l'air"@fr-t-lt-t0-mtec ,
+		"Podaci o pra\u0107enju senzora za kvalitetu zraka"@hr-t-lt-t0-mtec ,
+		"\u00DCberwachungsdaten von Luftqualit\u00E4tssensoren"@de-t-lt-t0-mtec ,
+		"\u0414\u0430\u043D\u043D\u0438 \u043E\u0442 \u043C\u043E\u043D\u0438\u0442\u043E\u0440\u0438\u043D\u0433\u0430 \u043D\u0430 \u0434\u0430\u0442\u0447\u0438\u0446\u0438\u0442\u0435 \u0437\u0430 \u043A\u0430\u0447\u0435\u0441\u0442\u0432\u043E \u043D\u0430 \u0432\u044A\u0437\u0434\u0443\u0445\u0430"@bg-t-lt-t0-mtec ,
+		"Data ta\u2019 monitora\u0121\u0121 tas-sensuri tal-kwalit\u00E0 tal-arja"@mt-t-lt-t0-mtec ,
+		"Leveg\u0151min\u0151s\u00E9g-\u00E9rz\u00E9kel\u0151k megfigyel\u00E9si adatai"@hu-t-lt-t0-mtec ,
+		"\u00D6vervakningsdata f\u00F6r luftkvalitetssensorer"@sv-t-lt-t0-mtec ,
+		"Podatki o spremljanju senzorjev kakovosti zraka"@sl-t-lt-t0-mtec ,
+		"\u0394\u03B5\u03B4\u03BF\u03BC\u03AD\u03BD\u03B1 \u03C0\u03B1\u03C1\u03B1\u03BA\u03BF\u03BB\u03BF\u03CD\u03B8\u03B7\u03C3\u03B7\u03C2 \u03B1\u03B9\u03C3\u03B8\u03B7\u03C4\u03AE\u03C1\u03C9\u03BD \u03C0\u03BF\u03B9\u03CC\u03C4\u03B7\u03C4\u03B1\u03C2 \u03B1\u03AD\u03C1\u03B1"@el-t-lt-t0-mtec ,
+		"Dati di monitoraggio dei sensori di qualit\u00E0 dell'aria"@it-t-lt-t0-mtec ,
+		"Sonra\u00ED faireach\u00E1in ar bhraiteoir\u00ED c\u00E1il\u00EDochta aeir"@ga-t-lt-t0-mtec ,
+		"\u00D5hukvaliteedi andurite seireandmed"@et-t-lt-t0-mtec ,
+		"Dados de monitoriza\u00E7\u00E3o dos sensores da qualidade do ar"@pt-t-lt-t0-mtec ,
+		"Ilmanlaatuantureiden seurantatiedot"@fi-t-lt-t0-mtec ,
+		"Monitoringgegevens van luchtkwaliteitssensoren"@nl-t-lt-t0-mtec ,
+		"Gaisa kvalit\u0101tes sensoru monitoringa dati"@lv-t-lt-t0-mtec ,
+		"Monitorovanie \u00FAdajov sn\u00EDma\u010Dov kvality ovzdu\u0161ia"@sk-t-lt-t0-mtec ,
+		"Datos de monitorizaci\u00F3n de sensores de calidad del aire"@es-t-lt-t0-mtec ,
+		"\u00DAdaje z monitorov\u00E1n\u00ED \u010Didel kvality ovzdu\u0161\u00ED"@cs-t-lt-t0-mtec .
+@prefix ns9:	<http://publications.europa.eu/resource/authority/access-right/> .
+ns1:https-data-gov-lt-datasets-1948-	dcterms:accessRights	ns9:PUBLIC ;
+	dcat:contactPoint	_:vb6172785576 ;
+	dcterms:issued	"2022-06-08"^^xsd:date .
+<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503>	rdf:type	dcat:Distribution ;
+	dcterms:modified	"2024-07-04"^^xsd:date ;
+	ns5:hasQualityMeasurement	_:vb6781512991 ,
+		_:vb6781512984 ,
+		_:vb6781512985 ,
+		_:vb6781512986 ,
+		_:vb6781512987 ,
+		_:vb6781512992 ,
+		_:vb6781512993 ,
+		_:vb6781512994 ,
+		_:vb6781512995 ,
+		_:vb6781512964 ,
+		_:vb6781512965 ,
+		_:vb6781512967 ,
+		_:vb6781512972 ,
+		_:vb6781512973 ,
+		_:vb6781512974 ,
+		_:vb6781512975 ,
+		_:vb6781512980 ,
+		_:vb6781512981 ,
+		_:vb6781512982 ,
+		_:vb6781512983 ,
+		_:vb6781512976 ,
+		_:vb6781512977 ,
+		_:vb6781512978 ,
+		_:vb6781512979 ,
+		_:vb6781512988 ,
+		_:vb6781512989 ,
+		_:vb6781512990 ;
+	dcterms:title	"it-temp"@mt-t-lt-t0-mtec ,
+		"pogoda"@pl-t-lt-t0-mtec ,
+		"tiempo"@es-t-lt-t0-mtec ,
+		"vreme"@sl-t-lt-t0-mtec ,
+		"weer"@nl-t-lt-t0-mtec ,
+		"po\u010Das\u00ED"@cs-t-lt-t0-mtec ,
+		"Wetterbericht"@de-t-lt-t0-mtec ,
+		"vrijeme"@hr-t-lt-t0-mtec ,
+		"\u0432\u0440\u0435\u043C\u0435\u0442\u043E"@bg-t-lt-t0-mtec ,
+		"meteo"@it-t-lt-t0-mtec ,
+		"tempo"@pt-t-lt-t0-mtec ,
+		"weather"@en-t-lt-t0-mtec ,
+		"ilm"@et-t-lt-t0-mtec ,
+		"m\u00E9t\u00E9o"@fr-t-lt-t0-mtec ,
+		"an aimsir"@ga-t-lt-t0-mtec ,
+		"vejret"@da-t-lt-t0-mtec ,
+		"\u043F\u043E\u0433\u043E\u0434\u0430"@uk-t-lt-t0-mtec ,
+		"\u03BA\u03B1\u03B9\u03C1\u03B9\u03BA\u03AD\u03C2 \u03C3\u03C5\u03BD\u03B8\u03AE\u03BA\u03B5\u03C2"@el-t-lt-t0-mtec ,
+		"laikapst\u0101k\u013Ci"@lv-t-lt-t0-mtec ,
+		"po\u010Dasie"@sk-t-lt-t0-mtec ,
+		"oras"@lt ,
+		"vremea"@ro-t-lt-t0-mtec ,
+		"id\u0151j\u00E1r\u00E1s"@hu-t-lt-t0-mtec ,
+		"s\u00E4\u00E4"@fi-t-lt-t0-mtec ,
+		"v\u00E4dret"@sv-t-lt-t0-mtec .
+@prefix ns10:	<https://get.data.gov.lt/datasets/gov/kaunas/> .
+<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503>	dcat:accessURL	ns10:oras .
+@prefix ns11:	<https://get.data.gov.lt/datasets/gov/kaunas/oras/:all/:format/> .
+<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503>	dcat:downloadURL	ns11:jsonl ;
+	ns5:hasQualityMetadata	ns8:https-data-gov-lt-datasets-1948- .
+@prefix ns12:	<https://data.gov.lt/> .
+<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503>	dcterms:type	ns12:URL .
+@prefix ns13:	<https://www.iana.org/assignments/media-types/application/> .
+<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503>	dcat:mediaType	ns13:json .
+@prefix ns14:	<http://publications.europa.eu/resource/authority/file-type/> .
+<http://data.europa.eu/88u/distribution/35b4cc42-f828-4f09-b578-7dae6d96c503>	dcterms:format	ns14:JSON ;
+	dcterms:description	""@lt ;
+	dcterms:license	<https://creativecommons.org/licenses/by/4.0/deed.lt> ;
+	dcterms:issued	"2024-05-23"^^xsd:date .
+<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc>	rdf:type	dcat:Distribution ;
+	dcterms:modified	"2024-07-04"^^xsd:date ;
+	ns5:hasQualityMeasurement	_:vb6781513024 ,
+		_:vb6781513025 ,
+		_:vb6781513026 ,
+		_:vb6781513027 ,
+		_:vb6781513028 ,
+		_:vb6781513029 ,
+		_:vb6781513030 ,
+		_:vb6781513031 ,
+		_:vb6781513032 ,
+		_:vb6781513033 ,
+		_:vb6781513034 ,
+		_:vb6781512996 ,
+		_:vb6781513008 ,
+		_:vb6781513011 ,
+		_:vb6781513013 ,
+		_:vb6781513014 ,
+		_:vb6781513015 ,
+		_:vb6781513016 ,
+		_:vb6781513017 ,
+		_:vb6781513018 ,
+		_:vb6781513019 ,
+		_:vb6781513020 ,
+		_:vb6781513021 ,
+		_:vb6781513022 ,
+		_:vb6781513023 ,
+		_:vb6781512960 ,
+		_:vb6781512969 ;
+	dcterms:title	"pogoda"@pl-t-lt-t0-mtec ,
+		"tiempo"@es-t-lt-t0-mtec ,
+		"vreme"@sl-t-lt-t0-mtec ,
+		"weer"@nl-t-lt-t0-mtec ,
+		"po\u010Das\u00ED"@cs-t-lt-t0-mtec ,
+		"Wetterbericht"@de-t-lt-t0-mtec ,
+		"vrijeme"@hr-t-lt-t0-mtec ,
+		"\u0432\u0440\u0435\u043C\u0435\u0442\u043E"@bg-t-lt-t0-mtec ,
+		"meteo"@it-t-lt-t0-mtec ,
+		"tempo"@pt-t-lt-t0-mtec ,
+		"weather"@en-t-lt-t0-mtec ,
+		"ilm"@et-t-lt-t0-mtec ,
+		"m\u00E9t\u00E9o"@fr-t-lt-t0-mtec ,
+		"an aimsir"@ga-t-lt-t0-mtec ,
+		"vejret"@da-t-lt-t0-mtec ,
+		"\u043F\u043E\u0433\u043E\u0434\u0430"@uk-t-lt-t0-mtec ,
+		"\u03BA\u03B1\u03B9\u03C1\u03B9\u03BA\u03AD\u03C2 \u03C3\u03C5\u03BD\u03B8\u03AE\u03BA\u03B5\u03C2"@el-t-lt-t0-mtec ,
+		"po\u010Dasie"@sk-t-lt-t0-mtec ,
+		"laikapst\u0101k\u013Ci"@lv-t-lt-t0-mtec ,
+		"oras"@lt ,
+		"vremea"@ro-t-lt-t0-mtec ,
+		"id\u0151j\u00E1r\u00E1s"@hu-t-lt-t0-mtec ,
+		"s\u00E4\u00E4"@fi-t-lt-t0-mtec ,
+		"v\u00E4dret"@sv-t-lt-t0-mtec ,
+		"it-temp"@mt-t-lt-t0-mtec ;
+	dcat:accessURL	ns10:oras .
+@prefix ns15:	<https://get.data.gov.lt/datasets/gov/kaunas/oras/Oras/:format/> .
+<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc>	dcat:downloadURL	ns15:csv ;
+	ns5:hasQualityMetadata	ns8:https-data-gov-lt-datasets-1948- ;
+	dcterms:type	ns12:URL .
+@prefix ns16:	<https://www.iana.org/assignments/media-types/text/> .
+<http://data.europa.eu/88u/distribution/3982b97f-695f-4450-9f5c-d28884fe93dc>	dcat:mediaType	ns16:csv ;
+	dcterms:format	ns14:CSV ;
+	dcterms:description	""@lt ;
+	dcterms:license	<https://creativecommons.org/licenses/by/4.0/deed.lt> ;
+	dcterms:issued	"2024-05-23"^^xsd:date .
+<http://data.europa.eu/88u/distribution/705794ab-129b-4113-b869-6203f14a41fd>	rdf:type	dcat:Distribution ;
+	dcterms:modified	"2024-07-04"^^xsd:date ;
+	ns5:hasQualityMeasurement	_:vb6781513084 ,
+		_:vb6781513085 ,
+		_:vb6781513086 ,
+		_:vb6781513087 ,
+		_:vb6781513081 ,
+		_:vb6781513082 ,
+		_:vb6781513083 ,
+		_:vb6781513076 ,
+		_:vb6781513078 ,
+		_:vb6781513074 ,
+		_:vb6781513075 ,
+		_:vb6781513071 ,
+		_:vb6781513065 ,
+		_:vb6781513067 ,
+		_:vb6781513063 ,
+		_:vb6781513049 ,
+		_:vb6781513047 ,
+		_:vb6781513040 ,
+		_:vb6781513036 ,
+		_:vb6781513037 ,
+		_:vb6781513039 ,
+		_:vb6781513035 ,
+		_:vb6781513089 ,
+		_:vb6781513090 ,
+		_:vb6781513012 ,
+		_:vb6781513003 ,
+		_:vb6781512997 ;
+	dcterms:title	"vreme"@sl-t-lt-t0-mtec ,
+		"weer"@nl-t-lt-t0-mtec ,
+		"po\u010Das\u00ED"@cs-t-lt-t0-mtec ,
+		"meteo"@it-t-lt-t0-mtec ,
+		"vrijeme"@hr-t-lt-t0-mtec ,
+		"Wetterbericht"@de-t-lt-t0-mtec ,
+		"tempo"@pt-t-lt-t0-mtec ,
+		"\u0432\u0440\u0435\u043C\u0435\u0442\u043E"@bg-t-lt-t0-mtec ,
+		"weather"@en-t-lt-t0-mtec ,
+		"ilm"@et-t-lt-t0-mtec ,
+		"m\u00E9t\u00E9o"@fr-t-lt-t0-mtec ,
+		"\u03BA\u03B1\u03B9\u03C1\u03B9\u03BA\u03AD\u03C2 \u03C3\u03C5\u03BD\u03B8\u03AE\u03BA\u03B5\u03C2"@el-t-lt-t0-mtec ,
+		"laikapst\u0101k\u013Ci"@lv-t-lt-t0-mtec ,
+		"vejret"@da-t-lt-t0-mtec ,
+		"an aimsir"@ga-t-lt-t0-mtec ,
+		"po\u010Dasie"@sk-t-lt-t0-mtec ,
+		"\u043F\u043E\u0433\u043E\u0434\u0430"@uk-t-lt-t0-mtec ,
+		"oras"@lt ,
+		"id\u0151j\u00E1r\u00E1s"@hu-t-lt-t0-mtec ,
+		"vremea"@ro-t-lt-t0-mtec ,
+		"s\u00E4\u00E4"@fi-t-lt-t0-mtec ,
+		"it-temp"@mt-t-lt-t0-mtec ,
+		"v\u00E4dret"@sv-t-lt-t0-mtec ,
+		"pogoda"@pl-t-lt-t0-mtec ,
+		"tiempo"@es-t-lt-t0-mtec ;
+	dcat:accessURL	ns10:oras ;
+	dcat:downloadURL	ns11:json ;
+	ns5:hasQualityMetadata	ns8:https-data-gov-lt-datasets-1948- ;
+	dcterms:type	ns12:URL ;
+	dcat:mediaType	ns13:json ;
+	dcterms:format	ns14:JSON ;
+	dcterms:description	""@lt ;
+	dcterms:license	<https://creativecommons.org/licenses/by/4.0/deed.lt> ;
+	dcterms:issued	"2024-05-23"^^xsd:date .
+<http://data.europa.eu/88u/distribution/862f6158-7200-46fb-a448-af83ed19b806>	rdf:type	dcat:Distribution ;
+	dcterms:modified	"2024-07-04"^^xsd:date ;
+	ns5:hasQualityMeasurement	_:vb6781512963 ,
+		_:vb6781512966 ,
+		_:vb6781513080 ,
+		_:vb6781513072 ,
+		_:vb6781513073 ,
+		_:vb6781513077 ,
+		_:vb6781513079 ,
+		_:vb6781513064 ,
+		_:vb6781513066 ,
+		_:vb6781513068 ,
+		_:vb6781513069 ,
+		_:vb6781513070 ,
+		_:vb6781513041 ,
+		_:vb6781513042 ,
+		_:vb6781513043 ,
+		_:vb6781513038 ,
+		_:vb6781513088 ,
+		_:vb6781513091 ,
+		_:vb6781513092 ,
+		_:vb6781513010 ,
+		_:vb6781513002 ,
+		_:vb6781513004 ,
+		_:vb6781513005 ,
+		_:vb6781513006 ,
+		_:vb6781513007 ,
+		_:vb6781512999 ,
+		_:vb6781512962 ;
+	dcterms:title	"tiempo"@es-t-lt-t0-mtec ,
+		"vreme"@sl-t-lt-t0-mtec ,
+		"weer"@nl-t-lt-t0-mtec ,
+		"po\u010Das\u00ED"@cs-t-lt-t0-mtec ,
+		"vrijeme"@hr-t-lt-t0-mtec ,
+		"meteo"@it-t-lt-t0-mtec ,
+		"Wetterbericht"@de-t-lt-t0-mtec ,
+		"tempo"@pt-t-lt-t0-mtec ,
+		"\u0432\u0440\u0435\u043C\u0435\u0442\u043E"@bg-t-lt-t0-mtec ,
+		"weather"@en-t-lt-t0-mtec ,
+		"ilm"@et-t-lt-t0-mtec ,
+		"m\u00E9t\u00E9o"@fr-t-lt-t0-mtec ,
+		"\u03BA\u03B1\u03B9\u03C1\u03B9\u03BA\u03AD\u03C2 \u03C3\u03C5\u03BD\u03B8\u03AE\u03BA\u03B5\u03C2"@el-t-lt-t0-mtec ,
+		"vejret"@da-t-lt-t0-mtec ,
+		"an aimsir"@ga-t-lt-t0-mtec ,
+		"laikapst\u0101k\u013Ci"@lv-t-lt-t0-mtec ,
+		"po\u010Dasie"@sk-t-lt-t0-mtec ,
+		"\u043F\u043E\u0433\u043E\u0434\u0430"@uk-t-lt-t0-mtec ,
+		"id\u0151j\u00E1r\u00E1s"@hu-t-lt-t0-mtec ,
+		"oras"@lt ,
+		"vremea"@ro-t-lt-t0-mtec ,
+		"s\u00E4\u00E4"@fi-t-lt-t0-mtec ,
+		"it-temp"@mt-t-lt-t0-mtec ,
+		"v\u00E4dret"@sv-t-lt-t0-mtec ,
+		"pogoda"@pl-t-lt-t0-mtec ;
+	dcat:accessURL	ns10:oras ;
+	dcat:downloadURL	ns11:rdf ;
+	ns5:hasQualityMetadata	ns8:https-data-gov-lt-datasets-1948- ;
+	dcterms:type	ns12:URL ;
+	dcat:mediaType	<https://www.iana.org/assignments/media-types/application/rdf+xml> ;
+	dcterms:format	ns14:RDF ;
+	dcterms:description	""@lt ;
+	dcterms:license	<https://creativecommons.org/licenses/by/4.0/deed.lt> ;
+	dcterms:issued	"2024-05-23"^^xsd:date .
