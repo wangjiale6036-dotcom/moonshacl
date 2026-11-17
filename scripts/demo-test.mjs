@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import {pathToFileURL} from 'node:url';
 import {Parser, Store} from 'n3';
 import {request} from '../dist/demo/moonshacl.mjs';
 
@@ -16,14 +17,15 @@ function equalGraph(actual, expected) {
 }
 assert.equal(build.engineSha256, crypto.createHash('sha256').update(read('moonshacl.mjs')).digest('hex'));
 for (const asset of ['app.js', 'styles.css', 'worker.js', 'licenses/runtime/moonttl-LICENSE', 'licenses/runtime/moonbit-core-LICENSE', 'licenses/Unicode-DATA-LICENSE.txt']) assert(read(asset).length > 0);
-// A standalone demo must retain relative source/evidence links in both reports.
-for (const report of ['REAL-DATA.zh-CN.md', 'PERFORMANCE.zh-CN.md', 'docs/REAL-DATA.zh-CN.md', 'docs/PERFORMANCE.zh-CN.md']) {
-  if (!fs.existsSync(`dist/demo/${report}`)) continue;
-  for (const match of read(report).matchAll(/\]\(([^)]+)\)/g)) {
-    const href = match[1];
+// The demo page, both copies of each report, and the attribution page must stay navigable offline.
+const reports = ['REAL-DATA', 'PERFORMANCE', 'PERFORMANCE-BEFORE', 'PERFORMANCE-ROUND1', 'PERFORMANCE-CONFIRMATION'];
+const pages = ['index.html', 'THIRD_PARTY.md', ...reports.flatMap(name => [`${name}.zh-CN.md`, `docs/${name}.zh-CN.md`])];
+for (const page of pages) {
+  const links = page.endsWith('.html') ? /\b(?:href|src)="([^"]+)"/g : /\]\(([^)]+)\)/g;
+  const location = pathToFileURL(`dist/demo/${page}`);
+  for (const [, href] of read(page).matchAll(links)) {
     if (/^(https?:|#)/.test(href)) continue;
-    const url = new URL(href, `file://${process.cwd().replaceAll('\\', '/')}/dist/demo/${report}`);
-    assert(fs.existsSync(url), `Broken distributed report link: ${report} -> ${href}`);
+    assert(fs.existsSync(new URL(href, location)), `Broken distributed link: ${page} -> ${href}`);
   }
 }
 const p = data.people;
@@ -43,19 +45,17 @@ assert.equal(next.committed, false);
 equalGraph(next.graphRdf, apply.graphRdf);
 assert.deepEqual(next.report.results.map(r => r.focusNode.value).sort(), ['https://example.org/alice', 'https://example.org/bob']);
 assert.equal(run({shapes: p.shapes, data: '@broken'}).status, 'parse-error');
-const checks = ['bundled engine identity and licenses', 'initial graph conforms', 'shared-node deletion rejected with two affected people', 'unaffected root result reused', 'rejection preserves graph', 'atomic rename commits and readback conforms', 'subsequent edit uses latest committed graph', 'invalid input is an execution error'];
-if (data.catalogue) {
-  const c = data.catalogue;
-  assert(c.sourceUrl && c.sourceLabel, 'Public data must retain provenance');
-  assert.equal(run({shapes: c.shapes, data: c.data}).report.conforms, true);
-  const rejected = run({operation: 'update', shapes: c.shapes, data: c.data, additions: '', removals: c.removals});
-  assert.equal(rejected.committed, false);
-  equalGraph(rejected.graphRdf, c.data);
-  const repaired = run({operation: 'update', shapes: c.shapes, data: c.data, additions: c.additions, removals: c.removals});
-  assert.equal(repaired.committed, true);
-  assert.equal(run({shapes: c.shapes, data: repaired.graphRdf}).report.conforms, true);
-  checks.push('public data provenance retained', 'public catalogue validates against declared application rules', 'injected catalogue deletion rejected', 'catalogue atomic repair commits and validates');
-}
+const checks = ['bundled engine identity, licenses and evidence links', 'initial graph conforms', 'shared-node deletion rejected with two affected people', 'unaffected root result reused', 'rejection preserves graph', 'atomic rename commits and readback conforms', 'subsequent edit uses latest committed graph', 'invalid input is an execution error'];
+const c = data.catalogue;
+assert(c?.sourceUrl && c.sourceLabel, 'The standalone demo must include the public catalogue and its provenance');
+assert.equal(run({shapes: c.shapes, data: c.data}).report.conforms, true);
+const rejected = run({operation: 'update', shapes: c.shapes, data: c.data, additions: '', removals: c.removals});
+assert.equal(rejected.committed, false);
+equalGraph(rejected.graphRdf, c.data);
+const repaired = run({operation: 'update', shapes: c.shapes, data: c.data, additions: c.additions, removals: c.removals});
+assert.equal(repaired.committed, true);
+assert.equal(run({shapes: c.shapes, data: repaired.graphRdf}).report.conforms, true);
+checks.push('public data provenance retained', 'public catalogue validates against declared application rules', 'injected catalogue deletion rejected', 'catalogue atomic repair commits and validates');
 fs.mkdirSync('artifacts', {recursive: true});
 fs.writeFileSync('artifacts/demo-checks.json', JSON.stringify({executedAt: new Date().toISOString(), engineSha256: build.engineSha256, checks, passed: checks.length, failed: 0, scope: 'Packaged engine and fixture acceptance; browser interactions are checked separately.'}, null, 2) + '\n');
 console.log(`${checks.length}/${checks.length} packaged demo acceptance checks passed.`);

@@ -75,6 +75,12 @@ for (const [from, to] of [
 }
 fs.cpSync('licenses', path.join(target, 'licenses'), {recursive: true});
 for (const file of ['LICENSE', 'NOTICE', 'THIRD_PARTY.md']) fs.copyFileSync(file, path.join(target, file));
+// Keep the source manifests referenced by the standalone attribution page.
+fs.mkdirSync(path.join(target, 'fixtures'), {recursive: true});
+for (const name of ['SOURCES.json', 'DCAT-SOURCE.json']) {
+  const file = path.join('fixtures', name);
+  fs.copyFileSync(file, path.join(target, file));
+}
 // Include licenses for runtime packages actually embedded in the generated module.
 const runtime = path.join(target, 'licenses/runtime');
 fs.mkdirSync(runtime, {recursive: true});

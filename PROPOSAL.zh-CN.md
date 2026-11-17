@@ -4,11 +4,11 @@
 
 ## 一、项目名称与申报人
 
-项目名称：MoonSHACL——MoonBit 原生 SHACL 2017 Core 图契约与事务校验库。
+项目名称：MoonSHACL——MoonBit原生RDF图契约编译与事务校验库。
 
 申报人 GitHub ID：wangjiale6036-dotcom。个人姓名及联系方式见参赛者提交给组委会的申报附件。
 
-参赛类型：2026 年 10 月黑客松，新项目申报，个人参赛；申报工作版：基于 v0.4.0 的 2026-10-23 第二轮性能优化版，尚未正式发行；原始代码许可证：Apache-2.0。
+本材料用于 2026 年 10 月黑客松个人参赛项目补验。两轮优化随 11 月 10 日的源码提交交付，公开发行基线为 v0.4.0。原始代码许可证为 Apache-2.0。
 
 本项目以完整 SHACL 2017 Core 为交付范围。v0.1.0 的受限 profile 是已冻结的早期基线，不是本次最终范围；pattern/flags、四种范围和两种排序约束均已进入实际实现和验收。
 
@@ -51,7 +51,7 @@ pySHACL、RDF/JS、RDF4J 已有成熟能力，SHACL、事务、增量或离线�
 | S0 基线 | 10 月 10 日 | 保留 v0.1.0 的 76 通过/22 明确拒绝/0 语义失败记录和旧发行包 |
 | S1 补齐组件 | 原定 10 月 17—21 日 | 七个缺失组件、精确比较和 XPath 正则已实现；10 个业务案例实际执行通过 |
 | S2 通用兼容 | 原定 10 月 22—26 日 | datatype、路径/参数、图装载、扩展及报告已审查；固定 98 个 Core 用例全部符合预期，零排除 |
-| S3 完整验收 | 原定 10 月 27—30 日 | v0.4.0 原发行已验收三后端、两个独立引擎、增量回归、源码/CLI 和公开包安装；本轮优化另有本地复验，尚未发行 |
+| S3 完整验收 | 原定 10 月 27—30 日 | v0.4.0 保留原发行的公开包安装记录。11 月 10 日补验提交通过 Windows 和 Linux 源码 CI，含两轮优化、浏览器演示分发和真实目录流程。 |
 
 原计划日期是工程目标，不是组委会截止日期；S1/S2 的 v0.2/v0.3 只是计划里程碑，没有虚构中间发行。最终状态和可复算证据见[验收记录][validation]及[29 组件矩阵][matrix]。
 
@@ -72,6 +72,8 @@ pySHACL、RDF/JS、RDF4J 已有成熟能力，SHACL、事务、增量或离线�
 ## 八、仓库、测试与交付
 
 公开基线：GitHub [wangjiale6036-dotcom/moonshacl][repo]、[提交历史][commits]、[v0.4.0 发行页][release]与[Mooncakes 0.4.0][package]。本仓库 11 月 10 日的补验提交包含新增源码与复验材料，发行页和 Mooncakes 0.4.0 对应 10 月 16 日的原发行。
+
+11 月 10 日的补验提交及其 Windows 和 Linux CI 结果均可直接核对。11 月 17 日的干净源码与浏览器复验见验收记录。[补验提交][followup] · [双平台 CI][followup-ci] · [验收记录][validation]
 
 原发行包括库、CLI、公开包、完整源码/第三方许可、案例、独立消费项目、自动化测试、CI 和申报材料。本轮 `node scripts/verify.mjs` 单次完整执行通过：JS、Wasm-GC、native 各通过 1,756 个测试块，保留第一轮 4 块回归并新增 3 块，包含 400 轮混合更新与索引检查；每后端固定 98 个官方 Core 用例及既有 2,000 次更新提案比较均通过。另有 1,688 个适用 XPath2 官方正则案例。bridge 38 项、CLI 18 项、3 项比较器自检、3 个端到端场景和三后端独立消费通过。142 个场景 × 2 独立引擎共 284 次比较，276 次匹配、7 个已知差异、1 个已知错误，零意外失败，不能算作全部一致。另完成公开数据 41 项与分发演示 12 类检查；命令及证据见[本轮验收归档][optimization]，第一轮分段验收作为历史单独保留。
 
@@ -103,3 +105,5 @@ pySHACL、RDF/JS、RDF4J 已有成熟能力，SHACL、事务、增量或离线�
 [confirmation]: docs/PERFORMANCE-CONFIRMATION.zh-CN.md
 [optimization]: docs/evidence/optimization-verification.json
 [sourceaudit]: docs/evidence/source-audit-optimization.json
+[followup]: https://github.com/wangjiale6036-dotcom/moonshacl/commit/f98cb107f6be9b87d480ae45ae3ae1095747f621
+[followup-ci]: https://github.com/wangjiale6036-dotcom/moonshacl/actions/runs/42804438659

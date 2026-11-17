@@ -1,5 +1,11 @@
 # MoonSHACL 验收记录：优化工作版与发行基线
 
+## 2026-11-17 干净源码与浏览器复验
+
+从 11 月 10 日的补验提交导出源码并重装锁定的依赖。完整测试、10 个 Core 业务案例、12 类演示分发检查、41 项真实目录检查和 Session 基准快速检查均通过。该补验提交也通过 Windows 和 Linux 的同一套源码 CI。[补验提交](https://github.com/wangjiale6036-dotcom/moonshacl/commit/f98cb107f6be9b87d480ae45ae3ae1095747f621) · [GitHub Actions](https://github.com/wangjiale6036-dotcom/moonshacl/actions/runs/42804438659)
+
+在本地 Chrome 157 通过页面和 Web Worker 实测了七组操作，包括初始化、区分拒绝后的提案图与保存图、含引号的原子替换和两类导出、重复编辑、重置和窄屏布局、真实目录删除与修复、性能报告下载。复验还发现独立演示的第三方声明有两处来源清单未随包带上，现已纳入构建和分发检查。
+
 ## 2026-10-23 第二轮性能优化工作版复验
 
 本节对应基于 v0.4.0 的未发布第二轮工作版。Session 候选图构造利用保留三元组已有的唯一性，省去重复建立全图去重集合；新增三元组仍按输入顺序处理首个相等代表，并用原图 SPO 索引与删除集合决定是否追加。内部 `Graph::from_unique` 重新建立所有索引，公开 `Graph::new` 仍去重任意输入。依赖读取、目标重算、第一轮缓存隔离与失败回滚均保留，没有关闭 Reader 或改用全量 fallback。本轮源码于 2026 年 11 月 10 日补交至主仓库，以下保留 10 月本地复验的原始范围。完整执行与归档见 [optimization-verification.json](evidence/optimization-verification.json)。

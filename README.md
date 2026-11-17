@@ -2,7 +2,7 @@
 
 **2026-11-10 补验源码**基于 v0.4.0，包含两轮 Session 优化、浏览器交互和真实目录流程。10 月 23 日的本地测试和性能记录保存在仓库中。此次提交晚于十月验收截止日，v0.4.0 标签仍对应 10 月 16 日的公开发行。
 
-补验入口见[评优证据索引](docs/AWARD-DEMO.zh-CN.md)，含源码位置和复验命令。
+补验材料包括[公开申报书](PROPOSAL.zh-CN.md)、[源码位置与复验命令](docs/AWARD-DEMO.zh-CN.md)和[验收记录](docs/VALIDATION.md)。
 
 [![CI](https://github.com/wangjiale6036-dotcom/moonshacl/actions/workflows/ci.yml/badge.svg)](https://github.com/wangjiale6036-dotcom/moonshacl/actions/workflows/ci.yml)
 
@@ -100,7 +100,7 @@ node scripts/consumer-test.mjs --registry
 
 第二轮优化工作版的 `node scripts/verify.mjs` 单次完整执行通过：JS、Wasm-GC、native **各 1,756 个测试块通过**，保留第一轮 4 块回归并新增 3 块，包含 400 轮混合更新与索引检查；每后端既有 2,000 次更新提案对照继续保留。bridge 38 项、CLI 18 项、比较器 3 项自检、3 个端到端场景和三后端独立消费通过。142 个场景 × 2 独立引擎共 284 次比较，其中 276 次匹配、7 个已知差异、1 个已知错误，零意外失败，不能算作全部一致。另完成公开数据 41 项及分发演示 12 类检查。详见[本轮验收归档](docs/evidence/optimization-verification.json)；第一轮分段执行记录另行保留。
 
-[验收记录](docs/VALIDATION.md)、[逐组件矩阵](docs/CORE-MATRIX.md)、[公开证据](docs/evidence)、[三个端到端场景](docs/SCENARIOS.md) 和 [10 个 Core 业务案例](examples/core-roadmap) 给出具体方法与边界。已发布基线的 CI 在 Linux/Windows 运行 JS、Wasm-GC、native；本轮工作区的结果属于本地复验。完整 Core 不表示接受无限资源输入、未定义递归语义或所有扩展。
+11 月 10 日的补验提交已通过 Windows 和 Linux CI，每个平台都运行三个后端与补验场景。11 月 17 日另从该提交的干净源码重建，并实际运行浏览器操作。测试方法和边界见[验收记录](docs/VALIDATION.md)、[逐组件矩阵](docs/CORE-MATRIX.md)、[三个端到端场景](docs/SCENARIOS.md)和[10 个 Core 业务案例](examples/core-roadmap)。
 
 ## 独立贡献与边界
 
